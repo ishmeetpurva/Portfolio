@@ -1,0 +1,1051 @@
+/* ── 1. FONTS (same as homepage) ── */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&family=Caveat:wght@500&display=swap');
+
+/* ── 2. TOKENS (same as homepage) ── */
+:root {
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-hand:    'Caveat', cursive;
+  --font-serif:   'Fraunces', Georgia, serif;
+
+  --ink:      #0f0f0f;
+  --ink2:     #1a1a1a;
+  --muted:    #6b6b6b;
+  --muted2:   #9a9a9a;
+  --line:     #e8e8e8;
+  --surface:  #fafaf8;
+  --white:    #ffffff;
+
+  --ease-expo:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-quart: cubic-bezier(0.25, 1, 0.5, 1);
+
+  --space-xs:  8px;
+  --space-sm:  16px;
+  --space-md:  24px;
+  --space-lg:  48px;
+  --space-xl:  80px;
+  --space-2xl: 120px;
+  --space-3xl: 160px;
+
+  --text-xs:   0.6875rem;
+  --text-sm:   0.8125rem;
+  --text-base: 1rem;
+  --text-md:   1.125rem;
+  --text-lg:   1.375rem;
+  --text-xl:   1.75rem;
+  --text-2xl:  2.25rem;
+  --text-3xl:  3rem;
+  --text-4xl:  4rem;
+  --text-5xl:  5.5rem;
+
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+
+  --orb-primary:       #0f0f0f;
+  --orb-marker-strong: #d0d0d0;
+  --orb-marker-weak:   #ebebeb;
+
+  --sideNav-w: 160px;
+}
+
+/* ── 3. RESET (same as homepage) ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+* { cursor: none !important; }
+
+@media (hover: none) and (pointer: coarse) {
+  * { cursor: auto !important; }
+  .cursor { display: none !important; }
+}
+img  { display: block; max-width: 100%; height: auto; }
+a    { color: inherit; text-decoration: none; }
+ul   { list-style: none; }
+button { font-family: inherit; border: none; background: none; }
+
+/* ── 4. CUSTOM CURSOR (same as homepage) ── */
+.cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 10px; height: 10px;
+  background: var(--ink);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: width  0.35s var(--ease-expo),
+              height 0.35s var(--ease-expo),
+              opacity 0.3s ease;
+  mix-blend-mode: exclusion;
+  will-change: transform;
+}
+.cursor.is-hover  { width: 44px; height: 44px; }
+.cursor.is-hidden { opacity: 0; }
+
+/* ── 5. SCROLLBAR + SELECTION (same as homepage) ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted2); }
+::selection { background: var(--ink); color: var(--white); }
+
+/* ── 6. GLOBAL TYPOGRAPHY (same as homepage) ── */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+p {
+  font-size: var(--text-md);
+  line-height: 1.75;
+  color: var(--muted);
+  max-width: 65ch;
+}
+
+/* ── 7. LAYOUT (same as homepage) ── */
+.pageWithSideNav { margin-left: var(--sideNav-w); }
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+/* ── 7.5 BACK LINK ── */
+.cs-backLink {
+  position: fixed;
+  top: 28px;
+  left: 28px;
+  z-index: 110;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 0.3s var(--ease-expo), opacity 0.3s var(--ease-expo);
+}
+
+.cs-backLink:hover {
+  color: var(--neon-magenta);
+}
+
+.cs-backLink:focus-visible {
+  outline: 2px solid var(--neon-magenta);
+  outline-offset: 4px;
+}
+
+/* ── 8. SIDEBAR NAV (mirrors homepage .sideNav exactly) ── */
+.cs-sideNav {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: 100;
+  width: var(--sideNav-w);
+  padding: 0 0 0 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.cs-sideNav__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0 8px 14px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--muted2);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  position: relative;
+}
+
+.cs-sideNav__item::before {
+  content: '';
+  position: absolute;
+  left: -2px; top: 50%;
+  transform: translateY(-50%);
+  width: 2px; height: 0;
+  background: var(--ink);
+  transition: height 0.3s var(--ease-expo);
+}
+
+.cs-sideNav__item:hover,
+.cs-sideNav__item.is-active { color: var(--ink); }
+.cs-sideNav__item.is-active::before { height: 100%; }
+
+/* ── 9. PROGRESS BAR (matches homepage ink color, not red) ── */
+#csProgressBar {
+  position: fixed;
+  inset: 0 auto auto 0;
+  width: 0%;
+  height: 2px;
+  background: var(--ink);
+  z-index: 9999;
+  transition: width 0.12s linear;
+}
+
+/* ── 10. PAGE SHELL ── */
+body.case-study-body {
+  background: var(--white);
+  color: var(--ink);
+}
+
+.case-study-body .pageWithSideNav {
+  min-height: 100vh;
+}
+
+.cs-shell {
+  width: min(1280px, calc(100% - 120px));
+  margin: 0 auto;
+}
+
+@media (max-width: 1100px) and (min-width: 861px) {
+  .cs-shell {
+    width: min(100% - 48px, 1280px);
+  }
+}
+
+/* ── 11. HERO ── */
+.cs-hero {
+  padding: 72px 0 0;
+}
+
+.cs-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 48px;
+  align-items: end;
+}
+
+.cs-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--muted2);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cs-eyebrow::before {
+  content: "●";
+  color: var(--ink);
+  font-size: 10px;
+}
+
+.cs-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 5.9rem);
+  line-height: 0.96;
+  letter-spacing: -0.045em;
+  margin: 0;
+  max-width: 10ch;
+}
+
+.cs-hero h1 em {
+  font-style: italic;
+  color: var(--muted);
+}
+
+.cs-hero__lead {
+  margin-top: 24px;
+  font-size: var(--text-lg);
+  line-height: 1.68;
+  color: var(--muted);
+  max-width: 52ch;
+}
+
+/* ── 12. META GRID ── */
+.cs-metaGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.cs-metaGrid__item {
+  background: var(--white);
+  padding: 20px 22px;
+  min-height: 96px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.cs-metaGrid__label {
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--muted2);
+}
+
+.cs-metaGrid__value {
+  font-size: var(--text-base);
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+/* ── 13. HERO MEDIA ── */
+.cs-heroMedia {
+  margin-top: 40px;
+  overflow: hidden;
+}
+
+.cs-heroMedia img {
+  width: 100%;
+  display: block;
+}
+
+/* ── 14. STATS ── */
+.cs-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin: 44px 0 0;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.cs-stat-block {
+  background: var(--surface);
+  padding: 28px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cs-stat {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+
+.cs-stat-label {
+  max-width: 20ch;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--muted2);
+}
+
+/* ── 15. MAIN LAYOUT ── */
+/* ── 15. MAIN LAYOUT ── */
+.cs-main {
+  padding: 96px 0 0;
+}
+
+.cs-layout {
+  display: block;
+}
+
+/* ── 16. BODY CONTENT ── */
+.cs-body {
+  display: flex;
+  flex-direction: column;
+  gap: 96px;
+  max-width: 980px;
+}
+
+.cs-section-label {
+  margin-bottom: 18px;
+}
+
+.cs-section-label span {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted2);
+}
+
+.cs-body h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  line-height: 1.03;
+  letter-spacing: -0.035em;
+  margin: 0 0 20px;
+  max-width: 13ch;
+}
+
+.cs-body h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px;
+}
+
+.cs-body p,
+.cs-body li {
+  font-size: var(--text-md);
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+.cs-body p {
+  margin: 0 0 16px;
+  max-width: 62ch;
+}
+
+/* ── 17. DUAL TEXT ── */
+.cs-dualText {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: 28px;
+}
+
+/* ── 18. CARDS ── */
+.cs-noteCard,
+.cs-card,
+.cs-teamCard,
+.cs-step,
+.cs-processCard {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  transition: box-shadow 0.3s var(--ease-expo), transform 0.3s var(--ease-expo);
+}
+
+.cs-noteCard:hover,
+.cs-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.07);
+}
+
+.cs-teamGoalGrid {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.cs-teamCard {
+  padding: 26px;
+  background: var(--surface);
+}
+
+.cs-teamCard h3,
+.cs-goals h3,
+.cs-noteCard h3 { margin-bottom: 14px; }
+
+.cs-teamCard ol,
+.cs-goals ul,
+.cs-learningList,
+.cs-findingsList {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.cs-goals { padding: 26px; }
+
+/* ── 19. GRIDS ── */
+.cs-problemGrid,
+.cs-cardGrid,
+.cs-solutionGrid,
+.cs-feedbackGrid {
+  display: grid;
+  gap: 24px;
+}
+
+.cs-problemIntro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 24px;
+  align-items: end;
+}
+
+@media (max-width: 640px) {
+  .cs-problemIntro {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cs-problemGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 34px;
+}
+
+.cs-card { padding: 26px; }
+
+.cs-card__number {
+  display: inline-flex;
+  margin-bottom: 20px;
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  line-height: 1;
+  color: #d6d6d6;
+}
+
+.cs-card p,
+.cs-step p,
+.cs-noteCard p,
+.cs-processCard p {
+  max-width: none;
+  margin-bottom: 0;
+  font-size: var(--text-sm);
+  line-height: 1.7;
+}
+
+/* ── 20. PULLQUOTE ── */
+.cs-pullquote {
+  margin-top: 28px;
+  padding: 30px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.cs-pullquote p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.8vw, 2rem);
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--ink);
+  max-width: 38ch;
+}
+
+.cs-pullquote cite {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: var(--text-xs);
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted2);
+}
+
+/* ── 21. RESEARCH METHODS ── */
+.cs-researchMethods { margin-top: 34px; }
+
+.cs-methodList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.cs-methodPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: var(--text-sm);
+  color: var(--ink);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.cs-methodPill:hover {
+  border-color: var(--ink);
+  background: var(--white);
+}
+
+.cs-feedbackGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 28px;
+}
+
+
+/* ── 22. IMAGES ── */
+.cs-img {
+  margin-top: 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.cs-img img,
+.cs-img video {
+  width: 100%;
+  display: block;
+  transition: transform 0.6s var(--ease-expo);
+}
+.cs-img:hover img { transform: scale(1.02); }
+
+.cs-caption {
+  display: block;
+  margin-top: 12px;
+  font-size: var(--text-xs);
+  color: var(--muted2);
+  letter-spacing: 0.04em;
+}
+
+/* ── 23. MORE GRIDS ── */
+.cs-cardGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 34px;
+}
+
+.cs-solutionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 34px;
+}
+
+/* ── 24. STEP CARDS ── */
+.cs-step { overflow: hidden; }
+
+.cs-step__media {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cs-step__media img {
+  width: 100%;
+  display: block;
+
+  aspect-ratio: 4 / 3;
+  object-fit:fill;
+
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.cs-step:hover .cs-step__media img { transform: scale(1.04); }
+
+.cs-step__content { padding: 22px; }
+
+.cs-step__label {
+  display: inline-flex;
+  margin-bottom: 12px;
+  font-size: var(--text-xs);
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ── 25. FINAL LAYOUT ── */
+
+.cs-finalStack { display: grid; gap: 24px; }
+
+.cs-finalTall .cs-img,
+.cs-finalStack .cs-img,
+.cs-finalMosaic .cs-img { margin-top: 0; height: 100%; }
+
+.cs-finalMosaic {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.cs-inlineImageGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.cs-inlineImageGrid img {
+  width: 100%;
+  display:block;
+  height: 340px;
+  object-fit: cover;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  gap: 24px;
+}
+
+@media (max-width: 860px) {
+  .cs-inlineImageGrid img {
+    height: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cs-inlineImageGrid img {
+    height: 200px;
+  }
+}
+
+.cs-inlineImageGridWrap {
+  position: relative;
+}
+
+.cs-handNote {
+  position: absolute;
+  bottom: 30%;
+  left: 70%;
+  
+  font-family: "Caveat", cursive;
+  font-size: 24px;
+  line-height: 1.2;
+  
+  transform: rotate(-6deg);
+  pointer-events: none;
+}
+
+@media (max-width: 860px) {
+  .cs-handNote {
+    position: static;
+    display: block;
+    transform: rotate(-3deg);
+    font-size: 20px;
+    margin-top: 12px;
+    left: auto;
+    bottom: auto;
+  }
+}
+
+@media (max-width: 860px) {
+  .cs-inlineImageGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── 27. LEARNINGS ── */
+.cs-learnings { padding-bottom: 96px; }
+
+.cs-learningList {
+  display: grid;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.cs-learningList li { padding-left: 6px; }
+
+/* ── 28. NEXT PROJECT ── */
+.cs-nextProject {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  transition: background 0.3s ease;
+}
+
+.cs-nextProject:hover { background: var(--surface); }
+
+.cs-nextProject a {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 24px;
+  text-decoration: none;
+  padding: 40px;
+}
+
+.cs-nextProject .label {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted2);
+}
+
+.cs-nextProject h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: var(--ink2);
+  transition: color 0.2s ease;
+}
+
+.cs-nextProject a:hover h3,
+.cs-nextProject a:focus-visible h3 { color: var(--ink); }
+
+/* ── 29. FOOTER ── */
+.cs-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 28px 0 48px;
+}
+
+.cs-footer span {
+  font-size: var(--text-sm);
+  color: var(--muted2);
+}
+
+/* ── 30. REVEAL ANIMATIONS (same as homepage) ── */
+.cs-reveal,
+.cs-img-reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s var(--ease-expo), transform 0.7s var(--ease-expo);
+}
+
+.cs-reveal.is-visible,
+.cs-img-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cs-img-reveal {
+  clip-path: inset(0 100% 0 0);
+  transform: none;
+  transition: clip-path 1s var(--ease-expo);
+}
+.cs-img-reveal.is-visible { clip-path: inset(0 0% 0 0); }
+
+.cs-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s var(--ease-expo), transform 0.55s var(--ease-expo);
+}
+
+.cs-stagger.is-visible > * { opacity: 1; transform: translateY(0); }
+.cs-stagger.is-visible > *:nth-child(2) { transition-delay: 0.08s; }
+.cs-stagger.is-visible > *:nth-child(3) { transition-delay: 0.16s; }
+.cs-stagger.is-visible > *:nth-child(4) { transition-delay: 0.24s; }
+.cs-stagger.is-visible > *:nth-child(5) { transition-delay: 0.32s; }
+.cs-stagger.is-visible > *:nth-child(6) { transition-delay: 0.40s; }
+
+/* ── 31. RESPONSIVE ── */
+@media (min-width: 1100px) {
+  .case-study-body .cs-layout {
+    grid-template-columns: 220px minmax(0, 1fr);
+    column-gap: 56px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .cs-hero__grid,
+  .cs-layout,
+  .cs-teamGoalGrid,
+  .cs-finalGrid,
+  .cs-processCard__grid,
+  .cs-dualText {
+    grid-template-columns: 1fr;
+  }
+
+  .cs-sideNav { display: none; }
+  .pageWithSideNav { margin-left: 0; }
+
+  .cs-hero h1,
+  .cs-body h2 { max-width: none; }
+}
+
+@media (max-width: 860px) {
+  .cs-shell { width: min(100% - 32px, 1200px); }
+
+  .cs-stats,
+  .cs-problemGrid,
+  .cs-cardGrid,
+  .cs-solutionGrid,
+  .cs-feedbackGrid,
+  .cs-finalMosaic,
+  .cs-metaGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .cs-main { padding-top: 72px; }
+  .cs-body { gap: 88px; }
+}
+
+@media (max-width: 640px) {
+  .cs-hero { padding-top: 44px; }
+  .cs-hero__grid { gap: 32px; }
+
+  .cs-stat-block,
+  .cs-card,
+  .cs-teamCard,
+  .cs-goals,
+  .cs-step__content,
+  .cs-metaGrid__item {
+    padding: 22px;
+  }
+
+  .cs-step__media { aspect-ratio: 1 / 1; }
+
+  .cs-nextProject a {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 30px 0;
+  }
+
+  .cs-footer { padding-bottom: 32px; }
+}
+
+.cs-reveal,
+.cs-img-reveal,
+.cs-stagger > * {
+  opacity: 1 !important;
+}
+
+.cs-reveal,
+.cs-stagger > *,
+.cs-img-reveal {
+  transform: none !important;
+}
+
+.cs-img-reveal {
+  clip-path: inset(0 0 0 0) !important;
+}
+
+/* FULL WIDTH + SPACING */
+.cs-methodAccordion {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* spacing between 3 rows */
+}
+
+/* EACH ROW = CARD */
+.cs-methodRow {
+  background: var(--white);
+  padding: 0 24px;
+  transition: box-shadow 0.3s var(--ease-expo), transform 0.3s var(--ease-expo);
+}
+
+.cs-methodRow:hover {
+  box-shadow: 0 12px 32px rgba(0,0,0,0.05);
+}
+
+/* HEADER */
+.cs-methodRow summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 0;
+}
+
+.cs-methodRow summary::-webkit-details-marker {
+  display: none;
+}
+
+/* RIGHT SIDE HINT */
+.cs-methodHint {
+  font-size: var(--text-xs);
+  color: var(--muted2);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.cs-methodRow:hover .cs-methodHint {
+  color: var(--ink);
+}
+
+/* ROTATE ARROW WHEN OPEN */
+.cs-methodRow[open] .cs-methodHint {
+  transform: rotate(180deg);
+}
+
+/* CONTENT */
+.cs-methodRow__content {
+  padding: 0 0 28px;
+}
+
+/* IMAGES */
+.cs-methodRow__images {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 12px;
+}
+
+.cs-methodRow__images .cs-img {
+  margin-top: 0;
+}
+
+.cs-changeCard {
+  overflow: hidden;
+}
+
+.cs-changeCard summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cs-changeCard summary::-webkit-details-marker {
+  display: none;
+}
+
+.cs-changeCard h3 {
+  margin: 0;
+}
+
+.cs-changeCard p {
+  margin: 0;
+  max-width: none;
+}
+
+.cs-changeHint {
+  margin-top: 4px;
+  font-size: var(--text-xs);
+  color: var(--muted2);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cs-wireframeFrame {
+  margin-top: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--surface);
+  transition: max-height 0.45s var(--ease-expo);
+  max-height: 150px; /* collapsed preview height */
+}
+
+.cs-wireframeFrame img {
+  width: 100%;
+  display: block;
+  height: auto;
+}
+
+.cs-changeCard[open] .cs-wireframeFrame {
+  max-height: 1200px; /* large enough for full image */
+}

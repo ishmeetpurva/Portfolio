@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soil Testing Machine — Ag-tech Device UX · Ishmeet Kaur</title>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="Case-study-styles.css" />
+</head>
+<body class="case-study-body">
+  <div id="csProgressBar"></div>
+
+  <a href="index.html" class="cs-backLink" aria-label="Back to portfolio">← Back</a>
+
+  <aside class="cs-sideNav" aria-label="Case study sections">
+    <a class="cs-sideNav__item is-active" href="#problem" data-cs-section="problem">Problem</a>
+    <a class="cs-sideNav__item" href="#context" data-cs-section="context">Context &amp; Goals</a>
+    <a class="cs-sideNav__item" href="#changed" data-cs-section="changed">What Changed</a>
+    <a class="cs-sideNav__item" href="#solution" data-cs-section="solution">Solution</a>
+    <a class="cs-sideNav__item" href="#learnings" data-cs-section="learnings">Learnings</a>
+  </aside>
+
+  <div class="pageWithSideNav">
+    <header class="cs-shell cs-hero">
+      <div class="cs-hero__grid">
+        <div class="cs-reveal">
+          <span class="cs-eyebrow">Case Study</span>
+          <h1>Soil Testing <em>Machine</em></h1>
+          <p class="cs-hero__lead">
+            An ag-tech device designed to help farmers and lab technicians test soil faster,
+            with less setup friction and without relying on a dedicated smartphone tethered to the machine.
+          </p>
+        </div>
+
+        <div class="cs-metaGrid cs-stagger" aria-label="Project meta information">
+          <div class="cs-metaGrid__item">
+            <span class="cs-metaGrid__label">Company</span>
+            <span class="cs-metaGrid__value">Absolute Foods</span>
+          </div>
+          <div class="cs-metaGrid__item">
+            <span class="cs-metaGrid__label">Role</span>
+            <span class="cs-metaGrid__value">UX Designer</span>
+          </div>
+          <div class="cs-metaGrid__item">
+            <span class="cs-metaGrid__label">Industry</span>
+            <span class="cs-metaGrid__value">Ag-tech</span>
+          </div>
+          <div class="cs-metaGrid__item">
+            <span class="cs-metaGrid__label">Year</span>
+            <span class="cs-metaGrid__value">2020</span>
+          </div>
+        </div>
+      </div>
+
+      <figure class="cs-heroMedia cs-img-reveal">
+        <img src="Images/case-studies/soil/PHOTO-2022-11-15-07-31-03.jpg" alt="Soil testing machine used in agricultural testing workflow" />
+      </figure>
+
+    <main class="cs-shell cs-main">
+      <div class="cs-layout">
+        <div class="cs-body">
+          <section id="problem">
+            <div class="cs-section-label"><span>Problem</span></div>
+            <div class="cs-problemIntro cs-reveal">
+              <div>
+                <h2>Shaping the future of agriculture</h2>
+                <p>
+                  The traditional soil-testing setup was complex to operate. Commands were given through a smartphone connected with a wire,
+                  which meant the machine needed a separate dedicated phone to run the process. On top of that, there was no clear space to manage test tubes during testing.
+                </p>
+              </div>
+            </div>
+
+            <blockquote class="cs-pullquote cs-reveal">
+              <p>“The process needed fewer dependencies, clearer instructions, and a more technician-friendly workflow.”</p>
+              <cite>Project direction</cite>
+            </blockquote>
+
+            <div class="cs-problemGrid cs-stagger">
+              <article class="cs-card">
+                <span class="cs-card__number">01</span>
+                <h3>Dedicated smartphone dependency</h3>
+                <p>The machine could only be controlled through a phone connected by wire, which added setup overhead and operational friction.</p>
+              </article>
+              <article class="cs-card">
+                <span class="cs-card__number">02</span>
+                <h3>No built-in space for test tubes</h3>
+                <p>Technicians had to keep moving test tubes between steps with no dedicated support inside the workflow.</p>
+              </article>
+              <article class="cs-card">
+                <span class="cs-card__number">03</span>
+                <h3>Complicated lab sequence</h3>
+                <p>The process involved parallel dependencies, filtration rules, and ordered actions that were difficult to understand quickly.</p>
+              </article>
+            </div>
+          </section>
+
+          <section id="context">
+            <div class="cs-section-label"><span>Context &amp; Goals</span></div>
+          
+            <div class="cs-reveal">
+              <h2>Designing for technicians inside a scientific workflow</h2>
+              <p>
+                The challenge was not just interface design — it was translating a complicated laboratory process into something easier to follow on-device.
+              </p>
+            </div>
+          
+            <div class="cs-inlineImageGridWrap cs-reveal">
+              <div class="cs-inlineImageGrid">
+                <img src="Images/case-studies/soil/soil-test-why.png" alt="Soil testing process image 1" />
+                <img src="Images/case-studies/soil/Discussion.jpg" alt="Soil testing process image 2" />
+                <img src="Images/case-studies/soil/Old Machine.jpg" alt="Soil testing process image 3" />
+                <img src="Images/case-studies/soil/old_machine2.jpg" alt="Soil testing process image 4" />
+                <img src="Images/case-studies/soil/filtration.jpg" alt="Soil testing process image 5" />
+              </div>
+          
+              <p class="cs-handNote"> ↩ some old photos of the soil machine</p>
+            </div>
+          
+            <div class="cs-researchMethods cs-reveal">
+            </div>
+          </section>
+
+          <section id="solution">
+            <div class="cs-section-label"><span>Solution</span></div>
+            <div class="cs-reveal">
+              <h2>Breaking a complex lab process into guided steps</h2>
+              <p>
+                The soil testing process had two parts</p>
+            </div>
+
+              <article class="cs-step">
+                <div class="cs-step__media">
+                  <img src="Images/case-studies/soil/screens/lab process.avif" alt="User flow for the soil testing machine" />
+                </div>
+                <div class="cs-step__content">
+                  <span class="cs-step__label">Step 1</span>
+                  <h3>Preparing the soil</h3>
+              </div>
+
+              <div class="cs-step__media">
+              <img src="Images/case-studies/soil/screens/lab process 02.avif" alt="User flow for the soil testing machine" />
+              </div>
+              <div class="cs-step__content">
+                <span class="cs-step__label">Step 2</span>
+                <h3>Testing the prepared soil</h3>
+            </div>
+                </article>
+                </section>
+           
+          
+          <section id="changed">
+            <div class="cs-section-label"><span>What Changed</span></div>
+            <div class="cs-reveal">
+              <h2>Wireframes that simplified the Technicians experience</h2>
+            </div>
+          
+            <div class="cs-cardGrid">
+          
+              <details class="cs-card cs-changeCard">
+                <summary>
+                  <h3>Simplified the test flow</h3>
+          
+                  <div class="cs-wireframeFrame">
+                    <img src="Images/case-studies/soil/soil-wireframe-preparing.png" alt="Soil test flow wireframe" />
+                  </div>
+          
+                  <span class="cs-changeHint">Click to expand ↓</span>
+                </summary>
+              </details>
+          
+              <details class="cs-card cs-changeCard">
+                <summary>
+                  <h3>Made instructions easier to follow</h3>
+          
+                  <div class="cs-wireframeFrame">
+                    <img src="Images/case-studies/soil/soil-wireframe-testing.png" alt="Soil instruction wireframe" />
+                  </div>
+          
+                  <span class="cs-changeHint">Click to expand ↓</span>
+                </summary>
+              </details>
+            </div>
+          </section>
+
+          <section id="final-design">
+            <div class="cs-section-label"><span>Final Design</span></div>
+            <div class="cs-reveal">
+              <h2>Final screens for activation, preparation, testing, and status</h2>
+              <p>
+                The final design focused on making the machine easier to activate, easier to operate during sample preparation, and clearer while running tests and reporting status.
+              </p>
+            </div>
+
+            <div class="cs-finalMosaic">
+              <figure class="cs-img cs-img-reveal">
+                <img src="Images/case-studies/soil/screens/Activating Machine.jpg" alt="Activating machine screen" />
+              </figure>
+              <figure class="cs-img cs-img-reveal">
+                <img src="Images/case-studies/soil/screens/Weigh Soil.jpg" alt="Weigh soil screen" />
+              </figure>
+              <figure class="cs-img cs-img-reveal">
+                <img src="Images/case-studies/soil/screens/Choose VLE.jpg" alt="Choose VLE screen" />
+              </figure>
+              <figure class="cs-img cs-img-reveal">
+                <img src="Images/case-studies/soil/screens/Test Status 4.jpg" alt="Test status screen" />
+              </figure>
+              <figure class="cs-img cs-img-reveal">
+                <img src="Images/case-studies/soil/screens/Cleaning 02.jpg" alt="Choose VLE screen" />
+              </figure>
+              <figure class="cs-img cs-img-reveal">
+                <img src="Images/case-studies/soil/screens/Dispensing Solution 4.jpg" alt="Test status screen" />
+              </figure>
+              <figure class="cs-img cs-img-reveal">
+                <img src="Images/case-studies/soil/screens/Weigh Soil.jpg" alt="Choose VLE screen" />
+              </figure>
+              <figure class="cs-img cs-img-reveal">
+                <img src="Images/case-studies/soil/screens/Place Bottles 7.jpg" alt="Test status screen" />
+              </figure>
+            </div>
+            <figure class="cs-img cs-img-reveal">
+              <img src="Images/case-studies/soil/screens/Activation successful.jpg" alt="Test status screen" />
+            </figure>
+          
+          </section>
+
+          <section id="learnings" class="cs-learnings">
+            <div class="cs-section-label"><span>Learnings</span></div>
+            <div class="cs-reveal">
+              <h2>What I would push further today</h2>
+              <p>
+                Looking back, this project taught me how important it is to translate a technically dense process into an experience that feels calm, accurate, and usable.
+              </p>
+              <ul class="cs-learningList">
+                <li>Run broader usability testing in addition to heuristic thinking and stakeholder input.</li>
+                <li>Use data analysis more actively to understand where inefficiencies and drop-offs actually happen.</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <section class="cs-shell cs-nextProject" aria-label="Next project">
+      <a href="https://www.figma.com/proto/RHB5I4hGPZYzh0hFiUqUmG/Upaj_Mobile-App_CaseStudy?page-id=13%3A11915&node-id=117-6011&node-type=frame&viewport=9949%2C6409%2C0.44&t=mhMFQVIyBCFnLB5z-1&scaling=min-zoom&content-scaling=fixed" target="_blank" rel="noopener noreferrer">
+        <span class="label">Next Project</span>
+        <h3>Upaj marketplace →</h3>
+      </a>
+    </section>
+
+    <footer class="cs-shell cs-footer">
+      <span>© <span id="year"></span> Ishmeet Kaur</span>
+      <span>Product &amp; UX Designer, UK</span>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

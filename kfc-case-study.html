@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KFC Dubai — Ordering Experience Redesign · Ishmeet Kaur</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="Case-study-styles.css" />
+</head>
+
+<body class="case-study-body">
+  <div id="csProgressBar"></div>
+
+  <a href="index.html" class="cs-backLink" aria-label="Back to portfolio">← Back</a>
+
+  <aside class="cs-sideNav" aria-label="Case study sections">
+    <a class="cs-sideNav__item is-active" href="#problem" data-cs-section="problem">Problem</a>
+    <a class="cs-sideNav__item" href="#context" data-cs-section="context">Context &amp; Goals</a>
+    <a class="cs-sideNav__item" href="#changed" data-cs-section="changed">What Changed</a>
+    <a class="cs-sideNav__item" href="#solution" data-cs-section="solution">Solution</a>
+    <a class="cs-sideNav__item" href="#learnings" data-cs-section="learnings">Learnings</a>
+  </aside>
+
+  <div class="pageWithSideNav">
+    <header class="cs-shell cs-hero">
+      <div class="cs-hero__grid">
+        <div class="cs-reveal">
+          <span class="cs-eyebrow">Case Study</span>
+          <h1>KFC Dubai <em>Ordering Experience Redesign</em></h1>
+          <p class="cs-hero__lead">
+            70% of users were browsing from the homepage but still failing to place an order.
+            I redesigned the journey to reduce confusion, simplify selection, and make checkout feel dependable again.
+          </p>
+        </div>
+
+        <div class="cs-metaGrid cs-stagger" aria-label="Project meta information">
+          <div class="cs-metaGrid__item">
+            <span class="cs-metaGrid__label">Industry</span>
+            <span class="cs-metaGrid__value">QSR- Quick Service Restaurant</span>
+          </div>
+
+          <div class="cs-metaGrid__item">
+            <span class="cs-metaGrid__label">Goals</span>
+            <span class="cs-metaGrid__value">Ordering flow, checkout clarity, trust</span>
+          </div>
+
+          <div class="cs-metaGrid__item">
+            <span class="cs-metaGrid__label">Platform</span>
+            <span class="cs-metaGrid__value">Mobile app revamp</span>
+          </div>
+
+          <div class="cs-metaGrid__item">
+            <span class="cs-metaGrid__label">Timeline</span>
+            <span class="cs-metaGrid__value">3 months</span>
+          </div>
+        </div>
+      </div>
+
+      <figure class="cs-heroMedia cs-img-reveal">
+        <img src="Images/case-studies/kfc/Cover.png" alt="KFC Dubai app redesign screens displayed across multiple mobile devices" />
+      </figure>
+
+      <div class="cs-stats cs-stagger" aria-label="Project stats">
+        <div class="cs-stat-block">
+          <span class="cs-stat" data-target="70">70%</span>
+          <span class="cs-stat-label">of users were dropping off after browsing the homepage</span>
+        </div>
+        <div class="cs-stat-block">
+          <span class="cs-stat" data-target="3">3</span>
+          <span class="cs-stat-label">research methods used to diagnose the broken journey</span>
+        </div>
+        <div class="cs-stat-block">
+          <span class="cs-stat" data-target="4">4</span>
+          <span class="cs-stat-label">high-friction issues consistently surfaced across findings</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="cs-shell cs-main">
+      <div class="cs-layout">
+        <div class="cs-body">
+          <section id="problem">
+            <div class="cs-section-label"><span>Problem</span></div>
+            <div class="cs-problemIntro cs-reveal">
+              <div>
+                <h2>Browsing was easy. Ordering was not.</h2>
+                <p>
+                  Most users were reaching the homepage, but many never managed to place an order.
+                  The issue was not lack of intent — it was friction across selection, payment, and post-order confidence.
+                </p>
+              </div>
+            </div>
+
+            <blockquote class="cs-pullquote cs-reveal">
+              <p>“Spent 30 mins to select the items and was still not able to place the order.”</p>
+              <cite>User feedback</cite>
+            </blockquote>
+
+            <div class="cs-problemGrid cs-stagger">
+              <article class="cs-card">
+                <span class="cs-card__number">01</span>
+                <h3>Decision overload</h3>
+                <p>Too many offers, banners, and competing choices made the homepage noisy and hard to act on.</p>
+              </article>
+              <article class="cs-card">
+                <span class="cs-card__number">02</span>
+                <h3>Broken payment flow</h3>
+                <p>Users reported failed transactions, duplicate charges, and low trust in whether the order had gone through.</p>
+              </article>
+              <article class="cs-card">
+                <span class="cs-card__number">03</span>
+                <h3>No reassurance after checkout</h3>
+                <p>Without order tracking or status clarity, users were left anxious about delivery timing and progress.</p>
+              </article>
+            </div>
+          </section>
+
+          <section id="context">
+            <div class="cs-section-label"><span>Context &amp; Goals</span></div>
+            <div class="cs-reveal">
+              <h2>Understanding the full journey before redesigning it</h2>
+              <p>
+                To understand the problem properly, we analysed the entire journey from landing on the homepage to placing an order.
+                I combined heuristic evaluation, user reviews and feedback, and competitive analysis to identify where the experience was breaking.
+              </p>
+
+              <div class="cs-finalStack">
+                <figure class="cs-img cs-img-reveal">
+                  <video controls playsinline preload="metadata" poster="Images/case-studies/kfc/prototype_thumbnail.png">
+                    <source src="Images/case-studies/kfc/prototype.mp4" type="video/mp4" />
+                  </video>
+                </figure>
+            </div>
+
+            <div class="cs-teamGoalGrid cs-stagger">
+              <aside class="cs-teamCard">
+                <h3>Team</h3>
+                <ol>
+                  <li>Ishmeet Kaur — UX Designer</li>
+                  <li>Gagan Sahni — Lead Designer</li>
+                </ol>
+              </aside>
+
+              <div class="cs-goals">
+                <h3>Project goals</h3>
+                <ul>
+                  <li>✿ Reduce drop-offs between homepage browsing and order placement.</li>
+                  <li>✿ Make the menu and offer ecosystem easier to scan and choose from.</li>
+                  <li>✿ Rebuild trust through clearer payment, tracking, and order-state feedback.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="cs-researchMethods cs-reveal">
+            
+              <div class="cs-methodAccordion">
+                <details class="cs-methodRow">
+                  <summary>
+                    <span class="cs-methodPill">01 · Heuristic Evaluation</span>
+                    <span class="cs-methodHint">Click to view ↓</span>
+                  </summary>
+            
+                  <div class="cs-methodRow__content">
+                    <p>
+                      Audit of the old app experience to identify usability issues, inconsistency, clutter, and friction in the ordering journey.
+                    </p>
+            
+                    <div class="cs-methodRow__images">
+                      <figure class="cs-img">
+                        <img src="Images/case-studies/kfc/old_kfc.png" alt="Old KFC app screen used for heuristic evaluation" />
+                      </figure>
+                      <figure class="cs-img">
+                        <img src="Images/case-studies/kfc/old_menu.png" alt="KFC redesign reference screen" />
+                      </figure>
+                    </div>
+                  </div>
+                </details>
+            
+                <details class="cs-methodRow">
+                  <summary>
+                    <span class="cs-methodPill">02 · User Reviews / Feedback</span>
+                    <span class="cs-methodHint">Click to view ↓</span>
+                  </summary>
+            
+                  <div class="cs-methodRow__content">
+                    <p>
+                      Reviews were grouped to uncover repeated complaints around payment failures, delivery delays, lack of tracking, and too many choices.
+                    </p>
+            
+                    <div class="cs-methodRow__images">
+                      <figure class="cs-img">
+                        <img src="Images/case-studies/kfc/exceldata.png" alt="Grouped user feedback showing KFC payment issues" />
+                      </figure>
+                      <figure class="cs-img">
+                        <img src="Images/case-studies/kfc/grouped feedback1.png" alt="Grouped user feedback showing KFC tracking and delivery issues" />
+                      </figure>
+                      <figure class="cs-img">
+                        <img src="Images/case-studies/kfc/groupedfeedback2.png" alt="Grouped user feedback showing KFC tracking and delivery issues" />
+                      </figure>
+                    </div>
+                  </div>
+                </details>
+            
+                <details class="cs-methodRow">
+                  <summary>
+                    <span class="cs-methodPill">03 · Competitive Analysis</span>
+                    <span class="cs-methodHint">Click to view ↓</span>
+                  </summary>
+            
+                  <div class="cs-methodRow__content">
+                    <p>
+                      Benchmarking helped identify missed opportunities like real-time tracking, rating mechanisms, and stronger confidence cues.
+                    </p>
+            
+                    <div class="cs-methodRow__images">
+                      <figure class="cs-img">
+                        <img src="Images/case-studies/kfc/competitive.png" alt="Competitive analysis comparing KFC with other food delivery apps" />
+                      </figure>
+                     
+                    </div>
+                  </div>
+                </details>
+              </div>
+            </div>
+          </section>
+
+          <section id="changed">
+            <div class="cs-section-label"><span>What Changed</span></div>
+            <div class="cs-reveal">
+              <h2>Three shifts shaped the redesign</h2>
+            </div>
+
+            <div class="cs-cardGrid">
+
+              <details class="cs-card cs-changeCard">
+                <summary>
+                  <h3>Reduced homepage clutter</h3>
+            
+                  <div class="cs-wireframeFrame">
+                    <img src="Images/case-studies/kfc//Wireframes/Final homescreen wireframe.jpeg" alt="Homepage wireframe" />
+                  </div>
+              
+                  <span class="cs-changeHint">Click to expand ↓</span>
+                </summary>
+                </details>
+              
+
+              <details class="cs-card cs-changeCard">
+                <summary>
+                  <h3>Made the menu easier to navigate</h3>
+              
+                  <div class="cs-wireframeFrame">
+                    <img src="Images/case-studies/kfc/Wireframes/Self pickup journey@4x.png" alt="Self-Pickup wireframe" />
+                  </div>
+              
+                  <span class="cs-changeHint">Click to expand ↓</span>
+                </summary>
+                </details>
+              
+
+              <details class="cs-card cs-changeCard">
+                <summary>
+                  <h3>Added trust cues after payment</h3>
+
+
+                  <div class="cs-wireframeFrame">
+                    <img src="Images/case-studies/kfc/Wireframes/delivery journey@4x.png" alt="Delivery wireframe" />
+                  </div>
+              
+                  <span class="cs-changeHint">Click to expand ↓</span>
+                </summary>
+              </details>
+            
+            </div>
+          </section>
+
+          <section id="solution">
+            <div class="cs-section-label"><span>Solution</span></div>
+            <div class="cs-reveal">
+              <h2>High-fidelity screens</h2>
+            </div>
+
+            <div class="cs-solutionGrid cs-stagger">
+              <article class="cs-step">
+                <div class="cs-step__media">
+                  <img src="Images/case-studies/kfc/1.png" alt="Redesigned KFC homepage focused on cleaner discovery and prioritised actions" />
+                </div>
+                <div class="cs-step__content">
+                  <span class="cs-step__label">Choose Store</span>
+                  <h3>Save nearest store</h3>
+                  <p>Added feature to save their preferable store, saving time searching the same store each time</p>
+                </div>
+              </article>
+
+              <article class="cs-step">
+                <div class="cs-step__media">
+                  <img src="Images/case-studies/kfc/2.png" alt="KFC menu and cart redesign with clearer product selection and checkout path" />
+                </div>
+                <div class="cs-step__content">
+                  <span class="cs-step__label">Step 2</span>
+                  <h3>Make selection clearer</h3>
+                  <p>Improved menu legibility, grouped choices more logically, and reduced friction between browsing, customising, and adding to cart.</p>
+                </div>
+              </article>
+
+              <article class="cs-step">
+                <div class="cs-step__media">
+                  <img src="Images/case-studies/kfc/3.png" alt="KFC order tracking and order-state screens that create more trust after checkout" />
+                </div>
+                <div class="cs-step__content">
+                  <span class="cs-step__label">Real-time Tracking</span>
+                  <h3>Reassure after checkout</h3>
+                  <p>Introduced clearer order confirmation, preparation states, and tracking cues so users felt informed instead of left guessing.</p>
+                </div>
+              </article>
+
+              <article class="cs-step">
+                <div class="cs-step__media">
+                  <img src="Images/case-studies/kfc/4.png" alt="KFC order tracking and order-state screens that create more trust after checkout" />
+                </div>
+                <div class="cs-step__content">
+                  <span class="cs-step__label">Feedback</span>
+                  <h3>Getting Feedbacks</h3>
+                  <p>After order completion, feedback pop-up to maintain the quality of app</p>
+                </div>
+              </article>
+
+            </div>
+         
+
+            <div class="cs-finalGrid">
+              <div class="cs-finalTall cs-img cs-img-reveal">
+                <img src="Images/case-studies/kfc/All_screens.png" alt="Composite of redesigned KFC screens showing the end-to-end user journey" />
+              </div>
+            </div>
+          </section>
+        </section>
+
+          <section id="learnings" class="cs-learnings">
+            <div class="cs-section-label"><span>Learnings</span></div>
+            <div class="cs-reveal">
+              <h2>What I would push further today</h2>
+              <p>
+                This project was a turning point in how I think about trust-heavy product experiences.
+                Looking back, there are three things I would strengthen immediately if I revisited it now.
+              </p>
+              <ul class="cs-learningList">
+                <li>Improve accessibility more intentionally, especially contrast, readability, and interaction clarity.</li>
+                <li>Run usability testing beyond heuristic review to validate decisions with real users earlier.</li>
+                <li>Use analytics to pinpoint where drop-offs happen so design decisions are backed by behavioural data, not just symptoms.</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <section class="cs-shell cs-nextProject" aria-label="Next project">
+      <a href="soil.html">
+        <span class="label">Next Project</span>
+        <h3>Soil Testing Machine →</h3>
+      </a>
+    </section>
+
+    <footer class="cs-shell cs-footer">
+      <span>© <span id="year"></span> Ishmeet Kaur</span>
+      <span>Product &amp; UX Designer · UK</span>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

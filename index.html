@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ishmeet Kaur — Product Designer</title>
+    <meta name="description" content="Playful, professional product design portfolio of Ishmeet Kaur." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400,600&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- Skip to content link (accessibility) -->
+    <a href="#top" class="skip-to-content">Skip to main content</a>
+
+    <!-- Sidebar Navigation -->
+    
+    <aside class="sideNav" aria-label="Section navigation">
+
+      <nav class="sideNav__stack">
+        <a class="sideNav__item is-active" href="#hello" data-section="hello">
+          <span class="sideNav__label">Home</span>
+        </a>
+
+        <a class="sideNav__item" href="#work" data-section="work">
+          <span class="sideNav__label">Work</span>
+        </a>
+
+        <a class="sideNav__item" href="#approach" data-section="approach">
+          <span class="sideNav__label">About Me</span>
+        </a>
+
+        <a class="sideNav__item" href="#love-notes" data-section="love-notes">
+          <span class="sideNav__label">Love notes</span>
+        </a>
+
+        <!-- Download CV (NO nested anchors inside) -->
+        <a
+          class="sideNav__item sideNav__cta"
+          href="https://drive.google.com/file/d/1RlgCCIk-wbgjbsajjfLLfXvQZN5iL8jI/view?usp=sharing"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span class="sideNav__label">
+            Download CV </span>
+        </a>
+      </nav>
+    </aside>
+
+<!-- Top-right Clock -->
+<div class="topClock" aria-label="Current local time — India Standard Time" title="Current time — IST">
+  <div class="orbitalClock" data-tz="Europe/London" role="img" aria-label="Orbital clock showing current time">
+    <div class="orbitalClock__face">
+      <span class="orbitalClock__hand orbitalClock__hand--hour"></span>
+      <span class="orbitalClock__hand orbitalClock__hand--min"></span>
+      <span class="orbitalClock__hand orbitalClock__hand--sec"></span>
+
+      <div class="clock-numbers">
+        <span class="num num-12">•</span>
+        <span class="num num-3">•</span>
+        <span class="num num-6">•</span>
+        <span class="num num-9">•</span>
+      </div>
+
+      <span class="orbitalClock__pin"></span>
+    </div>
+  </div>
+</div>
+    <main class="pageWithSideNav" id="top">
+      <!-- HERO -->
+      <section class="hero" id="hello">
+        <div class="container hero__grid">
+          <div class="hero__copy">
+            <p class="pill">
+              <span class="pill__spark" aria-hidden="true">🟢</span>
+              Open to opportunities
+            </p>
+
+            <h1>
+              I <span class="underline">design</span> experiences that make
+              <span class="highlight">real</span><span class="highlight2"> impact</span> on people's
+              <span class="highlight3">lives.</span> 
+            </h1>
+            <p class="lede">
+              ✿ </p>
+            
+            <!-- Hero CTA Button -->
+            <a href="#work" class="hero__cta">See my work ↓</a>
+          </div>
+
+            <div class="hero__collage">
+              <div class="heroBlob">
+                <span class="heroHint">hover to switch</span>
+                <svg class="heroBlob__svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated profile character">
+                  <defs>
+                    <clipPath id="blobClip">
+                      <path
+                        d="M43.1,-68.5C56.2,-58.6,67.5,-47.3,72.3,-33.9C77.2,-20.5,75.5,-4.9,74.2,11.3C72.9,27.6,71.9,44.5,63.8,57.2C55.7,69.8,40.6,78.2,25.5,79.2C10.4,80.1,-4.7,73.6,-20.9,69.6C-37.1,65.5,-54.5,63.9,-66,54.8C-77.5,45.8,-83.2,29.3,-85.7,12.3C-88.3,-4.8,-87.7,-22.3,-79.6,-34.8C-71.5,-47.3,-55.8,-54.9,-41.3,-64.2C-26.7,-73.6,-13.4,-84.7,0.8,-86C15,-87.2,29.9,-78.5,43.1,-68.5Z"
+                        transform="translate(100 100)"
+                      />
+                    </clipPath>
+                  </defs>
+
+                  <image
+                    href="Images/me-character 01.png"
+                    width="200"
+                    height="280"
+                    y="10"
+                    preserveAspectRatio="xMidYMid slice"
+                    clip-path="url(#blobClip)"
+                  />
+
+                  <path
+                    class="heroBlob__outline"
+                    d="M43.1,-68.5C56.2,-58.6,67.5,-47.3,72.3,-33.9C77.2,-20.5,75.5,-4.9,74.2,11.3C72.9,27.6,71.9,44.5,63.8,57.2C55.7,69.8,40.6,78.2,25.5,79.2C10.4,80.1,-4.7,73.6,-20.9,69.6C-37.1,65.5,-54.5,63.9,-66,54.8C-77.5,45.8,-83.2,29.3,-85.7,12.3C-88.3,-4.8,-87.7,-22.3,-79.6,-34.8C-71.5,-47.3,-55.8,-54.9,-41.3,-64.2C-26.7,-73.6,-13.4,-84.7,0.8,-86C15,-87.2,29.9,-78.5,43.1,-68.5Z"
+                    transform="translate(100 100)"
+                  />
+
+                  <path
+                    id="heroBlobTextPath"
+                    d="M43.1,-68.5C56.2,-58.6,67.5,-47.3,72.3,-33.9C77.2,-20.5,75.5,-4.9,74.2,11.3C72.9,27.6,71.9,44.5,63.8,57.2C55.7,69.8,40.6,78.2,25.5,79.2C10.4,80.1,-4.7,73.6,-20.9,69.6C-37.1,65.5,-54.5,63.9,-66,54.8C-77.5,45.8,-83.2,29.3,-85.7,12.3C-88.3,-4.8,-87.7,-22.3,-79.6,-34.8C-71.5,-47.3,-55.8,-54.9,-41.3,-64.2C-26.7,-73.6,-13.4,-84.7,0.8,-86C15,-87.2,29.9,-78.5,43.1,-68.5Z"
+                    transform="translate(100 100)"
+                    fill="none"
+                    stroke="none"
+                    pathLength="100"
+                  />
+
+                  <text class="heroBlob__text">
+                    <textPath href="#heroBlobTextPath" startOffset="0%">
+                      Hola✨Ishmeet Kaur 🎨 Product Designer 🧠 Open to opportunities ✍ Storyteller 🎯
+                      <animate attributeName="startOffset" from="0%" to="100%" dur="14s" repeatCount="indefinite" />
+                    </textPath>
+                    <textPath href="#heroBlobTextPath" startOffset="100%">
+                      Hola✨Ishmeet Kaur 🎨 Product Designer 🧠 Open to opportunities ✍ Storyteller 🎯
+                      <animate attributeName="startOffset" from="-100%" to="0%" dur="14s" repeatCount="indefinite" />
+                    </textPath>
+                  </text>
+                </svg>
+              </div>
+            </div>
+        </div>
+      </section>
+
+<!--WORK SECTION -->
+
+<section class="section work" id="work" data-cs-section="work">
+  <div class="container">
+
+    <!-- Section heading -->
+    <div class="section-heading cs-stagger">
+      <h2>Work</h2>
+    </div>
+
+    <!-- Filter tags -->
+    <div class="workFilters reveal">
+      <button class="workFilter is-active" data-filter="all">All</button>
+      <button class="workFilter" data-filter="ux">UX Design</button>
+      <button class="workFilter" data-filter="branding">Branding</button>
+      <button class="workFilter" data-filter="research">Research</button>
+      <button class="workFilter" data-filter="ai">AI</button>
+    </div>
+
+   <!-- 2-column grid -->
+<div class="workGrid workStickystage">
+
+  <!-- Card 1 — KFC Dubai -->
+  <a href="kfc-case-study.html"
+     class="workCard workRow reveal"
+     data-tags="ux research"
+     data-date="2024"
+     data-impact="95">
+    <div class="workCardimg">
+      <img src="Images/case-studies/kfc/KFC_Mockup-01.jpg" alt="KFC Dubai ordering journey redesign" loading="lazy">
+      <div class="workCardoverlay">
+        <span class="workCardcta">View case study →</span>
+      </div>
+      <div class="workRowpreview" aria-hidden="true">
+        <img src="Images/case-studies/kfc/KFC-cover01.jpg" alt="">
+      </div>
+    </div>
+    <div class="workCardinfo">
+      <div class="workCardtags">
+        <span class="workTag">UX Design</span>
+        <span class="workTag">Research</span>
+      </div>
+      <h3 class="workCardtitle">KFC Dubai</h3>
+      <p class="workCarddesc">Ordering journey redesign — reducing drop-off and improving checkout clarity.</p>
+      <div class="workCardmeta">
+        <span class="workCardyear">2024</span>
+        <span class="workCardstat">↑ 95% task completion</span>
+      </div>
+    </div>
+  </a>
+
+  <!-- Card 2 — Soil Testing Machine -->
+  <a href="soil.html"
+     class="workCard workRow reveal"
+     data-tags="ux research"
+     data-date="2020"
+     data-impact="85">
+    <div class="workCardimg">
+      <img src="Images/case-studies/soil/soil-machine1.jpg" alt="Soil Testing Machine redesign" loading="lazy">
+      <div class="workCardoverlay">
+        <span class="workCardcta">View case study →</span>
+      </div>
+      <div class="workRowpreview" aria-hidden="true">
+        <img src="Images/case-studies/soil/soil-machine1.jpg" alt="">
+      </div>
+    </div>
+    <div class="workCardinfo">
+      <div class="workCardtags">
+        <span class="workTag">UX Design</span>
+        <span class="workTag">Research</span>
+      </div>
+      <h3 class="workCardtitle">Soil Testing Machine</h3>
+      <p class="workCarddesc">Redesigning an Ag-Tech interface so farmers could test soil with confidence.</p>
+      <div class="workCardmeta">
+        <span class="workCardyear">2020</span>
+        <span class="workCardstat">↑ 85% positive feedback</span>
+      </div>
+    </div>
+  </a>
+
+  <!-- Card 3 — Upaj -->
+  <a href="https://www.figma.com/proto/RHB5I4hGPZYzh0hFiUqUmG/Upaj_Mobile-App_CaseStudy?page-id=13%3A11915&node-id=117-6011&node-type=frame&viewport=9949%2C6409%2C0.44&t=mhMFQVIyBCFnLB5z-1&scaling=min-zoom&content-scaling=fixed"
+     target="_blank"
+     rel="noopener noreferrer"
+     class="workCard workRow reveal"
+     data-tags="ux research"
+     data-date="2023"
+     data-impact="80">
+    <div class="workCardimg">
+      <img src="Images/case-studies/upaj/Upaj-cover-new.jpg" alt="Upaj app — boosting engagement" loading="lazy">
+      <div class="workCardoverlay">
+        <span class="workCardcta">View prototype ↗</span>
+      </div>
+      <div class="workRowpreview" aria-hidden="true">
+        <img src="Images/case-studies/upaj/Upaj-cover-new.jpg" alt="">
+      </div>
+    </div>
+    <div class="workCardinfo">
+      <div class="workCardtags">
+        <span class="workTag">UX Design</span>
+        <span class="workTag">Research</span>
+      </div>
+      <h3 class="workCardtitle">Upaj</h3>
+      <p class="workCarddesc">A visit that grew app engagement by 17% through redesigned onboarding and navigation.</p>
+      <div class="workCardmeta">
+        <span class="workCardyear">2023</span>
+        <span class="workCardstat">↑ 17% engagement</span>
+      </div>
+    </div>
+  </a>
+
+  <!-- Card 4 — GoBig -->
+  <a href="https://gobig-creative-canvas.lovable.app"
+     target="_blank"
+     rel="noopener noreferrer"
+     class="workCard workRow reveal"
+     data-tags="ai ux"
+     data-date="2025"
+     data-impact="90">
+    <div class="workCardimg">
+      <img src="Images/case-studies/GoBig/GoBig_Final.png" alt="GoBig — AI website in one day" loading="lazy">
+      <div class="workCardoverlay">
+        <span class="workCardcta">View live site ↗</span>
+      </div>
+      <div class="workRowpreview" aria-hidden="true">
+        <img src="Images/case-studies/GoBig/GoBigFinal.png" alt="">
+      </div>
+    </div>
+    <div class="workCardinfo">
+      <div class="workCardtags">
+        <span class="workTag">AI</span>
+        <span class="workTag">UX Design</span>
+      </div>
+      <h3 class="workCardtitle">GoBig</h3>
+      <p class="workCarddesc">An AI-executed website delivered within a single day — concept to live.</p>
+      <div class="workCardmeta">
+        <span class="workCardyear">2025</span>
+        <span class="workCardstat">Shipped in 1 day</span>
+      </div>
+    </div>
+  </a>
+</div><!-- /workGrid -->
+</div><!-- /container -->
+</section>
+<!-- =====================
+     ABOUT / APPROACH
+     ===================== -->
+     <section class="section section--alt" id="approach">
+      <div class="container">
+    
+        <!-- TOP ROW: Left text | Right photo -->
+        <div class="about">
+    
+          <!-- LEFT — kicker, heading, stats -->
+          <div class="about__left">
+            <span class="about__kicker">[ About me ]</span>
+            <h2 class="about__heading">
+              I'm Ishmeet Kaur<br>
+              <em>Engineer turned into</em><br>
+              Product Designer
+            </h2>
+            
+            <!-- Bio paragraph -->
+            <p class="about__bio">
+              I design products for startups and technical teams, specializing in AI-native tools and user-centered experiences. With an engineering background, I bridge design thinking and technical feasibility to create intuitive interfaces that solve real problems.
+            </p>
+
+    <div class="about__values reveal">
+      <div class="about__stats">
+      <div class="about__valuePill">
+        <span class="about__valuePillIcon">🔍</span>
+    
+      
+        <div class="about__stat">
+          <span class="about__statNum">4+</span>
+          <span class="about__statLabel">Yrs exp.</span>
+        </div>
+        
+
+      <div class="about__valuePill">
+        <span class="about__valuePillIcon">🎯</span>
+       <div class="about__stat">
+        <span class="about__statNum">10+</span>
+        <span class="about__statLabel">Products</span>
+      </div>
+      </div>
+
+      <div class="about__valuePill">
+        <span class="about__valuePillIcon">🇮🇳</span>
+      <div class="about__stat">
+        <span class="about__statNum">3</span>
+        <span class="about__statLabel">Countries</span>
+      </div>
+      </div>
+    </div>
+    </div>
+</div>
+          </div>
+
+    
+          <!-- RIGHT — blob photo + energetic caption -->
+          <div class="about__right">
+            <div class="about__photoBlob">
+              
+              <img
+                src="Images/me_energetic.jpg"
+                alt="Ishmeet Kaur — Product Designer"
+                class="about__photoImg">
+            </div>
+            <p class="about__body">
+              And yes — I'm usually the most energetic person in each room. ✿
+            </p>
+          </div>
+
+        </div><!-- /about -->
+      </div>
+    </section>
+
+      <!-- PLAY / CREATIVE GRID -->
+      <section class="section" id="play">
+        <div class="container">
+          <div class="sectionHead">
+            <h2>Playground</h2>
+            <p>Visual experiments, side projects, and creative explorations.</p>
+          </div>
+
+          <div class="bentoPlay">
+            <a class="playCard play-a reveal" href="Images/04.jpg" aria-label="Creative 1">
+              <img src="Images/04.jpg" alt="Creative preview 1" loading="lazy" />
+              <span class="playTag">Web</span>
+              <div class="playOverlay">
+                <span class="playOverlay__category">Web</span>
+                <span class="playOverlay__cta">View →</span>
+              </div>
+            </a>
+
+            <a class="playCard play-b reveal" href="Images/hundredk.jpeg" aria-label="Creative 2">
+              <img src="Images/hundredk.jpeg" alt="Creative preview 2" loading="lazy" />
+              <span class="playTag">100K</span>
+              <div class="playOverlay">
+                <span class="playOverlay__category">100K</span>
+                <span class="playOverlay__cta">View →</span>
+              </div>
+            </a>
+
+            <a class="playCard play-c reveal" href="Images/banana-box.jpg" aria-label="Creative 3">
+              <img src="Images/banana-box.jpg" alt="Creative preview 3" loading="lazy" />
+              <span class="playTag">UI</span>
+              <div class="playOverlay">
+                <span class="playOverlay__category">UI</span>
+                <span class="playOverlay__cta">View →</span>
+              </div>
+            </a>
+
+            <a class="playCard play-j reveal" href="Images/upaj-webpage.jpg" aria-label="Creative 10">
+              <img src="Images/upaj-webpage.jpg" alt="Creative preview 10" loading="lazy" />
+              <span class="playTag">Poster</span>
+              <div class="playOverlay">
+                <span class="playOverlay__category">Poster</span>
+                <span class="playOverlay__cta">View →</span>
+              </div>
+            </a>
+
+            <a class="playCard play-k reveal" href="Images/rice-packet.jpg" aria-label="Creative 11">
+              <img src="Images/rice-packet.jpg" alt="Creative preview 11" loading="lazy" />
+              <span class="playTag">UI</span>
+              <div class="playOverlay">
+                <span class="playOverlay__category">UI</span>
+                <span class="playOverlay__cta">View →</span>
+              </div>
+            </a>
+
+            <a class="playCard play-d reveal" href="Images/clapto-logo.png" aria-label="Creative 4">
+              <img src="Images/clapto-logo.png" alt="Creative preview 4" loading="lazy" />
+              <span class="playTag">Branding</span>
+              <div class="playOverlay">
+                <span class="playOverlay__category">Branding</span>
+                <span class="playOverlay__cta">View →</span>
+              </div>
+            </a>
+
+            <a class="playCard play-i reveal" href="Images/exam-expert-logo.jpg" aria-label="Creative 9">
+              <img src="Images/exam-expert-logo.jpg" alt="Creative preview 9" loading="lazy" />
+              <span class="playTag">Case</span>
+              <div class="playOverlay">
+                <span class="playOverlay__category">Case</span>
+                <span class="playOverlay__cta">View →</span>
+              </div>
+            </a>
+
+          </div>
+        </div>
+      </section>
+      
+      <!-- MARQUEE -->
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <span>✨ product thinking</span>
+          <span>✿ ux research</span>
+          <span>⚡ rapid prototyping</span>
+          <span>☺ human-centered design</span>
+          <span>✦ design systems</span>
+          <span>✨ product thinking</span>
+          <span>✿ ux research</span>
+          <span>⚡ rapid prototyping</span>
+          <span>☺ human-centered design</span>
+          <span>✦ design systems</span>
+        </div>
+      </div>
+
+      <div class="marque" aria-hidden="true">
+        <div class="marque__track">
+          <span>✨ product thinking</span>
+          <span>✿ ux research</span>
+          <span>⚡ rapid prototyping</span>
+          <span>☺ human-centered design</span>
+          <span>✦ design systems</span>
+          <span>✨ product thinking</span>
+          <span>✿ ux research</span>
+          <span>⚡ rapid prototyping</span>
+          <span>☺ human-centered design</span>
+          <span>✦ design systems</span>
+        </div>
+      </div>
+
+
+ <!-- LOVE NOTES -->
+ <section class="section" id="love-notes">
+  <div class="container">
+    <div class="sectionHead">
+      <h2>Love notes</h2>
+      <p>Words from people I’ve worked with.</p>
+    </div>
+
+    <div class="tSplit" id="tSplit" aria-label="Testimonials carousel">
+      <div class="tSplit__grid" role="button" tabindex="0" aria-label="Next testimonial (click)">
+        <!-- LEFT -->
+        <div class="tSplit__left">
+          <div class="tSplit__companyRow">
+            <span class="tSplit__line" aria-hidden="true"></span>
+            <span class="tSplit__company" id="tCompany">GetSociable</span>
+          </div>
+
+          <blockquote class="tSplit__quote" id="tQuote">
+            “Ishmeet understood and elicited requirements before delivering a design and prototype that met all of the user stories. She displayed strong professionalism and quickly built rapport with the team.”
+          </blockquote>
+
+          <div class="tSplit__author">
+            <span class="tSplit__authorLine" aria-hidden="true"></span>
+            <div>
+              <div class="tSplit__name" id="tName">Peter McCleery</div>
+              <div class="tSplit__role" id="tRole">Director • GetSociable</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="tSplit__right">
+          <div class="tSplit__card" id="tCard">
+            <img id="tImg" class="tSplit__img" src="Images/testimonials/Peter.jpeg" alt="Peter McCleery" />
+          </div>
+          
+          <!-- Navigation Controls -->
+          <div class="tSplit__nav">
+            <button class="tSplit__navBtn tSplit__prev" id="tPrev" aria-label="Previous testimonial">←</button>
+            <span class="tSplit__counter" id="tCounter">1 of 3</span>
+            <button class="tSplit__navBtn tSplit__next" id="tNext" aria-label="Next testimonial">→</button>
+          </div>
+        </div>
+
+        <!-- DOTS -->
+        <div class="tSplit__dots" id="tDots" aria-label="Testimonial navigation"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+      <section class="contact" id="contact">
+        <div class="container contact__inner reveal">
+          <h2>Let’s build something <span class="highlight2">delightful</span> <span class="highlight3">❀</span></h2>
+
+          <p>Drop a message — I will reply fast</p>
+
+          <!-- Contact Form (Formspree) -->
+          <form class="contact__form" action="https://formspree.io/f/mnqoedrz" method="POST" aria-label="Contact form">
+            <div class="form__group">
+              <label for="name" class="form__label">Name</label>
+              <input type="text" id="name" name="name" class="form__input" required placeholder="Your name">
+            </div>
+
+            <div class="form__group">
+              <label for="email" class="form__label">Email</label>
+              <input type="email" id="email" name="email" class="form__input" required placeholder="your@email.com">
+            </div>
+
+            <div class="form__group">
+              <label for="message" class="form__label">Message</label>
+              <textarea id="message" name="message" class="form__textarea" rows="5" required placeholder="Tell me about your project..."></textarea>
+            </div>
+
+            <button type="submit" class="form__submit">Send message</button>
+            <p class="form__success" hidden>Thanks! I'll get back to you soon. ✿</p>
+          </form>
+
+<!-- RATING (end of page) -->
+<div class="container">
+  <div class="ratingBlock reveal">
+
+    <div class="emojiRating" role="group" aria-label="Rate this portfolio">
+      <button class="emojiBtn" type="button" data-value="1" aria-label="Rate 1: Terrible">
+        <span class="emoji" aria-hidden="true">😔</span>
+      </button>
+      <button class="emojiBtn" type="button" data-value="2" aria-label="Rate 2: Poor">
+        <span class="emoji" aria-hidden="true">😕</span>
+      </button>
+      <button class="emojiBtn" type="button" data-value="3" aria-label="Rate 3: Okay">
+        <span class="emoji" aria-hidden="true">😐</span>
+      </button>
+      <button class="emojiBtn" type="button" data-value="4" aria-label="Rate 4: Good">
+        <span class="emoji" aria-hidden="true">🙂</span>
+      </button>
+      <button class="emojiBtn" type="button" data-value="5" aria-label="Rate 5: Amazing">
+        <span class="emoji" aria-hidden="true">😍</span>
+      </button>
+    </div>
+
+    <div class="ratingLabel" aria-live="polite">
+      <span class="labelBase is-visible">How' d you find this website? Please rate</span>
+      <span class="labelText" data-value="1">Terrible</span>
+      <span class="labelText" data-value="2">Poor</span>
+      <span class="labelText" data-value="3">Okay</span>
+      <span class="labelText" data-value="4">Good</span>
+      <span class="labelText" data-value="5">Amazing</span>
+    </div>
+
+ <!-- optional: tiny confirmation -->
+ <p class="ratingTiny" hidden>Thanks! ✿</p>
+<div class="contact__actions iconActions">
+  <a class="iconBtn iconBtn--mail" href="mailto:ishmeet.purva@gmail.com" aria-label="Email">
+    <img class="iconImg" src="Icons/mail_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="Send e-Mail">
+  </a>
+
+  <a class="iconBtn iconBtn--linkedin" href="www.linkedin.com/in/ishmeet-k-671a3198" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+    <img class="iconImg" src="Icons/Linkedin--Streamline-Font-Awesome.svg" alt="LinkedIn">
+
+  </a>
+
+  <a class="iconBtn iconBtn--behance" href="https://behance.net/IshmeetKaur" target="_blank" rel="noreferrer" aria-label="Behance">
+    <img class="iconImg" src="Icons/Behance--Streamline-Simple-Icons.svg" alt="Behance">
+
+  </a>
+</div>
+
+    <div class="contact__tiny">
+      <span>© <span id="year"></span> Ishmeet Kaur</span>
+      <span class="dot" aria-hidden="true">•</span>
+      <a class="textLink" href="#top">Back to top ↑</a>
+    </div>
+  </div>
+
+
+  
+</section>
+      
+    </div>
+  </div>
+</section>
+
+          </main>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  </body>
+</html>
