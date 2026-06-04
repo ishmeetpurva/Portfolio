@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="390" height="844" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      text { font-family: system-ui, -apple-system, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Phone Frame -->
+  <rect width="390" height="844" fill="#fff" rx="40" stroke="#000" stroke-width="12"/>
+
+  <!-- Phone Status Bar -->
+  <rect width="390" height="47" fill="#000" opacity="0.08" rx="40" stroke-width="0"/>
+  <text x="30" y="32" font-size="13" font-weight="600" fill="#000">9:41</text>
+  <text x="350" y="32" font-size="11" fill="#000">●●●●●</text>
+
+  <!-- Content Area (Safe area for content) -->
+  <rect x="20" y="70" width="350" height="700" fill="#ffffff"/>
+
+  <!-- Step Badge -->
+  <circle cx="50" cy="110" r="20" fill="#667eea"/>
+  <text x="50" y="118" font-size="18" font-weight="700" text-anchor="middle" fill="white">Step 2</text>
+
+  
+      <text x="195" y="180" font-size="14" font-weight="600" text-anchor="middle" fill="#0f0f0f">Select Tickets</text>
+      <text x="195" y="200" font-size="12" text-anchor="middle" fill="#666">Choose ticket type & quantity</text>
+
+      <rect x="50" y="230" width="290" height="50" fill="#fafaf8" stroke="#e8e8e8" stroke-width="1" rx="6"/>
+      <text x="60" y="250" font-size="13" font-weight="600" fill="#0f0f0f">VIP Ticket</text>
+      <text x="60" y="267" font-size="12" fill="#666">$89.99 each</text>
+      <rect x="260" y="235" width="70" height="40" fill="white" stroke="#e0e0e0" stroke-width="1" rx="4"/>
+      <text x="295" y="265" font-size="14" font-weight="600" text-anchor="middle" fill="#0f0f0f">2</text>
+
+      <rect x="50" y="300" width="290" height="50" fill="#fafaf8" stroke="#e8e8e8" stroke-width="1" rx="6"/>
+      <text x="60" y="320" font-size="13" font-weight="600" fill="#0f0f0f">Standard Ticket</text>
+      <text x="60" y="337" font-size="12" fill="#666">$59.99 each</text>
+      <rect x="260" y="305" width="70" height="40" fill="white" stroke="#e0e0e0" stroke-width="1" rx="4"/>
+      <text x="295" y="335" font-size="14" font-weight="600" text-anchor="middle" fill="#0f0f0f">4</text>
+
+      <rect x="50" y="370" width="290" height="50" fill="#fafaf8" stroke="#e8e8e8" stroke-width="1" rx="6"/>
+      <text x="60" y="390" font-size="13" font-weight="600" fill="#0f0f0f">Student Ticket</text>
+      <text x="60" y="407" font-size="12" fill="#666">$44.99 each</text>
+      <rect x="260" y="375" width="70" height="40" fill="white" stroke="#e0e0e0" stroke-width="1" rx="4"/>
+      <text x="295" y="405" font-size="14" font-weight="600" text-anchor="middle" fill="#0f0f0f">3</text>
+    
+</svg>

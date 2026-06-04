@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="600" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-size: 18px; font-weight: 600; fill: #0f0f0f; }
+      .label { font-size: 14px; font-weight: 500; fill: #666; }
+      .problem { font-size: 13px; fill: #999; }
+      .improvement { font-size: 13px; fill: #0f7938; font-weight: 500; }
+    </style>
+  </defs>
+
+  <!-- Before State -->
+  <rect x="20" y="20" width="540" height="560" fill="#f9f9f9" stroke="#e0e0e0" stroke-width="1" rx="8"/>
+  <text x="300" y="50" text-anchor="middle" class="title">Before: Confusing Homepage</text>
+
+  <!-- Before issues -->
+  <rect x="40" y="80" width="500" height="80" fill="#fff3cd" stroke="#ffc107" stroke-width="1" rx="6"/>
+  <text x="290" y="105" text-anchor="middle" class="problem">Problem: Unclear Information Hierarchy</text>
+  <text x="290" y="125" text-anchor="middle" class="problem">Too many options overwhelming new users</text>
+  <text x="290" y="145" text-anchor="middle" class="problem">Typography too small, navigation unclear</text>
+
+  <rect x="40" y="180" width="500" height="80" fill="#fff3cd" stroke="#ffc107" stroke-width="1" rx="6"/>
+  <text x="290" y="205" text-anchor="middle" class="problem">Problem: Broken Navigation Flows</text>
+  <text x="290" y="225" text-anchor="middle" class="problem">Users lost before reaching booking</text>
+  <text x="290" y="245" text-anchor="middle" class="problem">58% drop-off rate on homepage</text>
+
+  <rect x="40" y="280" width="500" height="80" fill="#fff3cd" stroke="#ffc107" stroke-width="1" rx="6"/>
+  <text x="290" y="305" text-anchor="middle" class="problem">Problem: Content Overload</text>
+  <text x="290" y="325" text-anchor="middle" class="problem">Redundant sections and confusing CTAs</text>
+  <text x="290" y="345" text-anchor="middle" class="problem">No clear entry point for new users</text>
+
+  <!-- After State -->
+  <rect x="640" y="20" width="540" height="560" fill="#f0fdf4" stroke="#22c55e" stroke-width="1" rx="8"/>
+  <text x="910" y="50" text-anchor="middle" class="title">After: Clear & Hierarchy-Driven</text>
+
+  <!-- After improvements -->
+  <rect x="660" y="80" width="500" height="80" fill="#dcfce7" stroke="#22c55e" stroke-width="1" rx="6"/>
+  <text x="910" y="105" text-anchor="middle" class="improvement">✓ Standardized Typography Scale</text>
+  <text x="910" y="125" text-anchor="middle" class="improvement">Clear visual hierarchy with design system</text>
+  <text x="910" y="145" text-anchor="middle" class="improvement">Consistent spacing & component design</text>
+
+  <rect x="660" y="180" width="500" height="80" fill="#dcfce7" stroke="#22c55e" stroke-width="1" rx="6"/>
+  <text x="910" y="205" text-anchor="middle" class="improvement">✓ Simplified Navigation</text>
+  <text x="910" y="225" text-anchor="middle" class="improvement">Clear primary action path for users</text>
+  <text x="910" y="245" text-anchor="middle" class="improvement">Reduced drop-off: 3% improvement</text>
+
+  <rect x="660" y="280" width="500" height="80" fill="#dcfce7" stroke="#22c55e" stroke-width="1" rx="6"/>
+  <text x="910" y="305" text-anchor="middle" class="improvement">✓ Trip Planner Feature</text>
+  <text x="910" y="325" text-anchor="middle" class="improvement">New collaborative group trip planning</text>
+  <text x="910" y="345" text-anchor="middle" class="improvement">23% increase in group bookings</text>
+
+  <!-- Bottom metrics -->
+  <text x="300" y="440" text-anchor="middle" font-size="24" font-weight="600" fill="#d32f2f">Drop-off: 58%</text>
+  <text x="910" y="440" text-anchor="middle" font-size="24" font-weight="600" fill="#0f7938">Drop-off: 55%</text>
+  <text x="300" y="480" text-anchor="middle" font-size="12" fill="#999">Baseline (Hotjar Analysis)</text>
+  <text x="910" y="480" text-anchor="middle" font-size="12" fill="#666">After Redesign</text>
+</svg>

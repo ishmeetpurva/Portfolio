@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="390" height="844" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      text { font-family: system-ui, -apple-system, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Phone Frame -->
+  <rect width="390" height="844" fill="#fff" rx="40" stroke="#000" stroke-width="12"/>
+
+  <!-- Phone Status Bar -->
+  <rect width="390" height="47" fill="#000" opacity="0.08" rx="40" stroke-width="0"/>
+  <text x="30" y="32" font-size="13" font-weight="600" fill="#000">9:41</text>
+  <text x="350" y="32" font-size="11" fill="#000">●●●●●</text>
+
+  <!-- Content Area (Safe area for content) -->
+  <rect x="20" y="70" width="350" height="700" fill="#ffffff"/>
+
+  <!-- Step Badge -->
+  <circle cx="50" cy="110" r="20" fill="#667eea"/>
+  <text x="50" y="118" font-size="18" font-weight="700" text-anchor="middle" fill="white">Step 6</text>
+
+  
+      <text x="195" y="180" font-size="14" font-weight="600" text-anchor="middle" fill="#0f0f0f">Trip Dashboard</text>
+      <text x="195" y="200" font-size="12" text-anchor="middle" fill="#666">Barcelona Adventure</text>
+
+      <rect x="50" y="230" width="290" height="60" fill="#f0fdf4" stroke="#22c55e" stroke-width="1" rx="6"/>
+      <text x="60" y="250" font-size="11" font-weight="600" fill="#0f7938">✓ Sarah accepted the invite</text>
+      <text x="60" y="268" font-size="11" fill="#666">5 minutes ago</text>
+
+      <rect x="50" y="305" width="290" height="60" fill="#f0fdf4" stroke="#22c55e" stroke-width="1" rx="6"/>
+      <text x="60" y="325" font-size="11" font-weight="600" fill="#0f7938">✓ Added: Summer Festival 2024</text>
+      <text x="60" y="343" font-size="11" fill="#666">Added by Sarah • 2 minutes ago</text>
+
+      <rect x="50" y="380" width="290" height="60" fill="#f0fdf4" stroke="#22c55e" stroke-width="1" rx="6"/>
+      <text x="60" y="400" font-size="11" font-weight="600" fill="#0f7938">✓ Accommodation booked</text>
+      <text x="60" y="418" font-size="11" fill="#666">4-star Hotel • June 15-18</text>
+    
+</svg>

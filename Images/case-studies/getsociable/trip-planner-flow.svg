@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1400" height="300" viewBox="0 0 1400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .step-num { font-size: 16px; font-weight: 700; fill: white; font-family: system-ui; }
+      .step-title { font-size: 13px; font-weight: 600; fill: #0f0f0f; font-family: system-ui; }
+      .step-desc { font-size: 11px; fill: #666; font-family: system-ui; }
+      .arrow { fill: none; stroke: #ddd; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="300" fill="#ffffff"/>
+
+  <text x="700" y="30" text-anchor="middle" font-size="20" font-weight="600" fill="#0f0f0f" font-family="system-ui">6-Step Trip Planner Flow</text>
+
+  <!-- Step 1: Date Selection -->
+  <circle cx="100" cy="140" r="30" fill="#667eea"/>
+  <text x="100" y="150" text-anchor="middle" class="step-num">1</text>
+  <text x="100" y="200" text-anchor="middle" class="step-title">Date Selection</text>
+  <text x="100" y="220" text-anchor="middle" class="step-desc">Choose start & end dates</text>
+
+  <!-- Arrow -->
+  <line x1="130" y1="140" x2="200" y2="140" class="arrow" marker-end="url(#arrowhead)"/>
+
+  <!-- Step 2: Tickets -->
+  <circle cx="280" cy="140" r="30" fill="#667eea"/>
+  <text x="280" y="150" text-anchor="middle" class="step-num">2</text>
+  <text x="280" y="200" text-anchor="middle" class="step-title">Select Tickets</text>
+  <text x="280" y="220" text-anchor="middle" class="step-desc">Choose ticket type/qty</text>
+
+  <!-- Arrow -->
+  <line x1="310" y1="140" x2="380" y2="140" class="arrow" marker-end="url(#arrowhead)"/>
+
+  <!-- Step 3: Events -->
+  <circle cx="460" cy="140" r="30" fill="#667eea"/>
+  <text x="460" y="150" text-anchor="middle" class="step-num">3</text>
+  <text x="460" y="200" text-anchor="middle" class="step-title">Browse Events</text>
+  <text x="460" y="220" text-anchor="middle" class="step-desc">Filter by dates & location</text>
+
+  <!-- Arrow -->
+  <line x1="490" y1="140" x2="560" y2="140" class="arrow" marker-end="url(#arrowhead)"/>
+
+  <!-- Step 4: Create Group -->
+  <circle cx="640" cy="140" r="30" fill="#667eea"/>
+  <text x="640" y="150" text-anchor="middle" class="step-num">4</text>
+  <text x="640" y="200" text-anchor="middle" class="step-title">Create Group</text>
+  <text x="640" y="220" text-anchor="middle" class="step-desc">Name your trip</text>
+
+  <!-- Arrow -->
+  <line x1="670" y1="140" x2="740" y2="140" class="arrow" marker-end="url(#arrowhead)"/>
+
+  <!-- Step 5: Invite -->
+  <circle cx="820" cy="140" r="30" fill="#667eea"/>
+  <text x="820" y="150" text-anchor="middle" class="step-num">5</text>
+  <text x="820" y="200" text-anchor="middle" class="step-title">Invite Friends</text>
+  <text x="820" y="220" text-anchor="middle" class="step-desc">Add collaborators</text>
+
+  <!-- Arrow -->
+  <line x1="850" y1="140" x2="920" y2="140" class="arrow" marker-end="url(#arrowhead)"/>
+
+  <!-- Step 6: Real-time Collab -->
+  <circle cx="1000" cy="140" r="30" fill="#667eea"/>
+  <text x="1000" y="150" text-anchor="middle" class="step-num">6</text>
+  <text x="1000" y="200" text-anchor="middle" class="step-title">Real-time Updates</text>
+  <text x="1000" y="220" text-anchor="middle" class="step-desc">Live collaboration view</text>
+
+  <!-- Results Box -->
+  <rect x="1100" y="100" width="270" height="80" fill="#f0fdf4" stroke="#22c55e" stroke-width="2" rx="6"/>
+  <text x="1235" y="125" text-anchor="middle" font-size="14" font-weight="600" fill="#0f7938" font-family="system-ui">Impact: +23% Group Bookings</text>
+  <text x="1235" y="150" text-anchor="middle" font-size="12" fill="#666" font-family="system-ui">Users can now plan trips with</text>
+  <text x="1235" y="168" text-anchor="middle" font-size="12" fill="#666" font-family="system-ui">friends in real-time</text>
+
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#ddd"/>
+    </marker>
+  </defs>
+</svg>
