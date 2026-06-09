@@ -1853,6 +1853,18 @@
   flex: 1;
 }
 
+/* Brand logo on cards */
+.workCard-logo {
+  height: 28px;
+  width: auto;
+  max-width: 110px;
+  object-fit: contain;
+  object-position: left center;
+  display: block;
+  margin-bottom: 4px;
+  flex-shrink: 0;
+}
+
 /* Tags */
 .workCardtags {
   display: flex;

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80" width="280" height="80">
+  <!-- Grain/wheat spiral icon -->
+  <g transform="translate(40,40)">
+    <!-- Outer spiral arcs to simulate grain swirl -->
+    <path d="M0,-32 C18,-32 32,-18 32,0 C32,18 18,32 0,32" fill="none" stroke="#C49A3C" stroke-width="5" stroke-linecap="round"/>
+    <path d="M0,-24 C14,-24 24,-14 24,0 C24,14 14,24 0,24" fill="none" stroke="#C49A3C" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M0,-16 C10,-16 16,-10 16,0 C16,10 10,16 0,16" fill="none" stroke="#C49A3C" stroke-width="4" stroke-linecap="round"/>
+    <path d="M0,-8 C5,-8 8,-5 8,0 C8,5 5,8 0,8" fill="none" stroke="#C49A3C" stroke-width="3.5" stroke-linecap="round"/>
+    <!-- Leaf at top -->
+    <ellipse cx="0" cy="-38" rx="6" ry="10" fill="#3A7D44" transform="rotate(-15)"/>
+    <ellipse cx="6" cy="-36" rx="5" ry="8" fill="#3A7D44" transform="rotate(10)"/>
+  </g>
+  <!-- Wordmark -->
+  <text x="90" y="48" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="400" fill="#2C2C2C" text-anchor="start" letter-spacing="0.5">Absolute</text>
+</svg>

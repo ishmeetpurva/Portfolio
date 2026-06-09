@@ -257,6 +257,17 @@ body.case-study-body {
   align-items: end;
 }
 
+/* Brand logo in case study hero */
+.cs-brand-logo {
+  height: 36px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+  object-position: left center;
+  display: block;
+  margin-bottom: 20px;
+}
+
 .cs-eyebrow {
   display: inline-flex;
   align-items: center;
