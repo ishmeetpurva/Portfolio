@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GetSociable Mockups</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #f5f5f5;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 28px;
+      color: #0f0f0f;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .mockup {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .mockup-label {
+      background: #0f0f0f;
+      color: white;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .phone-frame {
+      aspect-ratio: 390 / 844;
+      background: white;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .phone-header {
+      background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+      color: white;
+      padding: 12px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .phone-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .screen-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: #0f0f0f;
+      margin-bottom: 8px;
+    }
+
+    .screen-subtitle {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 16px;
+    }
+
+    .input-field {
+      background: #f5f5f5;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 14px;
+      color: #999;
+      margin-bottom: 12px;
+    }
+
+    .button-primary {
+      background: #0f0f0f;
+      color: white;
+      border: none;
+      border-radius: 100px;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 12px;
+    }
+
+    .button-secondary {
+      background: #f5f5f5;
+      color: #0f0f0f;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .card {
+      background: #fafaf8;
+      border: 1px solid #e8e8e8;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+
+    .card-image {
+      width: 100%;
+      height: 140px;
+      background: linear-gradient(135deg, #ddd 0%, #ccc 100%);
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #0f0f0f;
+      margin-bottom: 4px;
+    }
+
+    .card-meta {
+      font-size: 12px;
+      color: #999;
+    }
+
+    .typography-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .typography-item {
+      padding: 12px;
+      background: #f5f5f5;
+      border-radius: 6px;
+    }
+
+    .heading-1 {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .heading-2 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .heading-3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .body-text {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #666;
+    }
+
+    .caption {
+      font-size: 12px;
+      color: #999;
+    }
+
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      padding: 20px;
+    }
+
+    .color-box {
+      height: 80px;
+      border-radius: 6px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: white;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .before-after-label {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #0f0f0f;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #0f0f0f;
+      margin: 40px 0 20px 0;
+      border-bottom: 2px solid #0f0f0f;
+      padding-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>GetSociable Case Study - Design Mockups</h1>
+
+    <!-- Hero Cover -->
+    <div id="hero-cover" class="section-title">Hero Cover Image</div>
+    <div class="mockup">
+      <div class="mockup-label">Hero Cover</div>
+      <div class="phone-frame">
+        <div class="phone-header">
+          <span>9:41</span>
+          <span>●●●●●</span>
+        </div>
+        <div class="phone-content" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); gap: 0; padding: 0; align-items: center; justify-content: center;">
+          <div style="text-align: center; color: white;">
+            <div style="font-size: 48px; font-weight: 700; margin-bottom: 20px;">Trip Planner</div>
+            <div style="font-size: 16px; opacity: 0.9;">Plan group adventures together</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trip Planner Flow -->
+    <div id="trip-planner-flow" class="section-title">Trip Planner Flow (6 Steps)</div>
+    <div class="grid">
+      <!-- Step 1: Date Selection -->
+      <div class="mockup">
+        <div class="mockup-label">Step 1: Date Selection</div>
+        <div class="phone-frame">
+          <div class="phone-header">9:41</div>
+          <div class="phone-content">
+            <div class="screen-title">Plan Your Trip</div>
+            <div class="screen-subtitle">Select dates for your adventure</div>
+            <div style="background: #f5f5f5; border-radius: 8px; padding: 16px; margin-bottom: 20px;">
+              <div style="font-size: 12px; color: #999; margin-bottom: 8px;">Start Date</div>
+              <div style="font-size: 14px; font-weight: 600; color: #0f0f0f;">June 15, 2024</div>
+            </div>
+            <div style="background: #f5f5f5; border-radius: 8px; padding: 16px; margin-bottom: 20px;">
+              <div style="font-size: 12px; color: #999; margin-bottom: 8px;">End Date</div>
+              <div style="font-size: 14px; font-weight: 600; color: #0f0f0f;">June 18, 2024</div>
+            </div>
+            <button class="button-primary" style="width: 100%;">Next Step</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Tickets -->
+      <div class="mockup">
+        <div class="mockup-label">Step 2: Tickets</div>
+        <div class="phone-frame">
+          <div class="phone-header">9:41</div>
+          <div class="phone-content">
+            <div class="screen-title">Select Tickets</div>
+            <div class="screen-subtitle">Choose ticket type</div>
+            <div class="card">
+              <div style="font-weight: 600; margin-bottom: 8px;">Standard</div>
+              <div style="color: #666; font-size: 13px; margin-bottom: 8px;">Best for most users</div>
+              <div style="font-size: 16px; font-weight: 700; color: #0f0f0f;">$49</div>
+            </div>
+            <div class="card">
+              <div style="font-weight: 600; margin-bottom: 8px;">VIP</div>
+              <div style="color: #666; font-size: 13px; margin-bottom: 8px;">Priority access</div>
+              <div style="font-size: 16px; font-weight: 700; color: #0f0f0f;">$79</div>
+            </div>
+            <input type="number" class="input-field" placeholder="Qty: 2" style="margin-top: 16px;">
+            <button class="button-primary" style="width: 100%;">Continue</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: Events -->
+      <div class="mockup">
+        <div class="mockup-label">Step 3: Browse Events</div>
+        <div class="phone-frame">
+          <div class="phone-header">9:41</div>
+          <div class="phone-content">
+            <div class="screen-title">Available Events</div>
+            <div class="screen-subtitle">June 15-18, 2024</div>
+            <div class="card">
+              <div class="card-image"></div>
+              <div class="card-title">Summer Festival</div>
+              <div class="card-meta">8:00 PM • Downtown Park</div>
+            </div>
+            <div class="card">
+              <div class="card-image"></div>
+              <div class="card-title">Concert Series</div>
+              <div class="card-meta">6:00 PM • Amphitheater</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4: Create Group -->
+      <div class="mockup">
+        <div class="mockup-label">Step 4: Create Group</div>
+        <div class="phone-frame">
+          <div class="phone-header">9:41</div>
+          <div class="phone-content">
+            <div class="screen-title">Name Your Trip</div>
+            <div class="screen-subtitle">What's the vibe?</div>
+            <input type="text" class="input-field" placeholder="Barcelona Getaway" style="margin-bottom: 20px;">
+            <div style="margin-bottom: 20px;">
+              <div style="font-size: 13px; font-weight: 600; color: #0f0f0f; margin-bottom: 8px;">Visibility</div>
+              <button class="button-secondary" style="width: 100%; text-align: left;">🔒 Private</button>
+            </div>
+            <button class="button-primary" style="width: 100%;">Create</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5: Invite -->
+      <div class="mockup">
+        <div class="mockup-label">Step 5: Invite Friends</div>
+        <div class="phone-frame">
+          <div class="phone-header">9:41</div>
+          <div class="phone-content">
+            <div class="screen-title">Invite People</div>
+            <div class="screen-subtitle">Share the adventure</div>
+            <input type="email" class="input-field" placeholder="friend@email.com">
+            <div style="background: #f5f5f5; border-radius: 8px; padding: 12px; margin-bottom: 16px; font-size: 13px;">
+              <div style="font-weight: 600; color: #0f0f0f; margin-bottom: 4px;">✓ Alex</div>
+              <div style="color: #999;">alex@email.com</div>
+            </div>
+            <div style="background: #f5f5f5; border-radius: 8px; padding: 12px; margin-bottom: 16px; font-size: 13px;">
+              <div style="font-weight: 600; color: #0f0f0f; margin-bottom: 4px;">⏳ Jordan</div>
+              <div style="color: #999;">Pending</div>
+            </div>
+            <button class="button-primary" style="width: 100%;">Send Invites</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 6: Real-time Collab -->
+      <div class="mockup">
+        <div class="mockup-label">Step 6: Real-time Collab</div>
+        <div class="phone-frame">
+          <div class="phone-header">9:41</div>
+          <div class="phone-content">
+            <div class="screen-title">Trip Updates</div>
+            <div class="screen-subtitle">Everyone's in sync</div>
+            <div style="background: #e8f5e9; border-radius: 8px; padding: 12px; margin-bottom: 12px; font-size: 13px; border-left: 3px solid #4caf50;">
+              <div style="font-weight: 600; color: #0f0f0f;">Alex</div>
+              <div style="color: #666;">Added Concert Series to the plan</div>
+            </div>
+            <div style="background: #e3f2fd; border-radius: 8px; padding: 12px; margin-bottom: 12px; font-size: 13px; border-left: 3px solid #2196f3;">
+              <div style="font-weight: 600; color: #0f0f0f;">Jordan</div>
+              <div style="color: #666;">Confirmed attendance ✓</div>
+            </div>
+            <div style="background: #f3e5f5; border-radius: 8px; padding: 12px; font-size: 13px; border-left: 3px solid #9c27b0;">
+              <div style="font-weight: 600; color: #0f0f0f;">You</div>
+              <div style="color: #666;">Changed meeting point</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Before/After Homepage -->
+    <div id="before-after-homepage" class="section-title">Homepage: Before & After</div>
+    <div class="before-after">
+      <div>
+        <div class="before-after-label">❌ Before: Confusing</div>
+        <div class="mockup">
+          <div class="mockup-label">Old Homepage</div>
+          <div class="phone-frame">
+            <div class="phone-header">9:41</div>
+            <div class="phone-content" style="gap: 8px;">
+              <div style="font-size: 16px; font-weight: 700;">10 Different Sections</div>
+              <div class="card" style="margin: 0;">Featured Events</div>
+              <div class="card" style="margin: 0;">Trending Now</div>
+              <div class="card" style="margin: 0;">Your Recommendations</div>
+              <div class="card" style="margin: 0;">Popular Categories</div>
+              <div class="card" style="margin: 0;">Social Feed</div>
+              <div class="card" style="margin: 0;">Promotions</div>
+              <div style="font-size: 11px; color: #999; text-align: center;">Too much!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="before-after-label">✓ After: Clear</div>
+        <div class="mockup">
+          <div class="mockup-label">New Homepage</div>
+          <div class="phone-frame">
+            <div class="phone-header">9:41</div>
+            <div class="phone-content">
+              <div style="text-align: center; margin-bottom: 24px;">
+                <div style="font-size: 28px; margin-bottom: 8px;">🎉</div>
+                <div style="font-weight: 600; color: #0f0f0f; margin-bottom: 4px;">Start Planning</div>
+                <div style="font-size: 13px; color: #666;">Create your group trip in minutes</div>
+              </div>
+              <button class="button-primary" style="width: 100%; margin-bottom: 16px;">Create Trip Planner</button>
+              <button class="button-secondary" style="width: 100%;">Browse Events</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Design System: Typography -->
+    <div id="design-system-typography" class="section-title">Design System: Typography</div>
+    <div class="mockup">
+      <div class="mockup-label">Typography Scale</div>
+      <div class="typography-grid">
+        <div class="typography-item">
+          <div class="heading-1">Heading 1</div>
+          <div style="font-size: 11px; color: #999;">28px • Bold</div>
+        </div>
+        <div class="typography-item">
+          <div class="heading-2">Heading 2</div>
+          <div style="font-size: 11px; color: #999;">20px • Bold</div>
+        </div>
+        <div class="typography-item">
+          <div class="heading-3">Heading 3</div>
+          <div style="font-size: 11px; color: #999;">16px • Bold</div>
+        </div>
+        <div class="typography-item">
+          <div class="body-text">Body Text</div>
+          <div style="font-size: 11px; color: #999;">14px • Regular</div>
+        </div>
+        <div class="typography-item" style="grid-column: 1 / -1;">
+          <div class="caption">Caption Text for metadata and labels</div>
+          <div style="font-size: 11px; color: #999;">12px • Regular</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Design System: Colors -->
+    <div id="design-system-colors" class="section-title">Design System: Color Palette</div>
+    <div class="mockup">
+      <div class="mockup-label">Colors</div>
+      <div class="color-grid">
+        <div class="color-box" style="background: #0f0f0f;">Ink</div>
+        <div class="color-box" style="background: #f5f5f5; color: #0f0f0f; text-shadow: none;">Surface</div>
+        <div class="color-box" style="background: #e8e8e8; color: #0f0f0f; text-shadow: none;">Line</div>
+        <div class="color-box" style="background: #667eea;">Accent</div>
+      </div>
+    </div>
+
+    <!-- Research Methods -->
+    <div id="research-insights" class="section-title">Research Insights</div>
+    <div class="grid">
+      <div class="mockup">
+        <div class="mockup-label">User Interviews</div>
+        <div style="padding: 20px;">
+          <div style="font-weight: 600; margin-bottom: 12px; color: #0f0f0f;">15+ Participants</div>
+          <div style="font-size: 13px; color: #666; line-height: 1.6;">
+            <strong>Key Finding:</strong> Users felt overwhelmed by feature overload. They didn't know where to start. Most users clicked into the app, spent 2-3 minutes, then left.
+          </div>
+        </div>
+      </div>
+
+      <div class="mockup">
+        <div class="mockup-label">Heatmap Analysis</div>
+        <div style="padding: 20px;">
+          <div style="font-weight: 600; margin-bottom: 12px; color: #0f0f0f;">Hotjar Sessions</div>
+          <div style="font-size: 13px; color: #666; line-height: 1.6;">
+            <strong>58% Drop-off</strong> occurred on the homepage. Users weren't scrolling past the fold. Attention concentrated in top-left corner only.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
