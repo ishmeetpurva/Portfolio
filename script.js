@@ -3,7 +3,7 @@
    ============================================= */
    (function () {
     const cursor = document.createElement("div");
-    cursor.className = "cursor";
+    cursor.className = "cursor is-hidden";
     document.body.appendChild(cursor);
   
     let mouseX = 0, mouseY = 0, curX = 0, curY = 0;
@@ -671,10 +671,18 @@
   const form = document.querySelector('.contact__form');
   if (!form) return;
 
+  const submitBtn = form.querySelector('.form__submit');
+  const successMsg = form.querySelector('.form__success');
+
   form.addEventListener('submit', function(e) {
-    // Let Formspree handle the submission
-    // but we'll show success message on success
     e.preventDefault();
+    
+    // Add loading state
+    if (submitBtn) {
+      submitBtn.classList.add('is-loading');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending';
+    }
     
     fetch(form.action, {
       method: 'POST',
@@ -685,24 +693,38 @@
     })
     .then(response => {
       if (response.ok) {
-        // Show success message
-        form.style.display = 'none';
-        const success = form.querySelector('.form__success');
-        if (success) {
-          success.hidden = false;
+        // Update button to show sent state
+        if (submitBtn) {
+          submitBtn.textContent = 'Sent! ✓';
+          submitBtn.classList.remove('is-loading');
         }
-        // Reset form after 3 seconds and show it again
+        
+        // Show success message
+        if (successMsg) {
+          successMsg.hidden = false;
+        }
+        
+        // Reset form after 2 seconds
         setTimeout(() => {
           form.reset();
-          form.style.display = 'flex';
-          if (success) success.hidden = true;
-        }, 3000);
+          if (submitBtn) {
+            submitBtn.textContent = 'Send message';
+            submitBtn.disabled = false;
+          }
+          if (successMsg) {
+            successMsg.hidden = true;
+          }
+        }, 2000);
       }
     })
     .catch(error => {
       console.error('Form error:', error);
-      // Still submit via standard form submission as fallback
-      form.submit();
+      // Reset button on error
+      if (submitBtn) {
+        submitBtn.classList.remove('is-loading');
+        submitBtn.textContent = 'Send message';
+        submitBtn.disabled = false;
+      }
     });
   });
 })();

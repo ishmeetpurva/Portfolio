@@ -40,6 +40,20 @@
      --space-xl:  80px;
      --space-2xl: 120px;
      --space-3xl: 160px;
+
+     /* Padding-specific variables */
+     --padding-sm:   12px;
+     --padding-md:   16px;
+     --padding-lg:   24px;
+     --padding-xl:   32px;
+     --padding-2xl:  48px;
+
+     /* Margin-specific variables */
+     --margin-sm:    8px;
+     --margin-md:   12px;
+     --margin-lg:   16px;
+     --margin-xl:   24px;
+     --margin-2xl:  48px;
    
      --text-xs:   0.6875rem;
      --text-sm:   0.8125rem;
@@ -88,7 +102,18 @@
      overflow-x: hidden;
    }
    
-   * { cursor: none !important; }
+   body,
+   a,
+   button,
+   label {
+     cursor: none !important;
+   }
+   
+   input,
+   textarea,
+   select {
+     cursor: auto;
+   }
    
    img {
      display: block;
@@ -149,10 +174,43 @@
      text-decoration: none;
      z-index: 10000;
      font-weight: 600;
+     clip-path: inset(100%);
    }
-   
+
    .skip-to-content:focus {
      top: 0;
+     clip-path: inset(0);
+   }
+   
+   /* =============================================
+      3. FOCUS STATES (Keyboard Navigation)
+      ============================================= */
+   :focus-visible {
+     outline: 2px solid var(--neon-magenta);
+     outline-offset: 2px;
+   }
+
+   .sideNav__item:focus-visible {
+     outline: 2px solid var(--neon-magenta);
+     outline-offset: -4px;
+   }
+
+   .emojiBtn:focus-visible {
+     box-shadow: 0 0 0 3px rgba(255, 97, 248, 0.3);
+     outline: none;
+   }
+
+   input:focus-visible,
+   textarea:focus-visible,
+   select:focus-visible {
+     outline: 2px solid var(--neon-magenta);
+     outline-offset: 2px;
+     border-color: var(--neon-magenta);
+   }
+
+   button:focus-visible {
+     outline: 2px solid var(--neon-magenta);
+     outline-offset: 2px;
    }
    
    /* =============================================
@@ -281,11 +339,11 @@
    .container {
      max-width: 1080px;
      margin: 0 auto;
-     padding: 0 48px;
+     padding: 0 var(--padding-2xl);
    }
 
    @media (max-width: 860px) {
-     .container { padding: 0 28px; }
+     .container { padding: 0 var(--padding-lg); }
    }
    
    /* =============================================
@@ -371,7 +429,10 @@
    /* =============================================
       8. SECTION BASE
       ============================================= */
-   .section { padding: var(--space-2xl) 0; }
+   .section {
+     padding: var(--space-2xl) 0;
+     margin-top: var(--margin-2xl);
+   }
    
    .section--alt {
      background: var(--surface);
@@ -481,19 +542,20 @@
      transition: all 0.25s ease;
      width: fit-content;
      margin-top: var(--space-sm);
+     position: relative;
+     z-index: 10;
    }
    
    .hero__cta:hover {
      background: var(--ink);
      color: var(--white);
      box-shadow: 0 0 24px rgba(255, 97, 248, 0.3), 0 8px 24px rgba(0, 0, 0, 0.15);
+     position: relative;
+     z-index: 10;
    }
    
    .underline {
-     text-decoration: underline;
-     text-decoration-color: var(--line);
-     text-decoration-thickness: 2px;
-     text-underline-offset: 6px;
+     text-decoration: none;
    }
    
    .highlight  { font-style: italic; color: var(--muted); }
@@ -514,6 +576,8 @@
      width: 100%;
      max-width: 380px;
      margin: 0 auto;
+     z-index: 1;
+     pointer-events: none;
    }
    
    .heroBlob__svg {
@@ -525,6 +589,7 @@
    
    .heroBlob:hover .heroBlob__svg {
      filter: drop-shadow(0 20px 60px rgba(0,0,0,0.15));
+     pointer-events: none;
    }
    
    .heroBlob__outline {
@@ -561,6 +626,12 @@
   letter-spacing: 0.5px;
 }
 
+.heroHint {
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
 .heroHint::before {
   content: "☀ ";
   margin-right: 4px;
@@ -571,6 +642,21 @@
   margin-left: 4px;
 }
 
+/* ═══════════════════════════════════════════
+   UNIVERSAL SECTION SPACING RULE
+   ═══════════════════════════════════════════
+   All section content uses consistent spacing:
+   margin-top: var(--space-lg) = 48px
+   
+   Applied to:
+   - .workFilters (Work section)
+   - .about (About section)  
+   - .philosophyGrid (Philosophy section)
+   
+   This ensures uniform spacing between section
+   headings and their content across all pages.
+   ═══════════════════════════════════════════ */
+
 /* =============================================
    10. WORK — EDITORIAL LIST
    ============================================= */
@@ -580,7 +666,8 @@
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
-  margin-bottom: var(--space-lg);
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-md);
 }
 
 .workFilter {
@@ -732,6 +819,19 @@
   object-fit: cover;
 }
 
+/* Work card image container */
+.workCardimg {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
+.workCardimg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* ═══════════════════════════════════════════
    ABOUT SECTION
 ═══════════════════════════════════════════ */
@@ -741,6 +841,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 48px;
   align-items: start;
+  margin-top: var(--space-lg);
 }
 
 /* Left */
@@ -892,6 +993,75 @@
 @media (max-width: 480px) {
   .about__values {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* =============================================
+   11. DESIGN PHILOSOPHY
+   ============================================= */
+
+.philosophyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+.philosophyCard {
+  padding: var(--space-lg);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  transition: all 0.4s var(--ease-expo);
+}
+
+.philosophyCard:hover {
+  border-color: var(--neon-magenta);
+  box-shadow: 0 0 20px rgba(255, 97, 248, 0.15);
+  transform: translateY(-4px);
+}
+
+.philosophyCard__number {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  color: var(--neon-magenta);
+  line-height: 1;
+}
+
+.philosophyCard h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.philosophyCard p {
+  font-size: var(--text-sm);
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .philosophyGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+  
+  .philosophyCard {
+    padding: var(--space-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .philosophyGrid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1291,7 +1461,7 @@
   .form__group {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: var(--space-md);
     text-align: left;
   }
   
@@ -1301,9 +1471,19 @@
     color: var(--ink);
   }
   
-  .form__input,
+  .form__input {
+    padding: var(--padding-md);
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-md);
+    font-family: inherit;
+    font-size: var(--text-sm);
+    color: var(--ink);
+    background: var(--white);
+    transition: border-color 0.25s ease;
+  }
+
   .form__textarea {
-    padding: 12px 16px;
+    padding: var(--padding-lg);
     border: 1.5px solid var(--line);
     border-radius: var(--radius-md);
     font-family: inherit;
@@ -1343,6 +1523,32 @@
     box-shadow: 0 0 20px rgba(255, 97, 248, 0.25), 0 6px 20px rgba(0, 0, 0, 0.12);
   }
   
+  .form__submit.is-loading {
+    pointer-events: none;
+    opacity: 0.7;
+  }
+  
+  .form__submit.is-loading::after {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    margin-left: 6px;
+    background: currentColor;
+    border-radius: 50%;
+    box-shadow: 8px 0 0 -6px currentColor, 16px 0 0 -6px currentColor;
+    animation: pulse-dots 1.4s infinite;
+  }
+  
+  @keyframes pulse-dots {
+    0%, 60%, 100% {
+      opacity: 0.3;
+    }
+    30% {
+      opacity: 1;
+    }
+  }
+  
   .form__success {
     color: var(--muted);
     font-size: var(--text-sm);
@@ -1379,7 +1585,7 @@
   .emojiBtn:hover,
   .emojiBtn.is-active {
     border-color: var(--ink);
-    transform: scale(1.2) translateY(-4px);
+    transform: scale(1.1) translateY(-2px);
     box-shadow: 0 0 16px rgba(255, 97, 248, 0.25), 0 8px 24px rgba(0,0,0,0.1);
   }
   
@@ -1397,6 +1603,7 @@
     opacity: 0;
     transition: opacity 0.2s ease;
     position: absolute;
+    top: 0;
     left: 0;
     right: 0;
   }
@@ -1473,6 +1680,7 @@
     height: 2px;
     z-index: 200;
     background: transparent;
+    display: none;
   }
   
   #csProgressBar {
@@ -1480,6 +1688,7 @@
     width: 0%;
     background: var(--ink);
     transition: width 0.1s linear;
+    display: none;
   }
   
 /* ═══════════════════════════════════════════
@@ -1780,6 +1989,12 @@ button:focus:not(:focus-visible) {
     scroll-behavior: auto !important;
   }
   
+  /* Disable custom cursor animation */
+  .cursor {
+    animation: none !important;
+    transition: none !important;
+  }
+  
   /* Pause marquee animations */
   .marquee__track,
   .marque__track {
@@ -1791,9 +2006,29 @@ button:focus:not(:focus-visible) {
     animation: none !important;
   }
   
-  /* Pause scroll animations */
+  /* Pause scroll animations - show elements immediately */
   .reveal {
     opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  /* Disable testimonial transitions */
+  .tSplit__quote,
+  .tSplit__name,
+  .tSplit__role,
+  .tSplit__company {
+    transition: none !important;
+  }
+  
+  /* Keep form loading animation visible for status */
+  .form__submit.is-loading::after {
+    animation: pulse-dots 0.01ms;
+    opacity: 1;
+  }
+  
+  /* Hover effects become instant */
+  .workCard:hover .workCardimg img {
+    transform: none;
   }
 }
 
@@ -1821,7 +2056,7 @@ button:focus:not(:focus-visible) {
   .sideNav            { display: none; }
   .pageWithSideNav    { margin-left: 0; }
   .container          { padding: 0 24px; }
-  .hero               { padding: 72px 0 48px; min-height: auto; }
+  .hero               { padding: var(--padding-2xl) 0 var(--padding-lg); min-height: auto; }
   .hero__grid         { grid-template-columns: 1fr; gap: 32px; }
   .hero__copy h1      { font-size: clamp(2.2rem, 8vw, 3.5rem); max-width: 100%; }
   .heroBlob           { max-width: 260px; }
@@ -1845,4 +2080,90 @@ button:focus:not(:focus-visible) {
   .media-grid--three  { grid-template-columns: 1fr; }
   .contact            { padding: var(--space-xl) 0; }
   .cs-herocontent     { grid-template-columns: 1fr; }
+}
+
+/* =============================================
+   23. DARK MODE SUPPORT
+   ============================================= */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Inverted text and background colors */
+    --ink:      #f5f5f5;
+    --ink2:     #e8e8e8;
+    --muted:    #a0a0a0;
+    --muted2:   #909090;
+    --line:     #2a2a2a;
+    --surface:  #0a0a0a;
+    --white:    #1a1a1a;
+    
+    /* Neon accent works well on dark backgrounds */
+    --neon-magenta: #FF61F8;
+    --dark-plum:    #D446C4;
+    
+    /* Orb colors inverted for dark mode */
+    --orb-primary:       #f5f5f5;
+    --orb-marker-strong: #333333;
+    --orb-marker-weak:   #1a1a1a;
+  }
+  
+  body {
+    background: var(--surface);
+    color: var(--ink);
+  }
+  
+  /* Inputs and textareas in dark mode */
+  .form__input,
+  .form__textarea {
+    background: var(--white);
+    color: var(--ink);
+    border-color: var(--line);
+  }
+  
+  .form__input:focus,
+  .form__textarea:focus {
+    border-color: var(--neon-magenta);
+    background: var(--white);
+  }
+  
+  /* Cards and surfaces */
+  .workCard {
+    background: var(--white);
+    border-color: var(--line);
+  }
+  
+  .playCard {
+    background: var(--white);
+  }
+  
+  /* Testimonial quote background */
+  .tSplit__left {
+    border-color: var(--line);
+  }
+  
+  /* Case study styling */
+  .csCard {
+    background: var(--white);
+    border-color: var(--line);
+  }
+  
+  /* Text on dark surfaces - ensure contrast */
+  h1, h2, h3, h4 {
+    color: var(--ink);
+  }
+  
+  a {
+    color: var(--neon-magenta);
+  }
+  
+  /* Cursor is now light colored */
+  .cursor {
+    background: var(--ink);
+    mix-blend-mode: lighten;
+  }
+  
+  /* Selection colors */
+  ::selection {
+    background: var(--neon-magenta);
+    color: var(--white);
+  }
 }
