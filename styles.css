@@ -464,19 +464,6 @@
      background: var(--ink);
    }
 
-   /* Fade hero bottom edge into the white work section */
-   .hero::after {
-     content: '';
-     position: absolute;
-     bottom: 0;
-     left: 0;
-     right: 0;
-     height: 120px;
-     background: linear-gradient(to bottom, transparent, var(--white));
-     pointer-events: none;
-     z-index: 10;
-   }
-
    .hero .hero__copy h1,
    .hero .hero__copy p {
      color: rgba(255,255,255,0.9);
@@ -704,7 +691,32 @@
 /* =============================================
    10. WORK — EDITORIAL LIST
    ============================================= */
-   
+
+.section.work {
+  background: var(--ink);
+}
+
+.section.work .section-heading h2 {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.section.work .workFilter {
+  color: rgba(255, 255, 255, 0.65);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.section.work .workFilter:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.section.work .workFilter.is-active {
+  background: var(--white);
+  border-color: var(--white);
+  color: var(--ink);
+}
+
 .workFilters {
   display: flex;
   align-items: center;
