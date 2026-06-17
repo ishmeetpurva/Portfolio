@@ -114,8 +114,10 @@
 
             <div class="hero__collage">
               <div class="heroBlob">
-                <!-- CSS glow orb — no external dependency, no dark ring -->
-                <div class="heroOrb" aria-hidden="true"></div>
+                <!-- Orb video: screen blend on dark bg = dark pixels invisible, glow only -->
+                <video class="heroOrb" autoplay muted loop playsinline aria-hidden="true">
+                  <source src="https://future.co/images/homepage/glassy-orb/orb-purple.webm" type="video/webm">
+                </video>
                 <svg class="heroBlob__svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <defs>
                     <clipPath id="blobClip">

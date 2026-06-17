@@ -461,27 +461,39 @@
      padding: 0;
      position: relative;
      overflow: hidden;
-     transition: background 0.7s var(--ease-expo);
+     background: var(--ink);
    }
-   
-   .hero.is-dark { background: var(--ink); }
-   
-   .hero.is-dark .hero__copy h1,
-   .hero.is-dark .hero__copy p {
+
+   /* Fade hero bottom edge into the white work section */
+   .hero::after {
+     content: '';
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     height: 120px;
+     background: linear-gradient(to bottom, transparent, var(--white));
+     pointer-events: none;
+     z-index: 10;
+   }
+
+   .hero .hero__copy h1,
+   .hero .hero__copy p {
      color: rgba(255,255,255,0.9);
    }
-   
-   .hero.is-dark .pill {
-     background: rgba(255,255,255,0.1);
+
+   .hero .pill {
+     background: rgba(255,255,255,0.07);
+     border-color: rgba(255,255,255,0.2);
      color: rgba(255,255,255,0.8);
    }
 
-   .hero.is-dark .hero__cta {
+   .hero .hero__cta {
      color: var(--white);
      border-color: rgba(255,255,255,0.6);
    }
 
-   .hero.is-dark .hero__cta:hover {
+   .hero .hero__cta:hover {
      background: var(--white);
      color: var(--ink);
      border-color: var(--white);
@@ -595,37 +607,20 @@
      cursor: none;
    }
 
-   /* CSS glow orb — replaces external video, no dark ring, fully brand-colored */
+   /* Orb video: screen blend on dark bg hides all dark pixels, pure glow only */
    .heroOrb {
      position: absolute;
      top: 50%;
      left: 50%;
-     transform: translate(-50%, -50%);
-     width: 160%;
-     height: 160%;
-     border-radius: 50%;
-     background: radial-gradient(circle at 50% 50%,
-       rgba(255, 97, 248, 1)    0%,
-       rgba(255, 50, 230, 0.9)  25%,
-       rgba(230, 20, 210, 0.55) 50%,
-       transparent              75%
-     );
-     filter: blur(4px) hue-rotate(0deg);
-     animation: orbFloat 7s ease-in-out infinite, orbColor 5s ease-in-out infinite;
+     transform: translate(-50%, -50%) scale(1.25);
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     mix-blend-mode: screen;
+     filter: hue-rotate(35deg) saturate(300%) brightness(1.1) contrast(1.0);
      pointer-events: none;
      z-index: 0;
-   }
-
-   @keyframes orbFloat {
-     0%,100% { transform: translate(-50%, -50%) scale(1)    rotate(0deg);   }
-     33%      { transform: translate(-49%, -51%) scale(1.04) rotate(2deg);   }
-     66%      { transform: translate(-51%, -49%) scale(0.97) rotate(-2deg);  }
-   }
-
-   @keyframes orbColor {
-     0%,100% { filter: blur(4px) hue-rotate(0deg)   saturate(100%) brightness(1);    }
-     33%      { filter: blur(4px) hue-rotate(25deg)  saturate(130%) brightness(1.15); }
-     66%      { filter: blur(4px) hue-rotate(-20deg) saturate(115%) brightness(0.95); }
+     border-radius: 50%;
    }
 
    .heroBlob__svg {

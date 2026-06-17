@@ -111,18 +111,6 @@
     }
   });
   
-  // ===== Hero blob: dark background on hover =====
-  (() => {
-    const hero = document.querySelector(".hero");
-    const blob = document.querySelector(".heroBlob");
-    if (!hero || !blob) return;
-    const canHover = window.matchMedia("(hover:hover) and (pointer:fine)").matches;
-    if (!canHover) return;
-    blob.addEventListener("pointerenter", () => hero.classList.add("is-dark"));
-    blob.addEventListener("pointerleave", () => hero.classList.remove("is-dark"));
-    window.addEventListener("blur", () => hero.classList.remove("is-dark"));
-  })();
-
   // ===== Orb Clock Widget =====
   (() => {
     const root = document.getElementById("orbClock");
