@@ -583,31 +583,39 @@
    .heroBlob {
      position: relative;
      width: 100%;
-     max-width: 300px;
+     max-width: 220px;
      margin: 0 auto;
      z-index: 1;
      pointer-events: all;
      cursor: none;
    }
 
-   /* Glassy orb: ambient video glow with screen blend */
+   /* CSS glow orb — replaces external video, no dark ring, fully brand-colored */
    .heroOrb {
      position: absolute;
      top: 50%;
      left: 50%;
-     transform: translate(-50%, -50%) scale(2.4);
-     width: 100%;
-     height: 100%;
-     object-fit: cover;
-     mix-blend-mode: screen;
-     /* Shift purple orb (~270°) toward site's neon-magenta (#FF61F8, ~303°) */
-     filter: hue-rotate(35deg) saturate(300%) brightness(1.1) contrast(1.0);
+     transform: translate(-50%, -50%);
+     width: 160%;
+     height: 160%;
+     border-radius: 50%;
+     background: radial-gradient(circle at 50% 50%,
+       rgba(255, 97, 248, 1)    0%,
+       rgba(255, 50, 230, 0.9)  25%,
+       rgba(230, 20, 210, 0.55) 50%,
+       transparent              75%
+     );
+     filter: blur(4px);
+     animation: orbFloat 7s ease-in-out infinite;
      pointer-events: none;
      z-index: 0;
-     border-radius: 50%;
-     /* Fade edges to transparent so the video's dark vignette never shows as a hard ring */
-     -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 22%, rgba(0,0,0,0) 46%);
-     mask-image: radial-gradient(circle, rgba(0,0,0,1) 22%, rgba(0,0,0,0) 46%);
+     transition: opacity 0.5s ease;
+   }
+
+   @keyframes orbFloat {
+     0%,100% { transform: translate(-50%, -50%) scale(1)    rotate(0deg);   }
+     33%      { transform: translate(-49%, -51%) scale(1.04) rotate(2deg);   }
+     66%      { transform: translate(-51%, -49%) scale(0.97) rotate(-2deg);  }
    }
 
    .heroBlob__svg {
@@ -616,19 +624,21 @@
      width: 100%;
      height: auto;
      overflow: visible;
-     transition: filter 0.4s ease;
    }
 
-   .heroBlob:hover .heroBlob__svg {
-     filter: drop-shadow(0 20px 60px rgba(255, 97, 248, 0.3));
+   /* Photo: hidden by default, fades in on hover */
+   .blobPhoto {
+     opacity: 0;
+     transition: opacity 0.5s ease;
    }
-   
+
+   .heroBlob:hover .blobPhoto { opacity: 1; }
+   .heroBlob:hover .heroOrb   { opacity: 0; }
+
    .heroBlob__outline {
      fill: none;
      stroke: none;
    }
-   
-   .hero.is-dark .heroBlob__outline { stroke: rgba(255,255,255,0.2); }
 
 .heroBlob__text {
   font: 700 9px/1.2 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
