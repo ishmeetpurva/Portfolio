@@ -12,7 +12,11 @@
     document.addEventListener("mousemove", (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-      cursor.classList.remove("is-hidden");
+      if (e.target.closest("input, textarea")) {
+        cursor.classList.add("is-hidden");
+      } else {
+        cursor.classList.remove("is-hidden");
+      }
     });
     document.addEventListener("mouseleave", () => cursor.classList.add("is-hidden"));
     document.addEventListener("mouseenter", () => cursor.classList.remove("is-hidden"));
@@ -20,6 +24,7 @@
     const hoverSel = "a, button, .playCard, .csHero, .csCard, .emojiBtn, .tSplit__grid, .iconBtn, .highlight3, select";
     document.addEventListener("mouseover", (e) => { if (e.target.closest(hoverSel)) cursor.classList.add("is-hover"); });
     document.addEventListener("mouseout",  (e) => { if (e.target.closest(hoverSel)) cursor.classList.remove("is-hover"); });
+
   
     (function animateCursor() {
       curX = lerp(curX, mouseX, 0.14);
@@ -106,15 +111,15 @@
     }
   });
   
-  // ===== Hero blob dark mode =====
+  // ===== Hero blob dark mode on hover =====
   (() => {
     const hero = document.querySelector(".hero");
     const blob = document.querySelector(".heroBlob");
     if (!hero || !blob) return;
-  
+
     const canHover = window.matchMedia("(hover:hover) and (pointer:fine)").matches;
     if (!canHover) return;
-  
+
     blob.addEventListener("pointerenter", () => hero.classList.add("is-dark"));
     blob.addEventListener("pointerleave", () => hero.classList.remove("is-dark"));
     window.addEventListener("blur", () => hero.classList.remove("is-dark"));
@@ -674,16 +679,76 @@
   const submitBtn = form.querySelector('.form__submit');
   const successMsg = form.querySelector('.form__success');
 
+  function setError(input, errorEl, message) {
+    input.setAttribute('aria-invalid', 'true');
+    errorEl.textContent = message;
+    errorEl.classList.add('is-visible');
+  }
+
+  function clearError(input, errorEl) {
+    input.setAttribute('aria-invalid', 'false');
+    errorEl.textContent = '';
+    errorEl.classList.remove('is-visible');
+  }
+
+  function validateForm() {
+    let valid = true;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const nameInput = form.querySelector('#name');
+    const nameError = form.querySelector('#name-error');
+    if (!nameInput.value.trim()) {
+      setError(nameInput, nameError, 'Please enter your name.');
+      valid = false;
+    } else {
+      clearError(nameInput, nameError);
+    }
+
+    const emailInput = form.querySelector('#email');
+    const emailError = form.querySelector('#email-error');
+    if (!emailInput.value.trim() || !emailPattern.test(emailInput.value)) {
+      setError(emailInput, emailError, 'Please enter a valid email address.');
+      valid = false;
+    } else {
+      clearError(emailInput, emailError);
+    }
+
+    const msgInput = form.querySelector('#message');
+    const msgError = form.querySelector('#message-error');
+    if (!msgInput.value.trim()) {
+      setError(msgInput, msgError, 'Please write a short message.');
+      valid = false;
+    } else {
+      clearError(msgInput, msgError);
+    }
+
+    return valid;
+  }
+
+  // Clear errors as the user fixes each field
+  ['#name', '#email', '#message'].forEach(function(sel) {
+    const el = form.querySelector(sel);
+    const errId = sel.replace('#', '') + '-error';
+    const errEl = form.querySelector('#' + errId);
+    if (el && errEl) {
+      el.addEventListener('input', function() {
+        if (el.getAttribute('aria-invalid') === 'true') clearError(el, errEl);
+      });
+    }
+  });
+
   form.addEventListener('submit', function(e) {
     e.preventDefault();
-    
+
+    if (!validateForm()) return;
+
     // Add loading state
     if (submitBtn) {
       submitBtn.classList.add('is-loading');
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending';
     }
-    
+
     fetch(form.action, {
       method: 'POST',
       body: new FormData(form),
@@ -762,3 +827,21 @@
   }
 })();
 
+
+/* =============================================
+   DARK / LIGHT THEME TOGGLE
+   ============================================= */
+(function() {
+  const btn = document.getElementById("themeToggle");
+  if (!btn) return;
+
+  btn.addEventListener("click", () => {
+    const current  = document.documentElement.getAttribute("data-theme");
+    const osDark   = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark   = current === "dark" || (!current && osDark);
+    const next     = isDark ? "light" : "dark";
+
+    document.documentElement.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+  });
+})();

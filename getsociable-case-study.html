@@ -3,12 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GetSociable — Trip Planner Redesign · Ishmeet Kaur</title>
+  <title>GetSociable — Redesigned for Clarity, Built for Collaboration · Ishmeet Kaur</title>
+  <meta name="description" content="How I reduced homepage drop-off, introduced a collaborative trip planner, and established a design system for GetSociable — an events and group trip planning app." />
+
+  <!-- Open Graph / Social sharing -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="GetSociable — Trip Planner Redesign · Ishmeet Kaur" />
+  <meta property="og:description" content="How I reduced homepage drop-off, introduced a collaborative trip planner, and established a design system for GetSociable." />
+  <meta property="og:image" content="Images/case-studies/getsociable/hero-cover.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="GetSociable — Trip Planner Redesign" />
+  <meta name="twitter:description" content="Reduced drop-off and built a collaborative trip planner from scratch for GetSociable." />
+  <meta name="twitter:image" content="Images/case-studies/getsociable/hero-cover.png" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="Case-study-styles.css" />
+  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
 </head>
 
 <body class="case-study-body">
@@ -16,80 +30,55 @@
 
   <a href="index.html" class="cs-backLink" aria-label="Back to portfolio">← Back</a>
 
+  <button class="themeToggle" id="themeToggle" aria-label="Toggle dark mode">
+    <svg class="themeToggle__moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg class="themeToggle__sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+  </button>
+
   <aside class="cs-sideNav" aria-label="Case study sections">
     <a class="cs-sideNav__item is-active" href="#problem" data-cs-section="problem">Problem</a>
     <a class="cs-sideNav__item" href="#context" data-cs-section="context">Context &amp; Goals</a>
-    <a class="cs-sideNav__item" href="#changed" data-cs-section="changed">What Changed</a>
+    <a class="cs-sideNav__item" href="#process" data-cs-section="process">Process</a>
     <a class="cs-sideNav__item" href="#solution" data-cs-section="solution">Solution</a>
     <a class="cs-sideNav__item" href="#learnings" data-cs-section="learnings">Learnings</a>
   </aside>
 
   <div class="pageWithSideNav">
     <header class="cs-shell cs-hero">
-      <div class="cs-hero__grid">
-        <div class="cs-reveal">
-          <img src="Images/logos/getsociable-logo.svg" alt="GetSociable" class="cs-brand-logo" />
-          <span class="cs-eyebrow">Case Study</span>
-          <h1>Group trip planning <em>done in one place</em></h1>
-          <p class="cs-hero__lead">
-            New users dropped off before they could even start booking. By applying design systems thinking,
-            introducing a collaborative trip planner, and simplifying the information hierarchy, I reduced drop-off
-            by 3% and created a more intentional booking experience for event enthusiasts.
-          </p>
+      <div class="cs-reveal">
+        <div class="cs-hero__eyebrowRow">
+          <div class="cs-hero__eyebrowLeft">
+            <span class="cs-eyebrow">Case Study</span>
+            <span class="cs-readTime">⏱ 8 min read</span>
+          </div>
+          <img src="Images/logos/getsociable-logo.png" alt="GetSociable" class="cs-brand-logo" />
         </div>
+        <h1>Redesigning event discovery experience to surface <em>better entertainment options</em></h1>
+      </div>
 
+      <div class="cs-hero__metaBlock">
         <div class="cs-metaGrid cs-stagger" aria-label="Project meta information">
+          <div class="cs-metaGrid__item">
+            <span class="cs-metaGrid__label">Company</span>
+            <span class="cs-metaGrid__value">GetSociable</span>
+          </div>
           <div class="cs-metaGrid__item">
             <span class="cs-metaGrid__label">Role</span>
             <span class="cs-metaGrid__value">UX Designer (sole designer)</span>
           </div>
-
           <div class="cs-metaGrid__item">
             <span class="cs-metaGrid__label">Timeline</span>
             <span class="cs-metaGrid__value">6 months (May–Oct 2024)</span>
           </div>
-
-          <div class="cs-metaGrid__item">
-            <span class="cs-metaGrid__label">Users Interviewed</span>
-            <span class="cs-metaGrid__value">15+ face-to-face interviews</span>
-          </div>
-
           <div class="cs-metaGrid__item">
             <span class="cs-metaGrid__label">Research Methods</span>
-            <span class="cs-metaGrid__value">Hotjar, Analytics, Surveys</span>
+            <span class="cs-metaGrid__value">User Interviews, Surveys, Hotjar</span>
           </div>
-        </div>
-      </div>
+        </div><!-- /cs-metaGrid -->
+      </div><!-- /cs-hero__metaBlock -->
 
-      <div class="cs-heroPhone cs-img-reveal">
-        <div class="phone-mockup">
-          <div class="phone-mockup__screen">
-            <video
-              src="Images/case-studies/getsociable/planner.mp4"
-              autoplay
-              muted
-              loop
-              playsinline
-              aria-label="GetSociable Trip Planner feature walkthrough video"
-            ></video>
-          </div>
-        </div>
-      </div>
 
-      <div class="cs-stats cs-stagger" aria-label="Project stats">
-        <div class="cs-stat-block">
-          <span class="cs-stat" data-target="58">58%</span>
-          <span class="cs-stat-label">of new users dropped off at the homepage before reaching the booking flow</span>
-        </div>
-        <div class="cs-stat-block">
-          <span class="cs-stat" data-target="15">15+</span>
-          <span class="cs-stat-label">user interviews revealed feature overload and navigation confusion</span>
-        </div>
-        <div class="cs-stat-block">
-          <span class="cs-stat" data-target="3">3%</span>
-          <span class="cs-stat-label">reduction in drop-off rate after implementing design system and planner</span>
-        </div>
-      </div>
+
     </header>
 
     <main class="cs-shell cs-main">
@@ -101,20 +90,16 @@
 
             <div class="cs-problemIntro cs-reveal">
               <div>
-                <h2>New users were overwhelmed before they could start planning.</h2>
-                <p>
-                  GetSociable's homepage was designed to showcase everything the platform could do—but in doing so,
-                  it created decision paralysis. Unclear hierarchy, broken navigation flows, redundant content sections,
-                  and typography that was difficult to read meant users never made it to the booking flow. They left
-                  before understanding the value proposition.
-                </p>
+                <h2>A cluttered app, no planning tools, and users dropping off before they could start.</h2>
+                <p class="cs-hero__lead" style="margin-top: 16px;">GetSociable's new users left the homepage feeling overwhelmed. Research revealed two problems: the navigation was unclear, and the app was cluttered and missed advance booking options.</p>
               </div>
             </div>
 
-            <blockquote class="cs-pullquote cs-reveal">
-              <p>"We arrived and they said they couldn't fit us in — we had to wait half an hour. If we had booked in advance… but we didn't really know how busy it would be."</p>
-              <cite>Charlotte, user interview — on not planning group outings in advance</cite>
-            </blockquote>
+            <div class="cs-img-reveal" style="margin-top: 28px;">
+              <img src="Images/case-studies/getsociable/before-after-homescreen.png"
+                   alt="GetSociable homepage before and after redesign"
+                   style="width:100%; border-radius:16px; display:block;" />
+            </div>
 
             <div class="cs-problemGrid cs-stagger">
               <article class="cs-card">
@@ -124,8 +109,8 @@
               </article>
               <article class="cs-card">
                 <span class="cs-card__number">02</span>
-                <h3>Broken and confusing flows</h3>
-                <p>Navigation gaps and unclear pathways left users unsure of how to progress from browsing events to creating a group booking.</p>
+                <h3>No way to plan or book in advance</h3>
+                <p>Users wanted to discover events, coordinate with friends, and secure plans ahead of time — but the app had no feature for it. Every group outing was managed outside the app through WhatsApp threads.</p>
               </article>
               <article class="cs-card">
                 <span class="cs-card__number">03</span>
@@ -140,246 +125,102 @@
             <div class="cs-section-label"><span>Context &amp; Goals</span></div>
 
             <div class="cs-reveal">
-              <h2>Understanding the events and entertainment user</h2>
-              <p>
-                This was my first project in the events and entertainment space. To understand user behaviour authentically,
-                I conducted 15+ face-to-face interviews, analysed 150+ survey responses, studied Hotjar heatmaps and session recordings,
-                and examined Google Analytics behavioural data. The research revealed that users weren't struggling with the concept—
-                they were struggling with how the product presented that concept.
-              </p>
+              <h2>Used three methods to <em>research user pain points</em></h2>
 
-              <div class="cs-researchStats cs-stagger" aria-label="Research methodology statistics">
-                <div class="cs-researchStat">
-                  <span class="cs-researchStat__number">15+</span>
-                  <span class="cs-researchStat__label">User Interviews</span>
-                  <p>Face-to-face and remote conversations with event enthusiasts, group organisers, and lapsed users to understand their mental models, pain points, and what would make group trip planning feel seamless.</p>
-                </div>
-                <div class="cs-researchStat">
-                  <span class="cs-researchStat__number">150+</span>
-                  <span class="cs-researchStat__label">Survey Responses</span>
-                  <p>In-app survey to quantify where friction points were most severe. Navigation issues and homepage clarity emerged as the top complaints.</p>
-                </div>
-                <div class="cs-researchStat">
-                  <span class="cs-researchStat__number">Hotjar &amp; Analytics</span>
-                  <span class="cs-researchStat__label">Behavioural Data</span>
-                  <p>Session recordings and heatmaps showed that most users entered the app, spent 2-3 minutes on the homepage, then exited without exploring further. The homepage was the bottleneck.</p>
-                </div>
+              <div class="cs-problemGrid cs-stagger">
+                <article class="cs-card">
+                  <span class="cs-card__number">01</span>
+                  <h3>15+ User Interviews</h3>
+                  <p>Face-to-face sessions with active users, churned users, and group organisers.</p>
+                </article>
+                <article class="cs-card">
+                  <span class="cs-card__number">02</span>
+                  <h3>150+ Survey Responses</h3>
+                  <p>In-app survey. Navigation clarity was the top complaint across all segments.</p>
+                </article>
+                <article class="cs-card">
+                  <span class="cs-card__number">03</span>
+                  <h3>Hotjar</h3>
+                  <p>Session recordings showed users spending 2–3 min on the homepage then exiting. Nothing was getting clicked.</p>
+                </article>
               </div>
 
-              <div class="cs-finalStack cs-img-reveal" style="display:flex; justify-content:center; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg); padding:48px 24px; margin-top:32px;">
-                <div class="phone-mockup" style="width:40%; max-width:220px;">
-                  <div class="phone-mockup__screen">
-                    <img src="Images/case-studies/getsociable/step-6-collaborate.png" alt="GetSociable Trip Planner schedule view showing the collaborative itinerary that research pointed toward" />
+              <blockquote class="cs-pullquote cs-reveal">
+                <p>"We arrived and they said they couldn't fit us in — we had to wait half an hour. If we had booked in advance… but we didn't really know how busy it would be."</p>
+                <cite>Charlotte, user interview — on not planning group outings in advance</cite>
+              </blockquote>
+            </div>
+
+
+
+            <div class="cs-researchMethods cs-reveal">
+              <div class="cs-methodAccordion">
+                <div class="cs-methodRow">
+                  <div class="cs-methodRow__header">
+                    <span class="cs-methodPill">01 · User Interviews</span>
+                  </div>
+                  <div class="cs-methodRow__content">
+                    <div class="cs-keyInsight" style="margin-top:0;">
+                      <span class="cs-keyInsight__label">Key insight → design decision</span>
+                      <p><strong>Users weren't asking for a trip planner — they were describing the exact problem one would solve.</strong> When I asked "how do you plan group outings?", every user mentioned WhatsApp threads, no-shows, and last-minute confusion. We assumed we'd redesign navigation; interviews revealed we needed to build a feature. That reframe shaped the entire project scope.</p>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div class="cs-teamGoalGrid cs-stagger">
-                <aside class="cs-teamCard">
-                  <h3>Team</h3>
-                  <ol>
-                    <li>Ishmeet Kaur — UX Designer (sole designer)</li>
-                    <li>GetSociable Founders — Product & Business</li>
-                  </ol>
-                </aside>
-
-                <div class="cs-goals">
-                  <h3>Project goals</h3>
-                  <ul>
-                    <li>✿ Clarify the primary user journey: find events → create a group → plan a trip → invite friends.</li>
-                    <li>✿ Reduce drop-off by creating a clear entry point and simplified navigation.</li>
-                    <li>✿ Introduce the trip planner feature—a new way to collaboratively plan group outings.</li>
-                    <li>✿ Establish a design system to ensure consistency and reduce cognitive load.</li>
-                  </ul>
+                <div class="cs-methodRow">
+                  <div class="cs-methodRow__header">
+                    <span class="cs-methodPill">02 · In-App Survey</span>
+                  </div>
+                  <div class="cs-methodRow__content">
+                    <div class="cs-keyInsight" style="margin-top:0;">
+                      <span class="cs-keyInsight__label">Key insight → design decision</span>
+                      <p><strong>Navigation was the top complaint, across every segment, by a significant margin.</strong> Out of 150+ responses, clarity of what to do next was the single most-cited pain point. The survey gave us the statistical weight to push back on stakeholder assumptions and keep navigation clarity as the primary focus — not a secondary nice-to-have.</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              <div class="cs-researchMethods cs-reveal">
-                <div class="cs-methodAccordion">
-                  <details class="cs-methodRow">
-                    <summary>
-                      <span class="cs-methodPill">01 · User Interviews</span>
-                      <span class="cs-methodHint">Click to view ↓</span>
-                    </summary>
-
-                    <div class="cs-methodRow__content">
-                      <p>
-                        15+ structured and semi-structured interviews with both active users and those who had churned.
-                        I asked about their mental models: "How would you describe what GetSociable does?" Most couldn't articulate it.
-                        I also observed them attempting to book a trip cold, noting where they got stuck and what confused them.
-                      </p>
-
-                      <blockquote class="cs-pullquote" style="margin-top: 24px;">
-                        <p>"We have a WhatsApp group — we just ask 'does anyone know what's going on?' If no one has any ideas, then we search it up."</p>
-                        <cite>Hannah, user interview — on how groups discover events together</cite>
-                      </blockquote>
-
-                      <blockquote class="cs-pullquote" style="margin-top: 16px;">
-                        <p>"To plan those things beforehand would probably be a lot better, but with a large group it's hard because you're constantly moving."</p>
-                        <cite>Charlotte, user interview — on the challenge of coordinating group outings</cite>
-                      </blockquote>
-
-                      <div class="cs-methodRow__images">
-                        <div style="display:flex; justify-content:center; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg); padding:32px 16px;">
-                          <div class="phone-mockup" style="width:55%; max-width:180px;">
-                            <div class="phone-mockup__screen">
-                              <img src="Images/case-studies/getsociable/step-5-invite.png" alt="People screen showing group collaboration feature with member statuses" />
-                            </div>
-                          </div>
-                        </div>
-                        <div style="display:flex; justify-content:center; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg); padding:32px 16px;">
-                          <div class="phone-mockup" style="width:55%; max-width:180px;">
-                            <div class="phone-mockup__screen">
-                              <img src="Images/case-studies/getsociable/step-3-events.png" alt="Discover screen showing events and public groups" />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                <div class="cs-methodRow">
+                  <div class="cs-methodRow__header">
+                    <span class="cs-methodPill">03 · Hotjar</span>
+                  </div>
+                  <div class="cs-methodRow__content">
+                    <div class="cs-keyInsight" style="margin-top:0;">
+                      <span class="cs-keyInsight__label">Key insight → design decision</span>
+                      <p><strong>Users spent 2–3 minutes on the homepage then left without a single tap on a core feature.</strong> The heatmap showed almost all attention in the top-left corner — the logo. Nothing else was getting clicked. A supplementary heuristic review confirmed 12 distinct usability issues, but only 3 caused 80% of the drop-off: navigation clarity, content hierarchy, and visual design — all of which mapped exactly to what Hotjar showed. We made reducing time-to-first-meaningful-action the single success metric for the homepage redesign.</p>
                     </div>
-                  </details>
-
-                  <details class="cs-methodRow">
-                    <summary>
-                      <span class="cs-methodPill">02 · Behavioral Analytics</span>
-                      <span class="cs-methodHint">Click to view ↓</span>
-                    </summary>
-
-                    <div class="cs-methodRow__content">
-                      <p>
-                        Hotjar session recordings revealed a consistent pattern: users land on the homepage,
-                        scroll for 2–3 minutes, then leave without clicking into any core features.
-                        Heatmaps showed that attention concentrated on the top-left corner, while other interactive elements
-                        (like "Create Trip" or "Browse Events") received minimal engagement. Google Analytics showed
-                        the homepage was the highest drop-off point in the user journey.
-                      </p>
-
-                      <div class="cs-methodRow__images">
-                        <div style="display:flex; justify-content:center; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg); padding:32px 16px;">
-                          <div class="phone-mockup" style="width:55%; max-width:180px;">
-                            <div class="phone-mockup__screen">
-                              <img src="Images/case-studies/getsociable/homepage-before.png" alt="GetSociable homepage before redesign — the screen Hotjar identified as primary drop-off point" />
-                            </div>
-                          </div>
-                        </div>
-                        <div style="display:flex; justify-content:center; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg); padding:32px 16px;">
-                          <div class="phone-mockup" style="width:55%; max-width:180px;">
-                            <div class="phone-mockup__screen">
-                              <img src="Images/case-studies/getsociable/homepage-after.png" alt="GetSociable homepage after structural improvements with clearer navigation hierarchy" />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </details>
-
-                  <details class="cs-methodRow">
-                    <summary>
-                      <span class="cs-methodPill">03 · Heuristic Evaluation</span>
-                      <span class="cs-methodHint">Click to view ↓</span>
-                    </summary>
-
-                    <div class="cs-methodRow__content">
-                      <p>
-                        I audited the existing app against usability heuristics and Nielsen's 10 Usability Principles.
-                        The evaluation identified 12 distinct issues, grouped into three categories: navigation clarity,
-                        content hierarchy, and visual design. This provided a framework for prioritisation.
-                      </p>
-
-                      <div class="cs-methodRow__images">
-                        <div style="display:flex; justify-content:center; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg); padding:32px 16px;">
-                          <div class="phone-mockup" style="width:55%; max-width:180px;">
-                            <div class="phone-mockup__screen">
-                              <img src="Images/case-studies/getsociable/homepage-before.png" alt="GetSociable app screen showing navigation issues identified during heuristic audit" />
-                            </div>
-                          </div>
-                        </div>
-                        <div style="display:flex; justify-content:center; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg); padding:32px 16px;">
-                          <div class="phone-mockup" style="width:55%; max-width:180px;">
-                            <div class="phone-mockup__screen">
-                              <img src="Images/case-studies/getsociable/ia-before-after.png" alt="GetSociable homepage showing Live Music category filters and content hierarchy improvements" />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </details>
+                  </div>
                 </div>
               </div>
             </div>
           </section>
 
-          <!-- ====== WHAT CHANGED SECTION ====== -->
-          <section id="changed">
-            <div class="cs-section-label"><span>What Changed</span></div>
+          <!-- ====== PROCESS SECTION ====== -->
+          <section id="process">
+            <div class="cs-section-label"><span>Process</span></div>
 
             <div class="cs-reveal">
-              <h2>Three strategic shifts shaped the redesign</h2>
-              <p>
-                Rather than a full visual overhaul, the redesign focused on structural and systemic improvements:
-                a clear information hierarchy, consistent design patterns, and the introduction of a collaborative trip planner.
-              </p>
+              <h2>From insight to wireframe</h2>
+              <p>Before moving to high-fidelity, I sketched the key flows to validate the structure and interactions early.</p>
             </div>
 
-            <div class="cs-cardGrid cs-stagger">
-              <article class="cs-card cs-changeCard">
-                <h3>Design System Foundation</h3>
-                <details>
-                  <summary>Standardized typography, spacing, and components <span class="cs-methodHint">Click to expand ↓</span></summary>
-                  <div class="cs-changeContent">
-                    <p>
-                      I created a simple but comprehensive design system covering typography (headings, subheadings, body, captions),
-                      button states, spacing, and colour. Every UI element now followed consistent rules, reducing cognitive load
-                      and improving visual coherence. The system was documented so engineers and future designers could maintain consistency.
-                    </p>
-                    <figure class="cs-img" style="margin-top: 16px;">
-                      <img src="Images/case-studies/getsociable/design-system-typography.svg" alt="GetSociable design system components and typography scale" />
-                    </figure>
-                  </div>
-                </details>
-              </article>
+            <details class="cs-wireframeExpand">
+              <summary>View wireframes</summary>
+              <div class="cs-wireframeExpand__content">
+                <div class="cs-img-reveal" style="margin-top: 24px;">
+                  <img src="Images/case-studies/getsociable/Wireframe01.PNG"
+                       alt="Trip Planner ideation — structure sketches for tabs, groups, voting and carousel"
+                       style="width:100%; max-width:420px; border-radius:16px; display:block;" />
+                  <span class="cs-caption">Trip Planner ideation — mapping the tab structure (Groups, My Plan, Book Table, Create Plan), voting mechanics, and activity carousel by day.</span>
+                </div>
 
-              <article class="cs-card cs-changeCard">
-                <h3>Trip Planner Feature</h3>
-                <details>
-                  <summary>Collaborative trip planning with real-time updates <span class="cs-methodHint">Click to expand ↓</span></summary>
-                  <div class="cs-changeContent">
-                    <p>
-                      The biggest change was introducing a new primary feature: the Trip Planner.
-                      Users could select dates, browse available events, create a group, invite friends,
-                      and plan collaboratively with real-time notifications. This became the core user flow.
-                    </p>
-                    <div style="display:flex; justify-content:center; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg); padding:40px 24px; margin-top:16px;">
-                      <div class="phone-mockup" style="width:50%; max-width:200px;">
-                        <div class="phone-mockup__screen">
-                          <img src="Images/case-studies/getsociable/planner-feature.png" alt="Trip Planner screen showing Girls London Trip with itinerary items, promotions and events" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </details>
-              </article>
-
-              <article class="cs-card cs-changeCard">
-                <h3>Simplified Information Architecture</h3>
-                <details>
-                  <summary>Clearer hierarchy and flow structure <span class="cs-methodHint">Click to expand ↓</span></summary>
-                  <div class="cs-changeContent">
-                    <p>
-                      I reorganized the homepage and navigation to clearly distinguish primary actions (Book, Create Trip, Browse)
-                      from secondary content. Redundant sections were removed or consolidated. Banners were redesigned to draw attention
-                      to key features without overwhelming. The result was a streamlined experience that guided users toward intent.
-                    </p>
-                    <div style="display:flex; justify-content:center; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg); padding:40px 24px; margin-top:16px;">
-                      <div class="phone-mockup" style="width:50%; max-width:200px;">
-                        <div class="phone-mockup__screen">
-                          <img src="Images/case-studies/getsociable/homepage-after.png" alt="GetSociable homepage after redesign showing Feed/Guide/Map navigation and structured content hierarchy" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </details>
-              </article>
-            </div>
+                <div class="cs-img-reveal" style="margin-top: 24px;">
+                  <img src="Images/case-studies/getsociable/Wireframe02.PNG"
+                       alt="Hub wireframe — Events, Promo, Venue tabs leading into the Create Plan flow"
+                       style="width:100%; max-width:480px; border-radius:16px; display:block;" />
+                  <span class="cs-caption">Hub wireframe — three save categories (Events, Promo, Venue) and a direct path into the Create Plan flow.</span>
+                </div>
+              </div>
+            </details>
           </section>
 
           <!-- ====== SOLUTION SECTION ====== -->
@@ -387,251 +228,95 @@
             <div class="cs-section-label"><span>Solution</span></div>
 
             <div class="cs-reveal">
-              <h2>The Trip Planner: Designing for group collaboration</h2>
-              <p>
-                The Trip Planner was the centrepiece of the redesign. It transformed GetSociable from
-                "an event discovery app" to "a way to plan group outings together." Below is how I structured
-                the user flow and the design decisions behind each step.
-              </p>
+              <h2>Strategic shifts that improved user retention by 3%</h2>
+              <ul class="cs-shiftTags">
+                <li>Quick filters at the top</li>
+                <li>Switch location in search bar</li>
+                <li>Save events from any screen</li>
+                <li>Interactive map view</li>
+                <li>Sorting options</li>
+                <li>Full filter panel</li>
+                <li>Trip Planner</li>
+              </ul>
             </div>
 
-            <div class="cs-stepsContainer">
-              <!-- Step 1 -->
-              <article class="cs-step">
-                <div class="cs-step__phone cs-img-reveal">
-                  <div class="phone-mockup">
-                    <div class="phone-mockup__screen">
-                      <img src="Images/case-studies/getsociable/step-1-date-select.png" alt="Create Itinerary screen showing calendar for date selection, destination input, and collaboration settings" />
-                    </div>
-                  </div>
-                </div>
-                <div class="cs-step__content cs-reveal">
-                  <span class="cs-step__label">Step 1</span>
-                  <h3>Create the itinerary & pick dates</h3>
-                  <p>
-                    Users begin by naming their trip, setting a destination, and selecting dates from a calendar.
-                    This gives context before they browse — they know exactly what period they're planning for.
-                    The screen also previews collaboration settings, surfacing the social dimension from the very start.
-                  </p>
-                </div>
-              </article>
-
-              <!-- Step 2 -->
-              <article class="cs-step">
-                <div class="cs-step__phone cs-img-reveal">
-                  <div class="phone-mockup">
-                    <div class="phone-mockup__screen">
-                      <img src="Images/case-studies/getsociable/step-3-events.png" alt="Discover screen showing public groups and events with images, member counts, and location tags" />
-                    </div>
-                  </div>
-                </div>
-                <div class="cs-step__content cs-reveal">
-                  <span class="cs-step__label">Step 2</span>
-                  <h3>Discover events & public groups</h3>
-                  <p>
-                    Users browse events and public groups filtered to their destination. A card-based grid
-                    shows event imagery, group name, member count, and location at a glance — designed to be
-                    scanned quickly. This replaces the previous overwhelming list format with curated discovery.
-                  </p>
-                </div>
-              </article>
-
-              <!-- Step 3 -->
-              <article class="cs-step">
-                <div class="cs-step__phone cs-img-reveal">
-                  <div class="phone-mockup">
-                    <div class="phone-mockup__screen">
-                      <img src="Images/case-studies/getsociable/planner-feature.png" alt="Plan Individual screen showing itinerary items, events, and promotions for a Girls London Trip" />
-                    </div>
-                  </div>
-                </div>
-                <div class="cs-step__content cs-reveal">
-                  <span class="cs-step__label">Step 3</span>
-                  <h3>Build the itinerary</h3>
-                  <p>
-                    Once events are selected, users add them to their itinerary. The plan view shows all items
-                    grouped by type — venues, promotions, and events — with key details visible inline.
-                    This is the core planning canvas: everything for the trip in one place.
-                  </p>
-                </div>
-              </article>
-
-              <!-- Step 4 -->
-              <article class="cs-step">
-                <div class="cs-step__phone cs-img-reveal">
-                  <div class="phone-mockup">
-                    <div class="phone-mockup__screen">
-                      <img src="Images/case-studies/getsociable/step-4-create-group.png" alt="Create Itinerary screen highlighting the 'Add friends to collaborate' section with profile photos and + Add button" />
-                    </div>
-                  </div>
-                </div>
-                <div class="cs-step__content cs-reveal">
-                  <span class="cs-step__label">Step 4</span>
-                  <h3>Add friends to collaborate</h3>
-                  <p>
-                    Users add collaborators directly from the creation screen — not as an afterthought.
-                    Settings let them control whether friends can suggest changes, add new members, or view the plan publicly.
-                    This was a deliberate design decision: make the social layer visible upfront, not buried in settings.
-                  </p>
-                </div>
-              </article>
-
-              <!-- Step 5 -->
-              <article class="cs-step">
-                <div class="cs-step__phone cs-img-reveal">
-                  <div class="phone-mockup">
-                    <div class="phone-mockup__screen">
-                      <img src="Images/case-studies/getsociable/step-5-invite.png" alt="People screen showing group members with Accepted and Pending status indicators and a Chat button" />
-                    </div>
-                  </div>
-                </div>
-                <div class="cs-step__content cs-reveal">
-                  <span class="cs-step__label">Step 5</span>
-                  <h3>Track who's in</h3>
-                  <p>
-                    The People screen shows every collaborator and their status: accepted, pending, or admin.
-                    This transparency eliminates the "did they get my invite?" anxiety that plagued group planning via WhatsApp.
-                    A Chat button keeps group communication inside the app.
-                  </p>
-                </div>
-              </article>
-
-              <!-- Step 6 -->
-              <article class="cs-step">
-                <div class="cs-step__phone cs-img-reveal">
-                  <div class="phone-mockup">
-                    <div class="phone-mockup__screen">
-                      <img src="Images/case-studies/getsociable/step-6-collaborate.png" alt="Schedule view showing day-by-day itinerary with time slots, venue images, and travel time estimates" />
-                    </div>
-                  </div>
-                </div>
-                <div class="cs-step__content cs-reveal">
-                  <span class="cs-step__label">Step 6</span>
-                  <h3>The trip takes shape</h3>
-                  <p>
-                    The schedule view shows the full itinerary day by day — morning, afternoon, evening —
-                    with venue images, time blocks, and travel estimates. Every collaborator sees the same
-                    view in real time. Changes sync immediately. The group goes from a WhatsApp thread to an
-                    actual plan everyone can reference.
-                  </p>
-                </div>
-              </article>
+            <div class="cs-img-reveal" style="margin-top: 32px; text-align: center;">
+              <video
+                src="Images/case-studies/getsociable/planner_cropped.mp4"
+                autoplay muted loop playsinline
+                style="width:100%; max-width:320px; border-radius:16px; display:inline-block;"
+                aria-label="GetSociable Trip Planner walkthrough"
+              ></video>
+              <span class="cs-caption" style="display:block; margin-top:12px;">The Trip Planner — from WhatsApp chaos to a single collaborative flow for group outings.</span>
             </div>
 
-            <!-- Before/After Comparison -->
-            <div class="cs-reveal" style="margin-top: 80px;">
-              <h3 style="margin-bottom: 32px;">Homepage transformation: before and after</h3>
-              <p style="margin-bottom: 32px;">Two iterations of the homepage — the initial version (left) with no category navigation and a flat event grid, versus the refined version (right) with Feed/Guide/Map navigation tabs, category filters, and a clearer Top 10 editorial section.</p>
-            </div>
-
-            <div class="cs-phoneCompare cs-img-reveal" style="margin-bottom: 48px;">
-              <div class="cs-phoneCompare__item">
-                <div class="phone-mockup">
-                  <div class="phone-mockup__screen">
-                    <img src="Images/case-studies/getsociable/homepage-before.png" alt="GetSociable homepage before: flat event grid without clear navigation or category hierarchy" />
-                  </div>
-                </div>
-                <span class="cs-phoneCompare__label">Before — flat hierarchy, no navigation context</span>
-              </div>
-              <div class="cs-phoneCompare__item">
-                <div class="phone-mockup">
-                  <div class="phone-mockup__screen">
-                    <img src="Images/case-studies/getsociable/homepage-after.png" alt="GetSociable homepage after: clear Feed/Guide/Map tabs, category filters, and structured event sections" />
-                  </div>
-                </div>
-                <span class="cs-phoneCompare__label">After — Feed/Guide/Map nav, category filters</span>
-              </div>
-            </div>
-
-            <!-- Impact Metrics -->
-            <div class="cs-metricsGrid cs-stagger">
-              <div class="cs-metric">
-                <span class="cs-metric__before">58%</span>
-                <span class="cs-metric__arrow">→</span>
-                <span class="cs-metric__after">55%</span>
-                <p class="cs-metric__label">Drop-off rate on homepage (3% improvement)</p>
-              </div>
-
-              <div class="cs-metric">
-                <span class="cs-metric__before">0</span>
-                <span class="cs-metric__arrow">→</span>
-                <span class="cs-metric__after">23%</span>
-                <p class="cs-metric__label">of users creating group trips (new feature adoption)</p>
-              </div>
-
-              <div class="cs-metric">
-                <span class="cs-metric__before">Low</span>
-                <span class="cs-metric__arrow">→</span>
-                <span class="cs-metric__after">High</span>
-                <p class="cs-metric__label">Cofounder feedback: "The app is doing really well"</p>
-              </div>
-
-              <div class="cs-metric">
-                <span class="cs-metric__before">Inconsistent</span>
-                <span class="cs-metric__arrow">→</span>
-                <span class="cs-metric__after">100%</span>
-                <p class="cs-metric__label">Design system adoption across the app</p>
-              </div>
+            <div class="cs-img-reveal" style="margin-top: 32px;">
+              <img src="Images/case-studies/getsociable/Homescreen UI.png"
+                   alt="GetSociable home screen redesign — 7 screens"
+                   style="width:100%; display:block; border-radius:0;" />
             </div>
           </section>
+
 
           <!-- ====== LEARNINGS SECTION ====== -->
           <section id="learnings">
             <div class="cs-section-label"><span>Learnings</span></div>
 
             <div class="cs-reveal">
-              <h2>Design systems and user research are force multipliers</h2>
-              <p>
-                This project taught me that sometimes the most impactful design work isn't about flashy features—
-                it's about clarity, consistency, and understanding user mental models. By establishing a design system
-                early and grounding every decision in user research, we reduced decision friction both for users and
-                for the internal team.
-              </p>
+              <h2>What I'd carry into every project from here</h2>
 
-              <div class="cs-learnings" style="margin-top: 48px;">
+              <div class="cs-learnings" style="margin-top: 0;">
                 <div class="cs-learning">
-                  <strong>Design systems reduce cognitive load.</strong> When every button, heading, and spacing decision
-                  follows a consistent pattern, users can focus on their intent rather than interpreting the interface.
-                  This was the single biggest driver of our drop-off reduction.
+                  <strong>Design systems are the highest-leverage decision.</strong> Consistent patterns let users focus on their intent, not interpret the interface. Building one early reduced drop-off — and made every handoff faster.
                 </div>
 
                 <div class="cs-learning">
-                  <strong>User interviews in a new domain are invaluable.</strong> This was my first time designing for
-                  events/entertainment. Rather than assuming, I interviewed 15+ users and uncovered that "feature overload"
-                  was the core problem, not lack of features. Listening changed everything.
+                  <strong>Users describe problems, not features.</strong> No one asked for a trip planner — they described WhatsApp chaos and no-shows. Listening for the underlying need (not the stated want) is what led to the product's core differentiator.
                 </div>
 
                 <div class="cs-learning">
-                  <strong>Behavioral data tells a different story than surveys.</strong> Users said they liked the app,
-                  but Hotjar showed they left within minutes. Watching session recordings revealed the disconnect between
-                  what people said and what they actually did—a lesson that made me a better designer.
+                  <strong>Behavioural data overrules self-reported data.</strong> Users said they liked the app. Hotjar showed they left in under 3 minutes without clicking anything. The gap between what people say and what they do is where the real design work lives.
                 </div>
 
                 <div class="cs-learning">
-                  <strong>Collaboration features shift the product's purpose.</strong> The Trip Planner wasn't just a feature—
-                  it reframed GetSociable as a group coordination tool, not just an event discovery app. This shift in positioning
-                  made the entire experience feel more intentional.
+                  <strong>A new feature can reframe an entire product.</strong> The Trip Planner gave GetSociable a clear answer to "why use this instead of WhatsApp?" — which made every other design decision feel more intentional.
                 </div>
               </div>
             </div>
           </section>
 
-          <!-- Next Project Link -->
-          <div class="cs-nextProject cs-reveal" style="margin-top: 120px; padding-top: 60px; border-top: 1px solid var(--line);">
-            <span style="font-size: 0.875rem; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.08em;">Next Project</span>
-            <a href="kfc-case-study.html" style="display: flex; align-items: center; gap: 12px; margin-top: 12px; font-size: 1.5rem; font-weight: 600; color: var(--ink); text-decoration: none;">
-              KFC Dubai <span style="font-size: 1.25rem;">→</span>
-            </a>
-          </div>
         </div>
       </div>
     </main>
   </div>
 
+  <section class="cs-shell cs-nextProject" aria-label="Next project">
+    <a href="kfc-case-study.html">
+      <img class="cs-nextProject__thumb" src="Images/case-studies/kfc/KFC_Mockup-01.jpg" alt="KFC Dubai" />
+      <div>
+        <span class="label">Next Project</span>
+        <h3>KFC Dubai →</h3>
+      </div>
+    </a>
+  </section>
+
+  <footer style="border-top:1px solid var(--line);">
+    <div class="cs-shell cs-footer">
+      <span>© <span id="year"></span> Ishmeet Kaur</span>
+      <div style="display:flex; align-items:center; gap:16px;">
+        <a href="mailto:ishmeet.purva@gmail.com" aria-label="Email" class="textLink">✉</a>
+        <a href="https://www.linkedin.com/in/ishmeet-k-671a3198" target="_blank" rel="noreferrer" aria-label="LinkedIn" class="textLink" style="font-size:0.7rem; font-weight:700; letter-spacing:0.08em;">in</a>
+        <span class="dot" aria-hidden="true">•</span>
+        <a href="#top" class="textLink">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
   <script src="script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
     // Progress bar animation
     document.addEventListener("DOMContentLoaded", () => {
       const progressBar = document.getElementById("csProgressBar");

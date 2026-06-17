@@ -3,8 +3,6 @@
    Full premium version — all fixes included
    ============================================= */
 
-   @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&family=Caveat:wght@500&display=swap');
-
    /* =============================================
       1. TOKENS
       ============================================= */
@@ -477,6 +475,17 @@
      background: rgba(255,255,255,0.1);
      color: rgba(255,255,255,0.8);
    }
+
+   .hero.is-dark .hero__cta {
+     color: var(--white);
+     border-color: rgba(255,255,255,0.6);
+   }
+
+   .hero.is-dark .hero__cta:hover {
+     background: var(--white);
+     color: var(--ink);
+     border-color: var(--white);
+   }
    
    .hero__grid {
      display: grid;
@@ -574,29 +583,49 @@
    .heroBlob {
      position: relative;
      width: 100%;
-     max-width: 380px;
+     max-width: 300px;
      margin: 0 auto;
      z-index: 1;
-     pointer-events: none;
+     pointer-events: all;
+     cursor: none;
    }
-   
+
+   /* Glassy orb: ambient video glow with screen blend */
+   .heroOrb {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%) scale(2.4);
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     mix-blend-mode: screen;
+     /* Shift purple orb (~270°) toward site's neon-magenta (#FF61F8, ~303°) */
+     filter: hue-rotate(35deg) saturate(300%) brightness(1.1) contrast(1.0);
+     pointer-events: none;
+     z-index: 0;
+     border-radius: 50%;
+     /* Fade edges to transparent so the video's dark vignette never shows as a hard ring */
+     -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 22%, rgba(0,0,0,0) 46%);
+     mask-image: radial-gradient(circle, rgba(0,0,0,1) 22%, rgba(0,0,0,0) 46%);
+   }
+
    .heroBlob__svg {
+     position: relative;
+     z-index: 1;
      width: 100%;
      height: auto;
      overflow: visible;
      transition: filter 0.4s ease;
    }
-   
+
    .heroBlob:hover .heroBlob__svg {
-     filter: drop-shadow(0 20px 60px rgba(0,0,0,0.15));
-     pointer-events: none;
+     filter: drop-shadow(0 20px 60px rgba(255, 97, 248, 0.3));
    }
    
    .heroBlob__outline {
      fill: none;
-     stroke: var(--line);
-     stroke-width: 1;
-     transition: stroke 0.5s ease;
+     stroke: none;
    }
    
    .hero.is-dark .heroBlob__outline { stroke: rgba(255,255,255,0.2); }
@@ -616,20 +645,21 @@
   bottom: -32px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 0.85rem;
-  color: var(--muted2);
-  white-space: nowrap;
-  font-family: var(--font-body);
-  font-weight: 500;
-  text-align: center;
-  width: 100%;
-  letter-spacing: 0.5px;
-}
-
-.heroHint {
   font-family: var(--font-hand);
   font-size: 1.25rem;
   font-weight: 500;
+  color: var(--muted2);
+  white-space: nowrap;
+  text-align: center;
+  width: 100%;
+  letter-spacing: 0.5px;
+  opacity: 0.5;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.heroBlob:hover .heroHint {
+  opacity: 1;
 }
 
 .heroHint::before {
@@ -836,6 +866,7 @@
    ABOUT SECTION
 ═══════════════════════════════════════════ */
 
+
 .about {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -997,70 +1028,65 @@
 }
 
 /* =============================================
-   11. DESIGN PHILOSOPHY
+   11b. DESIGN PHILOSOPHY
    ============================================= */
 
-.philosophyGrid {
+.section-heading {
+  margin-bottom: var(--space-lg);
+}
+
+.section-heading h2 { margin: 0 0 8px; }
+.section-heading p  { margin: 0; color: var(--muted); }
+
+.philosophy-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--space-lg);
-  margin-top: var(--space-lg);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
 }
 
-.philosophyCard {
-  padding: var(--space-lg);
+.philosophy-card {
+  padding: 28px 24px;
   background: var(--surface);
-  border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  transition: all 0.4s var(--ease-expo);
+  border: 1.5px solid var(--line);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.philosophyCard:hover {
+.philosophy-card:hover {
   border-color: var(--neon-magenta);
-  box-shadow: 0 0 20px rgba(255, 97, 248, 0.15);
-  transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(255, 97, 248, 0.12);
+  transform: translateY(-3px);
 }
 
-.philosophyCard__number {
-  font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  font-weight: 600;
-  color: var(--neon-magenta);
-  line-height: 1;
+.philosophy-card__icon {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 12px;
 }
 
-.philosophyCard h3 {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
+.philosophy-card h3 {
+  font-size: var(--text-md);
+  font-family: var(--font-sans);
   font-weight: 600;
   color: var(--ink);
-  margin: 0;
-  line-height: 1.3;
+  margin: 0 0 10px;
 }
 
-.philosophyCard p {
+.philosophy-card p {
   font-size: var(--text-sm);
   color: var(--muted);
-  line-height: 1.6;
+  line-height: 1.7;
   margin: 0;
 }
 
-@media (max-width: 768px) {
-  .philosophyGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-md);
-  }
-  
-  .philosophyCard {
-    padding: var(--space-md);
+@media (max-width: 860px) {
+  .philosophy-grid {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
-@media (max-width: 480px) {
-  .philosophyGrid {
+@media (max-width: 540px) {
+  .philosophy-grid {
     grid-template-columns: 1fr;
   }
 }
@@ -1069,73 +1095,162 @@
    12. PLAYGROUND BENTO
    ============================================= */
 
-.bentoPlay {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 280px 280px 280px;
-  gap: 16px;
-}
+/* =============================================
+   PLAYGROUND — SCROLL-DRIVEN PARALLAX
+   ============================================= */
 
-.playCard {
-  display: block;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
+.playSection {
   position: relative;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  transition: transform 0.4s var(--ease-expo),
-              box-shadow 0.4s var(--ease-expo),
-              border-color 0.3s ease;
+  padding: var(--space-xl) 0 var(--space-2xl);
+  overflow: hidden;
 }
 
-.playCard:hover {
-  transform: translateY(-4px) scale(1.01);
-  box-shadow: 0 0 20px rgba(255, 97, 248, 0.2), 0 20px 56px rgba(0,0,0,0.1);
-  border-color: transparent;
-}
-
-.playCard img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s var(--ease-expo);
-}
-
-.playCard:hover img { transform: scale(1.06); }
-
-/* Hover overlay — dark background with category and CTA */
-.playOverlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+/* Heading block — centred, natural height */
+.playPinned {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  backdrop-filter: blur(4px);
+  text-align: center;
+  padding: 60px 24px 80px;
+  pointer-events: none;
 }
 
-.playCard:hover .playOverlay {
-  opacity: 1;
-}
+.playPinned > * { pointer-events: auto; }
 
-.playOverlay__category {
+.playEyebrow {
+  display: block;
   font-size: var(--text-xs);
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-weight: 700;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--white);
-  opacity: 0.9;
+  color: #b800b3; /* darkened for 4.9:1 contrast on white (WCAG AA) */
+  margin-bottom: 12px;
 }
 
-.playOverlay__cta {
+.playHeading {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.playHeading em {
+  font-style: italic;
+  color: #b800b3; /* darkened for 4.9:1 on white (WCAG AA), stays neon in dark mode via override below */
+}
+
+.playSubtext {
+  font-size: var(--text-base);
+  color: var(--muted);
+  max-width: 360px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.playDribbbleBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border: 1.5px solid var(--ink);
+  border-radius: 100px;
   font-size: var(--text-sm);
-  font-weight: 500;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.playDribbbleBtn:hover {
+  background: var(--ink);
   color: var(--white);
+  box-shadow: 0 0 20px rgba(255, 97, 248, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Card columns — normal flow, right column offset for visual stagger */
+.playColumns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 6vw, 80px);
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 40px;
+  align-items: start;
+}
+
+.playCol {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.playCol--b { margin-top: 100px; }
+
+/* Cards */
+.playCard--new {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  background: var(--surface);
+  will-change: transform, opacity;
+  transition: box-shadow 0.4s var(--ease-expo);
+}
+
+/* Playful per-card rotations */
+.playCol--a .playCard--new:nth-child(1) { rotate: -2.5deg; }
+.playCol--a .playCard--new:nth-child(2) { rotate:  1.5deg; }
+.playCol--a .playCard--new:nth-child(3) { rotate: -1deg;   }
+.playCol--b .playCard--new:nth-child(1) { rotate:  2deg;   }
+.playCol--b .playCard--new:nth-child(2) { rotate: -2deg;   }
+.playCol--b .playCard--new:nth-child(3) { rotate:  1.5deg; }
+
+/* Only hide cards when JS is present; GSAP animates them in */
+.js .playCard--new { opacity: 0; }
+
+.playCard--new:hover {
+  box-shadow: 0 0 30px rgba(255, 97, 248, 0.3), 0 24px 60px rgba(0,0,0,0.2);
+}
+
+.playCard--new img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-expo);
+  pointer-events: none;
+}
+
+.playCard--new:hover img { transform: scale(1.06); }
+
+.playDesc {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 32px 14px 14px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.72));
+  color: #fff;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  font-family: var(--font-sans);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  pointer-events: none;
+}
+
+.playCard--new:hover .playDesc {
   opacity: 1;
+  transform: translateY(0);
 }
 
 .playTag {
@@ -1151,40 +1266,117 @@
   padding: 4px 10px;
   border-radius: 100px;
   color: var(--ink);
+  pointer-events: none;
 }
 
-/* Bento grid placement — clean 3 col asymmetric */
-.play-a { grid-column: span 2; grid-row: 1; }
-.play-b { grid-column: 3;      grid-row: 1; }
-.play-c { grid-column: 1;      grid-row: 2; }
-.play-d { grid-column: 2;      grid-row: 2; }
-.play-i { grid-column: 3;      grid-row: 2; }
-.play-j { grid-column: 1; grid-row: 3; }
-.play-k { grid-column: span 3; grid-row: 3; }
+/* Lightbox */
+.playLightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.playLightbox[hidden] { display: none; }
+
+.playLightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+}
+
+.playLightbox__close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: 1.5px solid rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1;
+  transition: background 0.2s ease;
+}
+
+.playLightbox__close:hover { background: rgba(255,255,255,0.2); }
+
+.playLightbox__img {
+  position: relative;
+  z-index: 1;
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 40px 120px rgba(0,0,0,0.6);
+}
+
+/* Mobile: collapse parallax to a simple stacked grid */
+@media (max-width: 768px) {
+  .playSection { min-height: auto; padding: var(--space-xl) 0 var(--space-2xl); }
+
+  .playPinned {
+    position: relative;
+    height: auto;
+    padding: var(--space-xl) 24px var(--space-lg);
+  }
+
+  .playColumns {
+    position: relative;
+    left: auto;
+    transform: none;
+    height: auto;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 0 16px;
+  }
+
+  .playCol,
+  .playCol--b { gap: 12px; padding-top: 0; }
+
+  .playCard--new { rotate: 0deg !important; max-width: 100%; opacity: 1 !important; transform: none !important; }
+}
 
 /* =============================================
    13. REVEAL ANIMATIONS
+   Gated behind .js so content is always visible
+   if JavaScript hasn't loaded yet.
    ============================================= */
 .reveal {
-  opacity: 0;
-  transform: translateY(28px);
   transition: opacity 0.8s var(--ease-expo),
               transform 0.8s var(--ease-expo);
 }
 
-.reveal.is-visible {
+.js .reveal {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.js .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
 .cs-reveal {
-  opacity: 0;
-  transform: translateY(24px);
   transition: opacity 0.8s var(--ease-expo),
               transform 0.8s var(--ease-expo);
 }
 
-.cs-reveal.is-visible {
+.js .cs-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.js .cs-reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -1194,17 +1386,20 @@
 .cs-reveal--delay-3 { transition-delay: 0.3s; }
 
 .cs-stagger > * {
-  opacity: 0;
-  transform: translateY(18px);
   transition: opacity 0.7s var(--ease-expo),
               transform 0.7s var(--ease-expo);
 }
 
-.cs-stagger.is-visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0s; }
-.cs-stagger.is-visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.1s; }
-.cs-stagger.is-visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.2s; }
-.cs-stagger.is-visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.3s; }
-.cs-stagger.is-visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.4s; }
+.js .cs-stagger > * {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.js .cs-stagger.is-visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0s; }
+.js .cs-stagger.is-visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.1s; }
+.js .cs-stagger.is-visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.2s; }
+.js .cs-stagger.is-visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.3s; }
+.js .cs-stagger.is-visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.4s; }
 
 .cs-img-reveal {
   clip-path: inset(0 100% 0 0);
@@ -1435,12 +1630,32 @@
      16. CONTACT
      ============================================= */
   .contact {
-    padding: var(--space-2xl) 0;
+    position: relative;
+    overflow: hidden;
+    padding: var(--space-2xl) 0 0;
     text-align: center;
     transition: background 0.5s var(--ease-expo);
+    background: #ffffff;
   }
-  
-  .contact.is-active { background: var(--surface); }
+
+  .contact__bgVideo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+
+  .contact__inner,
+  .contact .container {
+    position: relative;
+    z-index: 2;
+  }
+
+  .contact.is-active { background: #ffffff; }
   
   .contact__inner h2 { margin-bottom: var(--space-sm); }
   
@@ -1505,22 +1720,24 @@
   }
   
   .form__submit {
-    padding: 12px 32px;
+    padding: 14px 40px;
     border: 1.5px solid var(--ink);
     border-radius: 100px;
-    background: transparent;
-    color: var(--ink);
+    background: var(--ink);
+    color: var(--white);
     font-size: var(--text-sm);
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.25s ease;
     margin-top: 8px;
+    letter-spacing: 0.03em;
   }
-  
+
   .form__submit:hover {
-    background: var(--ink);
-    color: var(--white);
+    background: #333;
+    border-color: #333;
     box-shadow: 0 0 20px rgba(255, 97, 248, 0.25), 0 6px 20px rgba(0, 0, 0, 0.12);
+    transform: translateY(-1px);
   }
   
   .form__submit.is-loading {
@@ -1554,45 +1771,72 @@
     font-size: var(--text-sm);
     text-align: center;
   }
-  
+
+  .form__error {
+    font-size: var(--text-xs);
+    color: #d93025;
+    min-height: 1em;
+    display: none;
+    margin-top: -2px;
+  }
+
+  .form__error.is-visible {
+    display: block;
+  }
+
+  .form__input[aria-invalid="true"],
+  .form__textarea[aria-invalid="true"] {
+    border-color: #d93025;
+  }
+
+  .form__input[aria-invalid="true"]:focus,
+  .form__textarea[aria-invalid="true"]:focus {
+    border-color: #d93025;
+    box-shadow: 0 0 0 3px rgba(217, 48, 37, 0.12);
+  }
+
   .ratingBlock {
-    margin: var(--space-lg) auto;
+    margin: var(--space-md) auto 0;
     max-width: 480px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--line);
   }
-  
+
   .emojiRating {
     display: flex;
-    gap: 8px;
+    gap: 6px;
     justify-content: center;
   }
-  
+
   .emojiBtn {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     border: 1.5px solid var(--line);
     background: var(--white);
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     display: grid;
     place-items: center;
     transition: all 0.25s var(--ease-expo);
+    opacity: 0.7;
   }
-  
+
   .emojiBtn:hover,
   .emojiBtn.is-active {
     border-color: var(--ink);
     transform: scale(1.1) translateY(-2px);
     box-shadow: 0 0 16px rgba(255, 97, 248, 0.25), 0 8px 24px rgba(0,0,0,0.1);
+    opacity: 1;
   }
-  
+
   .ratingLabel {
-    font-size: var(--text-sm);
-    color: var(--muted);
-    min-height: 24px;
+    font-size: var(--text-xs);
+    color: var(--muted2);
+    min-height: 20px;
     position: relative;
     width: 100%;
     text-align: center;
@@ -1653,11 +1897,12 @@
   .contact__tiny {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 12px;
     font-size: var(--text-sm);
     color: var(--muted2);
-    padding: var(--space-lg) 0 var(--space-md);
+    padding: var(--space-md) var(--padding-2xl);
+    border-top: 1px solid var(--line);
   }
   
   .contact__tiny .dot { opacity: 0.4; }
@@ -1680,15 +1925,6 @@
     height: 2px;
     z-index: 200;
     background: transparent;
-    display: none;
-  }
-  
-  #csProgressBar {
-    height: 100%;
-    width: 0%;
-    background: var(--ink);
-    transition: width 0.1s linear;
-    display: none;
   }
   
 /* ═══════════════════════════════════════════
@@ -1700,7 +1936,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin: 0 0 16px;
 }
 
 .workFilter {
@@ -1812,6 +2047,26 @@
   transform: scale(1.04);
 }
 
+/* GS card: full-bleed background video */
+.workCardBgVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* GS card: transparent phone cutout sits above the video */
+.workCardPhoneCutout {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
 /* Overlay on hover */
 .workCardoverlay {
   position: absolute;
@@ -1851,18 +2106,6 @@
   flex-direction: column;
   gap: 8px;
   flex: 1;
-}
-
-/* Brand logo on cards */
-.workCard-logo {
-  height: 28px;
-  width: auto;
-  max-width: 110px;
-  object-fit: contain;
-  object-position: left center;
-  display: block;
-  margin-bottom: 4px;
-  flex-shrink: 0;
 }
 
 /* Tags */
@@ -1925,6 +2168,60 @@
   letter-spacing: 0.04em;
 }
 
+/* Company logo — top-right of card image, no background */
+.workCardBrand {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.workCardBrandImg {
+  max-height: 40px;
+  max-width: 80px;
+  width: auto;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.5));
+}
+
+/* White circle background — use on logos that need contrast (e.g. KFC) */
+.workCardBrand--white {
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  padding: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+
+.workCardBrand--white .workCardBrandImg {
+  max-height: 36px;
+  max-width: 36px;
+  filter: none;
+}
+
+/* Text badge variant — for cards without a logo image */
+.workCardBrand--text {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 100px;
+  padding: 5px 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+
+.workCardBrand--text .workCardBrandLabel {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
 /* Hide the floating row preview (used by script.js on workRow)
    — keep it in DOM so JS works, just visually hidden */
 .workRowpreview {
@@ -1933,12 +2230,15 @@
 
 /* Reveal animation compatibility */
 .workCard.reveal {
-  opacity: 0;
-  transform: translateY(24px);
   transition: opacity 0.5s ease, transform 0.5s cubic-bezier(.22,1,.36,1);
 }
 
-.workCard.reveal.is-visible {
+.js .workCard.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.js .workCard.reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -2019,7 +2319,12 @@ button:focus:not(:focus-visible) {
   }
   
   /* Pause scroll animations - show elements immediately */
-  .reveal {
+  .reveal,
+  .js .reveal,
+  .js .cs-reveal,
+  .js .cs-stagger > *,
+  .js .workCard.reveal,
+  .js .playCard--new {
     opacity: 1 !important;
     transform: none !important;
   }
@@ -2076,11 +2381,6 @@ button:focus:not(:focus-visible) {
   .section--alt       { margin: var(--space-md) 16px; }
   .workRow            { grid-template-columns: 32px 1fr auto; gap: 16px; }
   .workRow__year      { display: none; }
-  .bentoPlay          { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
-  .play-a             { grid-column: span 2; grid-row: auto; }
-  .play-j             { grid-column: span 2; grid-row: auto; }
-  .play-k             { grid-column: span 2; grid-row: auto; }
-  .play-b, .play-c, .play-d, .play-i  { grid-column: span 1; grid-row: auto; }
   .tSplit__grid       { grid-template-columns: 1fr; }
   .tSplit__left       { padding: 32px 24px; border-right: none; border-bottom: 1px solid var(--line); }
   .tSplit__right      { padding: 24px; }
@@ -2095,87 +2395,77 @@ button:focus:not(:focus-visible) {
 }
 
 /* =============================================
-   23. DARK MODE SUPPORT
+   23. DARK MODE SUPPORT (disabled — site is light-only)
    ============================================= */
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Inverted text and background colors */
-    --ink:      #f5f5f5;
-    --ink2:     #e8e8e8;
-    --muted:    #a0a0a0;
-    --muted2:   #909090;
-    --line:     #2a2a2a;
-    --surface:  #0a0a0a;
-    --white:    #1a1a1a;
-    
-    /* Neon accent works well on dark backgrounds */
-    --neon-magenta: #FF61F8;
-    --dark-plum:    #D446C4;
-    
-    /* Orb colors inverted for dark mode */
-    --orb-primary:       #f5f5f5;
-    --orb-marker-strong: #333333;
-    --orb-marker-weak:   #1a1a1a;
-  }
-  
-  body {
-    background: var(--surface);
-    color: var(--ink);
-  }
-  
-  /* Inputs and textareas in dark mode */
-  .form__input,
-  .form__textarea {
-    background: var(--white);
-    color: var(--ink);
-    border-color: var(--line);
-  }
-  
-  .form__input:focus,
-  .form__textarea:focus {
-    border-color: var(--neon-magenta);
-    background: var(--white);
-  }
-  
-  /* Cards and surfaces */
-  .workCard {
-    background: var(--white);
-    border-color: var(--line);
-  }
-  
-  .playCard {
-    background: var(--white);
-  }
-  
-  /* Testimonial quote background */
-  .tSplit__left {
-    border-color: var(--line);
-  }
-  
-  /* Case study styling */
-  .csCard {
-    background: var(--white);
-    border-color: var(--line);
-  }
-  
-  /* Text on dark surfaces - ensure contrast */
-  h1, h2, h3, h4 {
-    color: var(--ink);
-  }
-  
-  a {
-    color: var(--neon-magenta);
-  }
-  
-  /* Cursor is now light colored */
-  .cursor {
-    background: var(--ink);
-    mix-blend-mode: lighten;
-  }
-  
-  /* Selection colors */
-  ::selection {
-    background: var(--neon-magenta);
-    color: var(--white);
-  }
+
+/* =============================================
+   THEME TOGGLE BUTTON
+   ============================================= */
+.themeToggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1.5px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  color: var(--ink);
 }
+
+.themeToggle:hover {
+  border-color: var(--neon-magenta);
+  box-shadow: 0 0 16px rgba(255, 97, 248, 0.25), 0 4px 16px rgba(0,0,0,0.12);
+  transform: translateY(-2px);
+}
+
+.themeToggle__sun  { display: none; }
+.themeToggle__moon { display: block; }
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) .themeToggle__sun  { display: block; }
+  html:not([data-theme="light"]) .themeToggle__moon { display: none; }
+}
+html[data-theme="dark"]  .themeToggle__sun  { display: block; }
+html[data-theme="dark"]  .themeToggle__moon { display: none; }
+html[data-theme="light"] .themeToggle__sun  { display: none; }
+html[data-theme="light"] .themeToggle__moon { display: block; }
+
+/* =============================================
+   MANUAL THEME OVERRIDES
+   Activate when user clicks the toggle button.
+   These sit after the prefers-color-scheme block
+   so they win on specificity for explicit choices.
+   ============================================= */
+
+html[data-theme="light"] {
+  --ink:      #0f0f0f;
+  --ink2:     #1a1a1a;
+  --muted:    #6b6b6b;
+  --muted2:   #676767;
+  --line:     #e8e8e8;
+  --surface:  #fafaf8;
+  --white:    #ffffff;
+  --neon-magenta: #FF61F8;
+  --dark-plum:    #810B38;
+  --orb-primary:       #0f0f0f;
+  --orb-marker-strong: #d0d0d0;
+  --orb-marker-weak:   #ebebeb;
+}
+html[data-theme="light"] body { background: var(--white); color: var(--ink); }
+html[data-theme="light"] .form__input,
+html[data-theme="light"] .form__textarea { background: var(--white); color: var(--ink); border-color: var(--line); }
+html[data-theme="light"] .workCard  { background: var(--white); border-color: var(--line); }
+html[data-theme="light"] .philosophy-card { background: var(--surface); border-color: var(--line); }
+html[data-theme="light"] .playCard--new { background: var(--surface); }
+html[data-theme="light"] .tSplit__left { border-color: var(--line); }
+html[data-theme="light"] .csCard    { background: var(--white); border-color: var(--line); }
+html[data-theme="light"] a          { color: inherit; }
+html[data-theme="light"] .cursor    { background: #ffffff; mix-blend-mode: difference; }
+html[data-theme="light"] ::selection { background: var(--ink); color: var(--white); }

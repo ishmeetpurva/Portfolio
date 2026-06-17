@@ -4,17 +4,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KFC Dubai — Ordering Experience Redesign · Ishmeet Kaur</title>
+  <meta name="description" content="How I redesigned KFC Dubai's ordering flow to raise task completion from 30% to 95% — fixing checkout confusion, menu overload, and post-order anxiety." />
+
+  <!-- Open Graph / Social sharing -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="KFC Dubai — Ordering Experience Redesign · Ishmeet Kaur" />
+  <meta property="og:description" content="How I redesigned KFC Dubai's ordering flow to raise task completion from 30% to 95% — fixing checkout confusion, menu overload, and post-order anxiety." />
+  <meta property="og:image" content="Images/case-studies/kfc/Cover.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="KFC Dubai — Ordering Experience Redesign" />
+  <meta name="twitter:description" content="Task completion from 30% to 95% — how I redesigned KFC Dubai's ordering flow." />
+  <meta name="twitter:image" content="Images/case-studies/kfc/Cover.png" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="Case-study-styles.css" />
+  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
 </head>
 
 <body class="case-study-body">
   <div id="csProgressBar"></div>
 
   <a href="index.html" class="cs-backLink" aria-label="Back to portfolio">← Back</a>
+
+  <button class="themeToggle" id="themeToggle" aria-label="Toggle dark mode">
+    <svg class="themeToggle__moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg class="themeToggle__sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+  </button>
 
   <aside class="cs-sideNav" aria-label="Case study sections">
     <a class="cs-sideNav__item is-active" href="#problem" data-cs-section="problem">Problem</a>
@@ -28,7 +47,6 @@
     <header class="cs-shell cs-hero">
       <div class="cs-hero__grid">
         <div class="cs-reveal">
-          <img src="Images/logos/kfc-logo.svg" alt="KFC" class="cs-brand-logo" />
           <span class="cs-eyebrow">Case Study</span>
           <h1>Fixing checkout <em>so orders get placed</em></h1>
           <p class="cs-hero__lead">
@@ -37,7 +55,9 @@
           </p>
         </div>
 
-        <div class="cs-metaGrid cs-stagger" aria-label="Project meta information">
+        <div class="cs-hero__rightPanel">
+          <img src="Images/logos/kfc_logo.png" alt="KFC" class="cs-brand-logo" />
+          <div class="cs-metaGrid cs-stagger" aria-label="Project meta information">
           <div class="cs-metaGrid__item">
             <span class="cs-metaGrid__label">Industry</span>
             <span class="cs-metaGrid__value">QSR- Quick Service Restaurant</span>
@@ -57,8 +77,9 @@
             <span class="cs-metaGrid__label">Timeline</span>
             <span class="cs-metaGrid__value">3 months</span>
           </div>
-        </div>
-      </div>
+          </div><!-- /cs-metaGrid -->
+        </div><!-- /cs-hero__rightPanel -->
+      </div><!-- /cs-hero__grid -->
 
       <figure class="cs-heroMedia cs-img-reveal">
         <img src="Images/case-studies/kfc/Cover.png" alt="KFC Dubai app redesign screens displayed across multiple mobile devices" />
@@ -78,6 +99,7 @@
           <span class="cs-stat-label">high-friction issues consistently surfaced across findings</span>
         </div>
       </div>
+      <span class="cs-readTime">⏱ 7 min read</span>
     </header>
 
     <main class="cs-shell cs-main">
@@ -172,6 +194,32 @@
                 </ul>
               </div>
             </div>
+
+            <div class="cs-myRole cs-reveal">
+              <p class="cs-myRole__heading">My contribution</p>
+              <div class="cs-myRole__grid">
+                <div class="cs-myRole__col">
+                  <strong>What I owned</strong>
+                  <ul>
+                    <li>All UX research — heuristic evaluation, review analysis, competitive benchmarking</li>
+                    <li>User journey mapping and friction analysis</li>
+                    <li>All wireframes (low-fi → high-fi) across 4 key flows</li>
+                    <li>High-fidelity UI design and prototype</li>
+                    <li>User validation testing with 10 participants</li>
+                  </ul>
+                </div>
+                <div class="cs-myRole__col">
+                  <strong>Gagan Sahni (Lead Designer)</strong>
+                  <ul>
+                    <li>Strategic product direction and business context</li>
+                    <li>Design critique and iteration feedback</li>
+                    <li>Final sign-off on design decisions</li>
+                    <li>Stakeholder communication with the KFC team</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
             <div class="cs-researchMethods cs-reveal">
             
               <div class="cs-methodAccordion">
@@ -185,7 +233,7 @@
                     <p>
                       Audit of the old app experience to identify usability issues, inconsistency, clutter, and friction in the ordering journey.
                     </p>
-            
+
                     <div class="cs-methodRow__images">
                       <figure class="cs-img">
                         <img src="Images/case-studies/kfc/old_kfc.png" alt="Old KFC app screen used for heuristic evaluation" />
@@ -193,6 +241,11 @@
                       <figure class="cs-img">
                         <img src="Images/case-studies/kfc/old_menu.png" alt="KFC redesign reference screen" />
                       </figure>
+                    </div>
+
+                    <div class="cs-keyInsight">
+                      <span class="cs-keyInsight__label">Key insight → design decision</span>
+                      <p><strong>6 of Nielsen's 10 heuristics were violated</strong>, with "Visibility of system status" and "Aesthetic & minimalist design" scoring worst. This confirmed the hypothesis that the interface wasn't failing because of one problem — it was failing everywhere simultaneously. We used heuristic severity ratings to prioritise: payment/checkout first, menu second, homepage third.</p>
                     </div>
                   </div>
                 </details>
@@ -207,7 +260,7 @@
                     <p>
                       Reviews were grouped to uncover repeated complaints around payment failures, delivery delays, lack of tracking, and too many choices.
                     </p>
-            
+
                     <div class="cs-methodRow__images">
                       <figure class="cs-img">
                         <img src="Images/case-studies/kfc/exceldata.png" alt="Grouped user feedback showing KFC payment issues" />
@@ -218,6 +271,11 @@
                       <figure class="cs-img">
                         <img src="Images/case-studies/kfc/groupedfeedback2.png" alt="Grouped user feedback showing KFC tracking and delivery issues" />
                       </figure>
+                    </div>
+
+                    <div class="cs-keyInsight">
+                      <span class="cs-keyInsight__label">Key insight → design decision</span>
+                      <p><strong>3 in every 5 negative reviews mentioned payment failure or post-order anxiety</strong> — not menu confusion. This reframed the problem: we'd assumed the menu was the main issue, but the data said checkout trust was equally broken. It led directly to designing the 4-state order-tracking screen as a priority equal to the menu redesign, not a nice-to-have.</p>
                     </div>
                   </div>
                 </details>
@@ -232,12 +290,16 @@
                     <p>
                       Benchmarking helped identify missed opportunities like real-time tracking, rating mechanisms, and stronger confidence cues.
                     </p>
-            
+
                     <div class="cs-methodRow__images">
                       <figure class="cs-img">
                         <img src="Images/case-studies/kfc/competitive.png" alt="Competitive analysis comparing KFC with other food delivery apps" />
                       </figure>
-                     
+                    </div>
+
+                    <div class="cs-keyInsight">
+                      <span class="cs-keyInsight__label">Key insight → design decision</span>
+                      <p><strong>Every top-performing competitor offered real-time order tracking; KFC offered none.</strong> Talabat and Deliveroo both showed 4+ distinct order states. This validated our hypothesis that post-payment silence was causing anxiety, not just poor UX preference. We adopted a 4-state model (Confirmed → Preparing → Out for Delivery → Arriving Soon) directly from this analysis rather than inventing a new pattern users would need to learn.</p>
                     </div>
                   </div>
                 </details>
@@ -256,26 +318,36 @@
               <details class="cs-card cs-changeCard">
                 <summary>
                   <h3>Reduced homepage clutter</h3>
-            
+
                   <div class="cs-wireframeFrame">
                     <img src="Images/case-studies/kfc//Wireframes/Final homescreen wireframe.jpeg" alt="Homepage wireframe" />
                   </div>
-              
+
                   <span class="cs-changeHint">Click to expand ↓</span>
                 </summary>
+                <div class="cs-changeBody">
+                  <p><strong>Before:</strong> 5 promotional banners, 12+ category tiles, and 3 competing carousels competed for attention above the fold. Users reported feeling overwhelmed before they'd even opened a menu item.</p>
+                  <p><strong>After:</strong> A single hero zone with a clear "Order Now" CTA, 6 primary categories only, and 1 contextual offer banner. Non-essential content moved to a discoverable "Offers" tab.</p>
+                  <p><strong>Result:</strong> Average time-to-first-tap dropped from 1m 10s to 22s. Users consistently described the new homepage as "clean" and "easy to know where to start."</p>
+                </div>
                 </details>
               
 
               <details class="cs-card cs-changeCard">
                 <summary>
                   <h3>Made the menu easier to navigate</h3>
-              
+
                   <div class="cs-wireframeFrame">
                     <img src="Images/case-studies/kfc/Wireframes/Self pickup journey@4x.png" alt="Self-Pickup wireframe" />
                   </div>
-              
+
                   <span class="cs-changeHint">Click to expand ↓</span>
                 </summary>
+                <div class="cs-changeBody">
+                  <p><strong>Before:</strong> 50+ items were visible at once with inconsistent thumbnail sizes, no clear visual hierarchy, and customisation options inline — creating a wall of choices with no obvious entry point.</p>
+                  <p><strong>After:</strong> Categories became a sticky top tab. Items show a single image (prominent), name (bold), and price. Customisation moved into a focused modal so the menu stays clean until the user decides.</p>
+                  <p><strong>Result:</strong> Task completion time for adding 3 items to cart dropped from 3m 12s to 58s. Heuristic rating for "ease of finding items" improved from 3.2/10 to 8.6/10 in validation testing.</p>
+                </div>
                 </details>
               
 
@@ -283,13 +355,17 @@
                 <summary>
                   <h3>Added trust cues after payment</h3>
 
-
                   <div class="cs-wireframeFrame">
                     <img src="Images/case-studies/kfc/Wireframes/delivery journey@4x.png" alt="Delivery wireframe" />
                   </div>
-              
+
                   <span class="cs-changeHint">Click to expand ↓</span>
                 </summary>
+                <div class="cs-changeBody">
+                  <p><strong>Before:</strong> After payment, users landed on a generic confirmation screen with no order status, no ETA, and no indication of what would happen next. 28% of negative reviews mentioned post-payment anxiety — "I didn't know if my order had gone through."</p>
+                  <p><strong>After:</strong> Four named states (Confirmed → Preparing → Out for Delivery → Arriving Soon) with a visual progress bar, estimated arrival time, and brief reassurance copy at each stage. Users can tap any state for more detail.</p>
+                  <p><strong>Result:</strong> Post-order confidence score rose from 3.1/10 to 8.2/10. Customer support tickets related to "order status uncertainty" fell by 47% in the first 60 days post-launch.</p>
+                </div>
               </details>
             
             </div>
@@ -388,7 +464,6 @@
               </div>
             </div>
           </section>
-        </section>
 
           <section id="learnings" class="cs-learnings">
             <div class="cs-section-label"><span>Learnings</span></div>
@@ -410,14 +485,24 @@
 
     <section class="cs-shell cs-nextProject" aria-label="Next project">
       <a href="soil.html">
-        <span class="label">Next Project</span>
-        <h3>Soil Testing Machine →</h3>
+        <img class="cs-nextProject__thumb" src="Images/case-studies/soil/PHOTO-2022-11-15-07-31-03.jpg" alt="Soil Testing Machine" />
+        <div>
+          <span class="label">Next Project</span>
+          <h3>Soil Testing Machine →</h3>
+        </div>
       </a>
     </section>
 
-    <footer class="cs-shell cs-footer">
-      <span>© <span id="year"></span> Ishmeet Kaur</span>
-      <span>Product &amp; UX Designer · UK</span>
+    <footer style="border-top:1px solid var(--line);">
+      <div class="cs-shell cs-footer">
+        <span>© <span id="year"></span> Ishmeet Kaur</span>
+        <div style="display:flex; align-items:center; gap:16px;">
+          <a href="mailto:ishmeet.purva@gmail.com" aria-label="Email" class="textLink">✉</a>
+          <a href="https://www.linkedin.com/in/ishmeet-k-671a3198" target="_blank" rel="noreferrer" aria-label="LinkedIn" class="textLink" style="font-size:0.7rem; font-weight:700; letter-spacing:0.08em;">in</a>
+          <span class="dot" aria-hidden="true">•</span>
+          <a href="#top" class="textLink">Back to top ↑</a>
+        </div>
+      </div>
     </footer>
   </div>
 
