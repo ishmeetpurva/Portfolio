@@ -578,7 +578,12 @@
    
    .highlight3:hover { transform: rotate(12deg) scale(1.15); }
    
-   .hero__collage { position: relative; }
+   .hero__collage {
+     position: relative;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+   }
    
    .heroBlob {
      position: relative;
