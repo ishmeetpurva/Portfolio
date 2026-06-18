@@ -1410,7 +1410,7 @@
 }
 
 .marquee {
-  margin-top: var(--space-lg);
+  margin-top: 0;
 }
 
 .marque {
@@ -1450,6 +1450,7 @@
 /* Love-notes section — dark */
 #love-notes {
   background: #000;
+  margin-top: 0;
 }
 #love-notes .sectionHead h2 { color: rgba(255,255,255,0.95); }
 #love-notes .sectionHead p  { color: rgba(255,255,255,0.5); }
@@ -1472,6 +1473,7 @@
 #love-notes .tSplit__dots      { border-top-color: rgba(255,255,255,0.1); }
 #love-notes .tDot              { background: rgba(255,255,255,0.2); }
 #love-notes .tDot.is-active    { background: #fff; }
+#love-notes .tSplit__left      { border-right-color: rgba(255,255,255,0.1); }
 
    .tSplit {
     border-radius: var(--radius-xl);
@@ -1678,6 +1680,49 @@
   }
 
   .contact.is-active { background: #000000; }
+
+  /* Contact on dark background */
+  .contact .form__submit {
+    background: var(--white);
+    color: var(--ink);
+    border-color: var(--white);
+  }
+  .contact .form__submit:hover {
+    background: rgba(255,255,255,0.85);
+    border-color: rgba(255,255,255,0.85);
+    box-shadow: 0 0 20px rgba(0,132,255,0.3), 0 6px 20px rgba(0,0,0,0.3);
+  }
+  .contact .form__success { color: rgba(255,255,255,0.6); }
+
+  .contact .ratingBlock {
+    border-top-color: rgba(255,255,255,0.1);
+  }
+  .contact .ratingLabel,
+  .contact .ratingTiny { color: rgba(255,255,255,0.45); }
+
+  .contact .emojiBtn {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.15);
+  }
+  .contact .emojiBtn:hover,
+  .contact .emojiBtn.is-active {
+    background: rgba(255,255,255,0.15);
+    border-color: rgba(255,255,255,0.4);
+  }
+
+  .contact .iconBtn {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.15);
+  }
+  .contact .iconBtn .iconImg { filter: invert(1); }
+  .contact .iconBtn:hover {
+    background: var(--white);
+    border-color: var(--white);
+  }
+  .contact .iconBtn:hover .iconImg { filter: none; }
+
+  .contact .textLink { color: rgba(255,255,255,0.45); }
+  .contact .textLink:hover { color: rgba(255,255,255,0.9); }
 
   .contact__inner h2 { margin-bottom: var(--space-sm); color: rgba(255,255,255,0.95); }
 
