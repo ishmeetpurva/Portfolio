@@ -571,85 +571,89 @@
           <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260506_031045_0e1165dd-ab48-46e3-ad3d-5fe77f217647.mp4" type="video/mp4">
         </video>
         <div class="container contact__inner reveal">
-          <h2>Let’s build something <span class="highlight2">delightful</span> <span class="highlight3">❀</span></h2>
+          <div class="contact__layout">
 
-          <p>Drop a message — I will reply fast</p>
+            <!-- LEFT: Info -->
+            <div class="contact__left">
+              <span class="contact__badge">✿ Contact</span>
+              <h2>Let’s build something <span class="highlight2">delightful</span> <span class="highlight3">❀</span></h2>
+              <p>Drop a message — I will reply fast</p>
 
-          <!-- Contact Form (Formspree) -->
-          <form class="contact__form" action="https://formspree.io/f/mnqoedrz" method="POST" aria-label="Contact form" novalidate>
-            <div class="form__group">
-              <label for="name" class="form__label">Name</label>
-              <input type="text" id="name" name="name" class="form__input" required placeholder="Your name" aria-describedby="name-error">
-              <span class="form__error" id="name-error" role="alert"></span>
+              <div class="contact__cards">
+                <a class="contact__card" href="mailto:ishmeet.purva@gmail.com">
+                  <div class="contact__cardIcon">
+                    <img src="Icons/mail_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="">
+                  </div>
+                  <div class="contact__cardInfo">
+                    <span class="contact__cardLabel">Email me</span>
+                    <span class="contact__cardValue">ishmeet.purva@gmail.com</span>
+                  </div>
+                  <span class="contact__cardArrow">↗</span>
+                </a>
+                <a class="contact__card" href="https://www.linkedin.com/in/ishmeet-k-671a3198" target="_blank" rel="noreferrer">
+                  <div class="contact__cardIcon">
+                    <img src="Icons/Linkedin--Streamline-Font-Awesome.svg" alt="">
+                  </div>
+                  <div class="contact__cardInfo">
+                    <span class="contact__cardLabel">LinkedIn</span>
+                    <span class="contact__cardValue">ishmeet-k-671a3198</span>
+                  </div>
+                  <span class="contact__cardArrow">↗</span>
+                </a>
+                <a class="contact__card" href="https://behance.net/IshmeetKaur" target="_blank" rel="noreferrer">
+                  <div class="contact__cardIcon">
+                    <img src="Icons/Behance--Streamline-Simple-Icons.svg" alt="">
+                  </div>
+                  <div class="contact__cardInfo">
+                    <span class="contact__cardLabel">Behance</span>
+                    <span class="contact__cardValue">behance.net/IshmeetKaur</span>
+                  </div>
+                  <span class="contact__cardArrow">↗</span>
+                </a>
+              </div>
             </div>
 
-            <div class="form__group">
-              <label for="email" class="form__label">Email</label>
-              <input type="email" id="email" name="email" class="form__input" required placeholder="your@email.com" aria-describedby="email-error">
-              <span class="form__error" id="email-error" role="alert"></span>
+            <!-- RIGHT: Form -->
+            <div class="contact__right">
+              <form class="contact__form" action="https://formspree.io/f/mnqoedrz" method="POST" aria-label="Contact form" novalidate>
+                <input type="text" id="name" name="name" class="form__input" required placeholder="Name" aria-describedby="name-error">
+                <span class="form__error" id="name-error" role="alert"></span>
+
+                <input type="email" id="email" name="email" class="form__input" required placeholder="Email" aria-describedby="email-error">
+                <span class="form__error" id="email-error" role="alert"></span>
+
+                <textarea id="message" name="message" class="form__textarea" rows="8" required placeholder="Message" aria-describedby="message-error"></textarea>
+                <span class="form__error" id="message-error" role="alert"></span>
+
+                <button type="submit" class="form__submit">Send message</button>
+                <p class="form__success" hidden>Thanks! I’ll get back to you soon. ✿</p>
+              </form>
             </div>
 
-            <div class="form__group">
-              <label for="message" class="form__label">Message</label>
-              <textarea id="message" name="message" class="form__textarea" rows="5" required placeholder="Tell me about your project..." aria-describedby="message-error"></textarea>
-              <span class="form__error" id="message-error" role="alert"></span>
+          </div><!-- /contact__layout -->
+
+          <!-- RATING -->
+          <div class="ratingBlock reveal">
+            <div class="emojiRating" role="group" aria-label="Rate this portfolio">
+              <button class="emojiBtn" type="button" data-value="1" aria-label="Rate 1: Terrible"><span class="emoji" aria-hidden="true">😔</span></button>
+              <button class="emojiBtn" type="button" data-value="2" aria-label="Rate 2: Poor"><span class="emoji" aria-hidden="true">😕</span></button>
+              <button class="emojiBtn" type="button" data-value="3" aria-label="Rate 3: Okay"><span class="emoji" aria-hidden="true">😐</span></button>
+              <button class="emojiBtn" type="button" data-value="4" aria-label="Rate 4: Good"><span class="emoji" aria-hidden="true">🙂</span></button>
+              <button class="emojiBtn" type="button" data-value="5" aria-label="Rate 5: Amazing"><span class="emoji" aria-hidden="true">😍</span></button>
             </div>
+            <div class="ratingLabel" aria-live="polite">
+              <span class="labelBase is-visible">How’d you find this website? Please rate</span>
+              <span class="labelText" data-value="1">Terrible</span>
+              <span class="labelText" data-value="2">Poor</span>
+              <span class="labelText" data-value="3">Okay</span>
+              <span class="labelText" data-value="4">Good</span>
+              <span class="labelText" data-value="5">Amazing</span>
+            </div>
+            <p class="ratingTiny" hidden>Thanks! ✿</p>
+          </div><!-- /ratingBlock -->
 
-            <button type="submit" class="form__submit">Send message</button>
-            <p class="form__success" hidden>Thanks! I'll get back to you soon. ✿</p>
-          </form>
-
-<!-- RATING (end of page) -->
-  <div class="ratingBlock reveal">
-    <div class="emojiRating" role="group" aria-label="Rate this portfolio">
-      <button class="emojiBtn" type="button" data-value="1" aria-label="Rate 1: Terrible">
-        <span class="emoji" aria-hidden="true">😔</span>
-      </button>
-      <button class="emojiBtn" type="button" data-value="2" aria-label="Rate 2: Poor">
-        <span class="emoji" aria-hidden="true">😕</span>
-      </button>
-      <button class="emojiBtn" type="button" data-value="3" aria-label="Rate 3: Okay">
-        <span class="emoji" aria-hidden="true">😐</span>
-      </button>
-      <button class="emojiBtn" type="button" data-value="4" aria-label="Rate 4: Good">
-        <span class="emoji" aria-hidden="true">🙂</span>
-      </button>
-      <button class="emojiBtn" type="button" data-value="5" aria-label="Rate 5: Amazing">
-        <span class="emoji" aria-hidden="true">😍</span>
-      </button>
-    </div>
-    <div class="ratingLabel" aria-live="polite">
-      <span class="labelBase is-visible">How'd you find this website? Please rate</span>
-      <span class="labelText" data-value="1">Terrible</span>
-      <span class="labelText" data-value="2">Poor</span>
-      <span class="labelText" data-value="3">Okay</span>
-      <span class="labelText" data-value="4">Good</span>
-      <span class="labelText" data-value="5">Amazing</span>
-    </div>
-    <p class="ratingTiny" hidden>Thanks! ✿</p>
-    <div class="contact__actions iconActions">
-      <a class="iconBtn iconBtn--mail" href="mailto:ishmeet.purva@gmail.com" aria-label="Email">
-        <img class="iconImg" src="Icons/mail_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="Send e-Mail">
-      </a>
-      <a class="iconBtn iconBtn--linkedin" href="https://www.linkedin.com/in/ishmeet-k-671a3198" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-        <img class="iconImg" src="Icons/Linkedin--Streamline-Font-Awesome.svg" alt="LinkedIn">
-      </a>
-      <a class="iconBtn iconBtn--behance" href="https://behance.net/IshmeetKaur" target="_blank" rel="noreferrer" aria-label="Behance">
-        <img class="iconImg" src="Icons/Behance--Streamline-Simple-Icons.svg" alt="Behance">
-      </a>
-    </div>
-  </div><!-- /ratingBlock -->
         </div><!-- /contact__inner -->
 
-  <div class="contact__tiny">
-      <span>© <span id="year"></span> Ishmeet Kaur</span>
-      <div style="display:flex; align-items:center; gap:16px;">
-        <a href="mailto:ishmeet.purva@gmail.com" aria-label="Email" class="textLink">✉</a>
-        <a href="https://www.linkedin.com/in/ishmeet-k-671a3198" target="_blank" rel="noreferrer" aria-label="LinkedIn" class="textLink" style="font-size:0.7rem; font-weight:700; letter-spacing:0.08em;">in</a>
-        <span class="dot" aria-hidden="true">•</span>
-        <a class="textLink" href="#top">Back to top ↑</a>
-      </div>
-  </div>
 </section>
 
           </main>

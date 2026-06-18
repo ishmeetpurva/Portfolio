@@ -21,7 +21,7 @@
     document.addEventListener("mouseleave", () => cursor.classList.add("is-hidden"));
     document.addEventListener("mouseenter", () => cursor.classList.remove("is-hidden"));
   
-    const hoverSel = "a, button, .playCard, .csHero, .csCard, .emojiBtn, .tSplit__grid, .iconBtn, .highlight3, select";
+    const hoverSel = "a, button, .playCard, .csHero, .csCard, .tSplit__grid, .iconBtn, .highlight3, select";
     document.addEventListener("mouseover", (e) => { if (e.target.closest(hoverSel)) cursor.classList.add("is-hover"); });
     document.addEventListener("mouseout",  (e) => { if (e.target.closest(hoverSel)) cursor.classList.remove("is-hover"); });
 
