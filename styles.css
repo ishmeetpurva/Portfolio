@@ -1662,10 +1662,8 @@
   }
 
   .contact__layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
+    display: block;
+    max-width: 560px;
   }
 
   /* Left column */
@@ -1960,12 +1958,12 @@
   }
 
   .emojiBtn {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 1.5px solid var(--line);
-    background: var(--white);
-    font-size: 1.1rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.05);
+    font-size: 1.3rem;
     display: grid;
     place-items: center;
     transition: transform 0.2s var(--ease-expo);
@@ -1974,8 +1972,8 @@
   .emojiBtn:hover,
   .emojiBtn.is-active {
     transform: scale(1.25) translateY(-2px);
-    background: var(--white);
-    border-color: var(--line);
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.1);
   }
 
   .ratingLabel {
