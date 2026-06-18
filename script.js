@@ -90,8 +90,12 @@
         .map((a) => document.getElementById(a.dataset.section))
         .filter(Boolean);
   
+      const darkSections = ['love-notes', 'contact'];
+      const sideNav = document.querySelector('.sideNav');
+
       const setActive = (id) => {
         items.forEach((a) => a.classList.toggle("is-active", a.dataset.section === id));
+        if (sideNav) sideNav.classList.toggle('is-dark', darkSections.includes(id));
       };
   
       if (!("IntersectionObserver" in window)) {

@@ -307,6 +307,13 @@
      font-weight: 500;
    }
    
+   /* Nav on dark sections */
+   .sideNav.is-dark .sideNav__item { color: rgba(255,255,255,0.45); }
+   .sideNav.is-dark .sideNav__item.is-active,
+   .sideNav.is-dark .sideNav__item:hover { color: rgba(255,255,255,0.95); }
+   .sideNav.is-dark .sideNav__item::before { background: #fff; }
+   .sideNav.is-dark .sideNav__item.is-active::before { box-shadow: 0 0 10px rgba(255,255,255,0.4); }
+
    .sideNav__cta {
      margin-top: 20px;
      padding: 12px 20px;
@@ -1396,15 +1403,20 @@
 .marquee, .marque {
   overflow: hidden;
   padding: 20px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  margin: var(--space-lg) 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
   white-space: nowrap;
+  background: #000;
+}
+
+.marquee {
+  margin-top: var(--space-lg);
 }
 
 .marque {
   border-top: none;
   margin-top: -1px;
+  margin-bottom: 0;
 }
 
 .marquee__track, .marque__track {
@@ -1422,7 +1434,7 @@
 .marque__track span {
   font-size: var(--text-sm);
   font-weight: 500;
-  color: var(--muted2);
+  color: rgba(255,255,255,0.55);
   letter-spacing: 0.06em;
 }
 
@@ -1434,6 +1446,33 @@
 /* =============================================
    15. TESTIMONIALS
    ============================================= */
+
+/* Love-notes section — dark */
+#love-notes {
+  background: #000;
+}
+#love-notes .sectionHead h2 { color: rgba(255,255,255,0.95); }
+#love-notes .sectionHead p  { color: rgba(255,255,255,0.5); }
+
+#love-notes .tSplit {
+  border-color: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.04);
+}
+#love-notes .tSplit__line,
+#love-notes .tSplit__authorLine { background: rgba(255,255,255,0.15); }
+#love-notes .tSplit__company   { color: rgba(255,255,255,0.45); }
+#love-notes .tSplit__quote     { color: rgba(255,255,255,0.9); }
+#love-notes .tSplit__name      { color: rgba(255,255,255,0.9); }
+#love-notes .tSplit__role      { color: rgba(255,255,255,0.45); }
+#love-notes .tSplit__right     { background: rgba(255,255,255,0.06); }
+#love-notes .tSplit__card      { border-color: rgba(255,255,255,0.15); }
+#love-notes .tSplit__navBtn    { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.75); background: transparent; }
+#love-notes .tSplit__navBtn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); color: #fff; }
+#love-notes .tSplit__counter   { color: rgba(255,255,255,0.45); }
+#love-notes .tSplit__dots      { border-top-color: rgba(255,255,255,0.1); }
+#love-notes .tDot              { background: rgba(255,255,255,0.2); }
+#love-notes .tDot.is-active    { background: #fff; }
+
    .tSplit {
     border-radius: var(--radius-xl);
     border: 1px solid var(--line);
