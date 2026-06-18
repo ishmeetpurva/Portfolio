@@ -307,11 +307,15 @@
      font-weight: 500;
    }
    
-   /* Nav on dark sections — wrap in a solid black pill over the white body bg */
+   /* Nav on dark sections — full-height black left panel */
    .sideNav.is-dark {
      background: #000;
-     border-radius: 14px;
-     padding: 16px 16px 16px 20px;
+     top: 0;
+     transform: none;
+     height: 100vh;
+     border-radius: 0;
+     padding: 0 0 0 28px;
+     justify-content: center;
    }
    .sideNav.is-dark .sideNav__item { color: rgba(255,255,255,0.45); }
    .sideNav.is-dark .sideNav__item.is-active,
@@ -1667,10 +1671,10 @@
 
   .contact__bgVideo {
     position: absolute;
-    bottom: -40px;
-    right: -40px;
-    width: 320px;
-    height: 320px;
+    bottom: -80px;
+    right: -80px;
+    width: 640px;
+    height: 640px;
     object-fit: cover;
     z-index: 0;
     pointer-events: none;
