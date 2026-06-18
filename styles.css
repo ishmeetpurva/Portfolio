@@ -249,15 +249,21 @@
    .sideNav {
      position: fixed;
      top: 50%;
-     left: 0;
+     left: 16px;
      transform: translateY(-50%);
      z-index: 100;
      width: var(--sideNav-w);
-     padding: 0 0 0 28px;
+     padding: 20px 16px;
      display: flex;
      flex-direction: column;
      justify-content: center;
      gap: 4px;
+     background: rgba(255,255,255,0.3);
+     backdrop-filter: blur(50px);
+     -webkit-backdrop-filter: blur(50px);
+     border-radius: 16px;
+     border: 1px solid rgba(0,0,0,0.1);
+     box-shadow: inset 0px 4px 4px 0px rgba(255,255,255,0.25);
    }
    
    .sideNav__stack {
@@ -299,7 +305,7 @@
 
    .sideNav__item.is-active::before {
      height: 100%;
-     box-shadow: 0 0 10px rgba(255, 97, 248, 0.4);
+     box-shadow: 0 0 10px rgba(0, 132, 255, 0.4);
    }
    
    .sideNav__label {
@@ -461,30 +467,36 @@
      padding: 0;
      position: relative;
      overflow: hidden;
-     background: var(--ink);
-   }
-
-   .hero .hero__copy h1,
-   .hero .hero__copy p {
-     color: rgba(255,255,255,0.9);
-   }
-
-   .hero .pill {
-     background: rgba(255,255,255,0.07);
-     border-color: rgba(255,255,255,0.2);
-     color: rgba(255,255,255,0.8);
-   }
-
-   .hero .hero__cta {
-     color: var(--white);
-     border-color: rgba(255,255,255,0.6);
-   }
-
-   .hero .hero__cta:hover {
      background: var(--white);
-     color: var(--ink);
-     border-color: var(--white);
    }
+
+   /* Layered glow blobs — top-left */
+   .hero__glow {
+     position: absolute;
+     border-radius: 50%;
+     pointer-events: none;
+     z-index: 0;
+   }
+   .hero__glow--1 {
+     width: 640px;
+     height: 640px;
+     top: -220px;
+     left: -220px;
+     background: #60B1FF;
+     filter: blur(110px);
+     opacity: 0.38;
+   }
+   .hero__glow--2 {
+     width: 420px;
+     height: 420px;
+     top: 40px;
+     left: -60px;
+     background: #319AFF;
+     filter: blur(80px);
+     opacity: 0.28;
+   }
+
+   .hero__grid { position: relative; z-index: 1; }
    
    .hero__grid {
      display: grid;
@@ -587,14 +599,13 @@
    .heroBlob {
      position: relative;
      width: 100%;
-     max-width: 220px;
+     max-width: 380px;
      margin: 0 auto;
      z-index: 1;
      pointer-events: all;
      cursor: none;
    }
 
-   /* Orb video: screen blend on dark bg hides all dark pixels, pure glow only */
    .heroOrb {
      position: absolute;
      top: 50%;
@@ -604,7 +615,7 @@
      height: 100%;
      object-fit: cover;
      mix-blend-mode: screen;
-     filter: hue-rotate(35deg) saturate(300%) brightness(1.1) contrast(1.0);
+     filter: hue-rotate(-55deg) saturate(250%) brightness(1.2) contrast(1.1);
      pointer-events: none;
      z-index: 0;
      border-radius: 50%;
@@ -618,13 +629,9 @@
      overflow: visible;
    }
 
-   /* Photo: hidden by default, fades in on hover */
    .blobPhoto {
-     opacity: 0;
-     transition: opacity 0.5s ease;
+     opacity: 1;
    }
-
-   .heroBlob:hover .blobPhoto { opacity: 1; }
 
    .heroBlob__outline {
      fill: none;
