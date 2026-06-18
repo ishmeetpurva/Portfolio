@@ -1627,7 +1627,7 @@
     z-index: 0;
     pointer-events: none;
     transform: scale(1.25);
-    mix-blend-mode: screen;
+    opacity: 0.18;
     filter: hue-rotate(-55deg) saturate(250%) brightness(1.2) contrast(1.1);
   }
 
