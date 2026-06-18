@@ -1672,10 +1672,10 @@
 
   .contact__bgVideo {
     position: absolute;
-    bottom: -120px;
-    right: -120px;
-    width: 900px;
-    height: 900px;
+    bottom: -100px;
+    right: -100px;
+    width: 750px;
+    height: 750px;
     object-fit: cover;
     z-index: 0;
     pointer-events: none;
