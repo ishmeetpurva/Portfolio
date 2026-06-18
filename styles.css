@@ -89,6 +89,7 @@
      scroll-behavior: smooth;
      -webkit-font-smoothing: antialiased;
      -moz-osx-font-smoothing: grayscale;
+     background: #000;
    }
    
    body {
@@ -1663,7 +1664,7 @@
   .contact {
     position: relative;
     overflow: hidden;
-    padding: var(--space-2xl) 0 0;
+    padding: var(--space-2xl) 0 var(--space-2xl);
     text-align: center;
     transition: background 0.5s var(--ease-expo);
     background: #000000;
@@ -1671,10 +1672,10 @@
 
   .contact__bgVideo {
     position: absolute;
-    bottom: -80px;
-    right: -80px;
-    width: 640px;
-    height: 640px;
+    bottom: -120px;
+    right: -120px;
+    width: 900px;
+    height: 900px;
     object-fit: cover;
     z-index: 0;
     pointer-events: none;
@@ -1717,8 +1718,8 @@
   }
   .contact .emojiBtn:hover,
   .contact .emojiBtn.is-active {
-    background: rgba(255,255,255,0.15);
-    border-color: rgba(255,255,255,0.4);
+    transform: scale(1.2) translateY(-2px);
+    opacity: 1;
   }
 
   .contact .iconBtn {
@@ -1906,9 +1907,7 @@
 
   .emojiBtn:hover,
   .emojiBtn.is-active {
-    border-color: var(--ink);
-    transform: scale(1.1) translateY(-2px);
-    box-shadow: 0 0 16px rgba(0, 132, 255, 0.25), 0 8px 24px rgba(0,0,0,0.1);
+    transform: scale(1.2) translateY(-2px);
     opacity: 1;
   }
 
