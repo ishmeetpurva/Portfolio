@@ -21,7 +21,7 @@
      --white:    #ffffff;
    
      /* Neon accents — decorative use only */
-     --neon-magenta: #FF61F8;
+     --neon-magenta: rgba(0,132,255,0.8);
      --dark-plum:    #810B38;
    
      /* Glass effects — dark backgrounds only */
@@ -2454,7 +2454,7 @@ html[data-theme="light"] {
   --line:     #e8e8e8;
   --surface:  #fafaf8;
   --white:    #ffffff;
-  --neon-magenta: #FF61F8;
+  --neon-magenta: rgba(0,132,255,0.8);
   --dark-plum:    #810B38;
   --orb-primary:       #0f0f0f;
   --orb-marker-strong: #d0d0d0;
