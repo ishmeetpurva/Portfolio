@@ -307,12 +307,20 @@
      font-weight: 500;
    }
    
-   /* Nav on dark sections */
+   /* Nav on dark sections — wrap in a dark pill so it stays readable over white body bg */
+   .sideNav.is-dark {
+     background: rgba(15,15,15,0.85);
+     backdrop-filter: blur(12px);
+     -webkit-backdrop-filter: blur(12px);
+     border-radius: 14px;
+     padding: 16px 16px 16px 20px;
+   }
    .sideNav.is-dark .sideNav__item { color: rgba(255,255,255,0.45); }
    .sideNav.is-dark .sideNav__item.is-active,
    .sideNav.is-dark .sideNav__item:hover { color: rgba(255,255,255,0.95); }
    .sideNav.is-dark .sideNav__item::before { background: #fff; }
    .sideNav.is-dark .sideNav__item.is-active::before { box-shadow: 0 0 10px rgba(255,255,255,0.4); }
+   .sideNav.is-dark .sideNav__cta { background: #fff; color: var(--ink); }
 
    .sideNav__cta {
      margin-top: 20px;
