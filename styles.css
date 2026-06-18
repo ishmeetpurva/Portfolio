@@ -194,7 +194,7 @@
    }
 
    .emojiBtn:focus-visible {
-     box-shadow: 0 0 0 3px rgba(255, 97, 248, 0.3);
+     box-shadow: 0 0 0 3px rgba(0, 132, 255, 0.3);
      outline: none;
    }
 
@@ -537,7 +537,7 @@
    .hero__cta:hover {
      background: var(--ink);
      color: var(--white);
-     box-shadow: 0 0 24px rgba(255, 97, 248, 0.3), 0 8px 24px rgba(0, 0, 0, 0.15);
+     box-shadow: 0 0 24px rgba(0, 132, 255, 0.3), 0 8px 24px rgba(0, 0, 0, 0.15);
      position: relative;
      z-index: 10;
    }
@@ -696,7 +696,7 @@
 .workFilter:hover {
   border-color: var(--ink);
   color: var(--ink);
-  box-shadow: 0 0 16px rgba(255, 97, 248, 0.2);
+  box-shadow: 0 0 16px rgba(0, 132, 255, 0.2);
 }
 
 .workFilter.is-active {
@@ -1034,7 +1034,7 @@
 
 .philosophy-card:hover {
   border-color: var(--neon-magenta);
-  box-shadow: 0 0 20px rgba(255, 97, 248, 0.12);
+  box-shadow: 0 0 20px rgba(0, 132, 255, 0.12);
   transform: translateY(-3px);
 }
 
@@ -1147,7 +1147,7 @@
 .playDribbbleBtn:hover {
   background: var(--ink);
   color: var(--white);
-  box-shadow: 0 0 20px rgba(255, 97, 248, 0.25);
+  box-shadow: 0 0 20px rgba(0, 132, 255, 0.25);
   transform: translateY(-2px);
 }
 
@@ -1198,7 +1198,7 @@
 .js .playCard--new { opacity: 0; }
 
 .playCard--new:hover {
-  box-shadow: 0 0 30px rgba(255, 97, 248, 0.3), 0 24px 60px rgba(0,0,0,0.2);
+  box-shadow: 0 0 30px rgba(0, 132, 255, 0.3), 0 24px 60px rgba(0,0,0,0.2);
 }
 
 .playCard--new img {
@@ -1716,7 +1716,7 @@
   .form__submit:hover {
     background: #333;
     border-color: #333;
-    box-shadow: 0 0 20px rgba(255, 97, 248, 0.25), 0 6px 20px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 0 20px rgba(0, 132, 255, 0.25), 0 6px 20px rgba(0, 0, 0, 0.12);
     transform: translateY(-1px);
   }
   
@@ -1809,7 +1809,7 @@
   .emojiBtn.is-active {
     border-color: var(--ink);
     transform: scale(1.1) translateY(-2px);
-    box-shadow: 0 0 16px rgba(255, 97, 248, 0.25), 0 8px 24px rgba(0,0,0,0.1);
+    box-shadow: 0 0 16px rgba(0, 132, 255, 0.25), 0 8px 24px rgba(0,0,0,0.1);
     opacity: 1;
   }
 
@@ -1863,7 +1863,7 @@
     background: var(--ink);
     border-color: var(--ink);
     transform: translateY(-3px);
-    box-shadow: 0 0 16px rgba(255, 97, 248, 0.2), 0 10px 30px rgba(0,0,0,0.12);
+    box-shadow: 0 0 16px rgba(0, 132, 255, 0.2), 0 10px 30px rgba(0,0,0,0.12);
   }
   
   .iconImg {
@@ -2003,7 +2003,7 @@
 
 .workCard:hover {
   transform: translateY(-6px);
-  box-shadow: 0 0 16px rgba(255, 97, 248, 0.15), 0 20px 48px rgba(0,0,0,0.10);
+  box-shadow: 0 0 16px rgba(0, 132, 255, 0.15), 0 20px 48px rgba(0,0,0,0.10);
 }
 
 /* Image area */
@@ -2401,7 +2401,7 @@ button:focus:not(:focus-visible) {
 
 .themeToggle:hover {
   border-color: var(--neon-magenta);
-  box-shadow: 0 0 16px rgba(255, 97, 248, 0.25), 0 4px 16px rgba(0,0,0,0.12);
+  box-shadow: 0 0 16px rgba(0, 132, 255, 0.25), 0 4px 16px rgba(0,0,0,0.12);
   transform: translateY(-2px);
 }
 
