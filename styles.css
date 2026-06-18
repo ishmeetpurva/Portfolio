@@ -249,21 +249,15 @@
    .sideNav {
      position: fixed;
      top: 50%;
-     left: 16px;
+     left: 0;
      transform: translateY(-50%);
      z-index: 100;
      width: var(--sideNav-w);
-     padding: 20px 16px;
+     padding: 0 0 0 28px;
      display: flex;
      flex-direction: column;
      justify-content: center;
      gap: 4px;
-     background: rgba(255,255,255,0.3);
-     backdrop-filter: blur(50px);
-     -webkit-backdrop-filter: blur(50px);
-     border-radius: 16px;
-     border: 1px solid rgba(0,0,0,0.1);
-     box-shadow: inset 0px 4px 4px 0px rgba(255,255,255,0.25);
    }
    
    .sideNav__stack {
@@ -470,32 +464,6 @@
      background: var(--white);
    }
 
-   /* Layered glow blobs — top-left */
-   .hero__glow {
-     position: absolute;
-     border-radius: 50%;
-     pointer-events: none;
-     z-index: 0;
-   }
-   .hero__glow--1 {
-     width: 640px;
-     height: 640px;
-     top: -220px;
-     left: -220px;
-     background: #60B1FF;
-     filter: blur(110px);
-     opacity: 0.38;
-   }
-   .hero__glow--2 {
-     width: 420px;
-     height: 420px;
-     top: 40px;
-     left: -60px;
-     background: #319AFF;
-     filter: blur(80px);
-     opacity: 0.28;
-   }
-
    .hero__grid { position: relative; z-index: 1; }
    
    .hero__grid {
@@ -630,8 +598,11 @@
    }
 
    .blobPhoto {
-     opacity: 1;
+     opacity: 0;
+     transition: opacity 0.5s ease;
    }
+
+   .heroBlob:hover .blobPhoto { opacity: 1; }
 
    .heroBlob__outline {
      fill: none;
