@@ -2529,6 +2529,13 @@ button:focus:not(:focus-visible) {
   .hero__grid         { grid-template-columns: 1fr; gap: 32px; }
   .hero__copy h1      { font-size: clamp(2.2rem, 8vw, 3.5rem); max-width: 100%; }
   .heroBlob           { max-width: 260px; }
+  /* iOS Safari ignores mix-blend-mode on <video>, so the orb's black bg
+     shows as a ring. Mask the orb's outer edge to transparent — geometric,
+     works regardless of blend support. */
+  .heroOrb {
+    -webkit-mask-image: radial-gradient(circle, #000 50%, transparent 70%);
+    mask-image: radial-gradient(circle, #000 50%, transparent 70%);
+  }
   .section            { padding: var(--space-xl) 0; }
   .section--alt       { margin: var(--space-md) 16px; }
   .workRow            { grid-template-columns: 32px 1fr auto; gap: 16px; }
