@@ -622,8 +622,9 @@
 
    .heroBlob:hover .blobPhoto { opacity: 1; }
 
-/* blobPhoto shown on touch via JS (.touch-device class on <html>) */
-html.touch-device .blobPhoto { opacity: 1; }
+/* On touch devices there's no hover, so the photo reveals on tap (JS toggles
+   .is-revealed on the blob). */
+.heroBlob.is-revealed .blobPhoto { opacity: 1; }
 
 /* iOS mobile only: iOS Safari can't blend the orb video's black background
    away, so it shows as a black halo. Make the hero background black so that
@@ -2536,7 +2537,7 @@ button:focus:not(:focus-visible) {
   .sideNav            { display: none; }
   .pageWithSideNav    { margin-left: 0; }
   .container          { padding: 0 24px; }
-  .hero               { padding: var(--padding-2xl) 0 var(--padding-lg); min-height: auto; }
+  .hero               { padding: var(--padding-2xl) 0 var(--padding-lg); min-height: 92svh; }
   .hero__grid         { grid-template-columns: 1fr; gap: 32px; }
   .hero__copy h1      { font-size: clamp(2.2rem, 8vw, 3.5rem); max-width: 100%; }
   .heroBlob           { max-width: 260px; }

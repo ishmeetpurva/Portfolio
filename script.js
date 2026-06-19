@@ -39,9 +39,15 @@
   document.addEventListener("DOMContentLoaded", () => {
     document.documentElement.classList.add("js");
 
-    // Show hero photo on touch / non-hover devices
+    // On touch / non-hover devices, reveal the hero photo on tap (toggle)
     if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
       document.documentElement.classList.add("touch-device");
+      const heroBlob = document.querySelector(".heroBlob");
+      if (heroBlob) {
+        heroBlob.addEventListener("click", () => {
+          heroBlob.classList.toggle("is-revealed");
+        });
+      }
     }
 
     // iOS detection — iOS Safari ignores mix-blend-mode on <video>, so the
