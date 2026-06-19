@@ -89,7 +89,7 @@
      scroll-behavior: smooth;
      -webkit-font-smoothing: antialiased;
      -moz-osx-font-smoothing: grayscale;
-     background: #000;
+     background: var(--white);
    }
    
    body {
@@ -622,9 +622,8 @@
 
    .heroBlob:hover .blobPhoto { opacity: 1; }
 
-@media (hover: none) {
-  .blobPhoto { opacity: 1; }
-}
+/* blobPhoto shown on touch via JS (.touch-device class on <html>) */
+html.touch-device .blobPhoto { opacity: 1; }
 
    .heroBlob__outline {
      fill: none;
@@ -2411,6 +2410,18 @@
   }
 }
 
+@media (max-width: 768px) {
+  .workFilters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .workFilters::-webkit-scrollbar { display: none; }
+  .workFilter { flex-shrink: 0; }
+}
+
 /* =============================================
    21. ACCESSIBILITY — FOCUS & MOTION
    ============================================= */
@@ -2534,6 +2545,7 @@ button:focus:not(:focus-visible) {
   .contact            { padding: var(--space-xl) 0; }
   .cs-herocontent     { grid-template-columns: 1fr; }
   .contact__bgVideo   { width: 340px; height: 340px; right: -120px; top: auto; bottom: -60px; transform: none; }
+  .section            { padding: 56px 0; margin-top: 24px; }
 }
 
 /* =============================================

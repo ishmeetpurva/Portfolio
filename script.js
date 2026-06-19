@@ -38,6 +38,11 @@
   
   document.addEventListener("DOMContentLoaded", () => {
     document.documentElement.classList.add("js");
+
+    // Show hero photo on touch / non-hover devices
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      document.documentElement.classList.add("touch-device");
+    }
   
     // ===== Footer year =====
     const yearEl = document.getElementById("year");
