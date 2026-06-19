@@ -43,6 +43,17 @@
     if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
       document.documentElement.classList.add("touch-device");
     }
+
+    // iOS detection — iOS Safari ignores mix-blend-mode on <video>, so the
+    // hero orb's black background can't be knocked out. We give the hero a
+    // black background on iOS so that black blends in (see styles.css).
+    const isIOS =
+      /iP(hone|od|ad)/.test(navigator.platform) ||
+      /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+      (navigator.userAgent.includes("Mac") && "ontouchend" in document);
+    if (isIOS) {
+      document.documentElement.classList.add("ios");
+    }
   
     // ===== Footer year =====
     const yearEl = document.getElementById("year");
