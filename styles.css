@@ -623,7 +623,7 @@
    .heroBlob:hover .blobPhoto { opacity: 1; }
 
 /* blobPhoto shown on touch via JS (.touch-device class on <html>) */
-html.touch-device .blobPhoto { opacity: 1; }
+html.touch-device .blobPhoto { opacity: 1; mix-blend-mode: screen; }
 
    .heroBlob__outline {
      fill: none;
