@@ -336,6 +336,8 @@
       return b;
     });
   
+    const counterEl = document.getElementById("tCounter");
+
     function paint(index) {
       const t = testimonials[index];
       quoteEl.textContent   = t.quote;
@@ -344,6 +346,7 @@
       companyEl.textContent = t.company;
       if (imgEl) { imgEl.src = t.image; imgEl.alt = t.name; }
       dots.forEach((d, i) => d.classList.toggle("is-active", i === index));
+      if (counterEl) counterEl.textContent = `${index + 1} of ${testimonials.length}`;
     }
   
     function goTo(nextIndex) {
@@ -388,23 +391,6 @@
       }
     });
     
-    // Update counter in paint function - insert before paint(0)
-    const originalPaint = window.paintTestimonial || null;
-    
-    // Update counter when painting
-    const counterEl = document.getElementById("tCounter");
-    const updateCounter = (index) => {
-      if (counterEl) counterEl.textContent = `${index + 1} of ${testimonials.length}`;
-    };
-    
-    // Hook into goTo to update counter
-    const origGoTo = goTo;
-    window.goTo = function(nextIndex) {
-      origGoTo(nextIndex);
-      setTimeout(() => updateCounter(nextIndex), 0);
-    };
-  
-    updateCounter(0);
     paint(0);
   })();
   
@@ -817,6 +803,37 @@
   }
 })();
 
+
+// ===== Mobile nav =====
+(function () {
+  const btn     = document.getElementById("mobileNavBtn");
+  const overlay = document.getElementById("mobileNavOverlay");
+  if (!btn || !overlay) return;
+
+  function open() {
+    btn.classList.add("is-open");
+    overlay.classList.add("is-open");
+    btn.setAttribute("aria-expanded", "true");
+    overlay.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  function close() {
+    btn.classList.remove("is-open");
+    overlay.classList.remove("is-open");
+    btn.setAttribute("aria-expanded", "false");
+    overlay.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+
+  btn.addEventListener("click", () => btn.classList.contains("is-open") ? close() : open());
+
+  overlay.querySelectorAll(".mobileNavLink").forEach(link => {
+    link.addEventListener("click", close);
+  });
+
+  document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+})();
 
 /* =============================================
    DARK / LIGHT THEME TOGGLE

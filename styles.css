@@ -622,6 +622,10 @@
 
    .heroBlob:hover .blobPhoto { opacity: 1; }
 
+@media (hover: none) {
+  .blobPhoto { opacity: 1; }
+}
+
    .heroBlob__outline {
      fill: none;
      stroke: none;
@@ -708,6 +712,7 @@
   text-transform: uppercase;
   color: var(--muted2);
   background: transparent;
+  cursor: pointer;
   transition: all 0.2s ease;
 }
 
@@ -1023,6 +1028,8 @@
   .about__values {
     grid-template-columns: 1fr 1fr;
   }
+  .about__stats { gap: 16px; }
+  .about__statLabel { letter-spacing: 0.04em; }
 }
 
 /* =============================================
@@ -2093,34 +2100,6 @@
    WORK GRID — 2-column card layout
 ═══════════════════════════════════════════ */
 
-/* Filter bar */
-.workFilters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.workFilter {
-  font-size: var(--text-xs, 0.75rem);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 6px 16px;
-  border-radius: 999px;
-  border: 1.5px solid var(--line, #e0e0e0);
-  background: transparent;
-  color: var(--muted2, #888);
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
-}
-
-.workFilter.is-active,
-.workFilter:hover {
-  background: var(--ink, #111);
-  color: var(--bg, #fff);
-  border-color: var(--ink, #111);
-}
-
 /* Sort bar */
 .workSort {
   display: flex;
@@ -2554,11 +2533,115 @@ button:focus:not(:focus-visible) {
   .media-grid--three  { grid-template-columns: 1fr; }
   .contact            { padding: var(--space-xl) 0; }
   .cs-herocontent     { grid-template-columns: 1fr; }
+  .contact__bgVideo   { width: 340px; height: 340px; right: -120px; top: auto; bottom: -60px; transform: none; }
 }
 
 /* =============================================
    23. DARK MODE SUPPORT (disabled — site is light-only)
    ============================================= */
+
+/* =============================================
+   MOBILE NAVIGATION
+   ============================================= */
+.mobileNavBtn {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 9500;
+  width: 44px;
+  height: 44px;
+  background: var(--white);
+  border: 1.5px solid var(--line);
+  border-radius: 50%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.mobileNavBtn span {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.mobileNavBtn.is-open { background: var(--ink); border-color: var(--ink); }
+.mobileNavBtn.is-open span { background: var(--white); }
+.mobileNavBtn.is-open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+.mobileNavBtn.is-open span:nth-child(2) { opacity: 0; }
+.mobileNavBtn.is-open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+
+@media (max-width: 768px) {
+  .mobileNavBtn { display: flex; }
+}
+
+.mobileNavOverlay {
+  position: fixed;
+  inset: 0;
+  background: var(--white);
+  z-index: 9400;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.mobileNavOverlay.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobileNavLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.mobileNavLink {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 9vw, 3.2rem);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.15;
+  padding: 8px 0;
+  text-align: center;
+  letter-spacing: -0.02em;
+  transition: color 0.2s ease;
+  display: block;
+}
+
+.mobileNavLink:hover { color: var(--muted); }
+
+.mobileNavLink--cta {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-top: 28px;
+  padding: 12px 32px;
+  background: var(--ink);
+  color: var(--white) !important;
+  border-radius: 100px;
+  line-height: 1;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.mobileNavLink--cta:hover {
+  background: #333;
+  transform: translateY(-2px);
+  color: var(--white) !important;
+}
 
 /* =============================================
    THEME TOGGLE BUTTON
