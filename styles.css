@@ -2537,7 +2537,7 @@ button:focus:not(:focus-visible) {
   .sideNav            { display: none; }
   .pageWithSideNav    { margin-left: 0; }
   .container          { padding: 0 24px; }
-  .hero               { padding: var(--padding-2xl) 0 var(--padding-lg); min-height: 92svh; }
+  .hero               { padding: var(--padding-2xl) 0 var(--padding-lg); min-height: 100svh; align-items: flex-start; }
   .hero__grid         { grid-template-columns: 1fr; gap: 32px; }
   .hero__copy h1      { font-size: clamp(2.2rem, 8vw, 3.5rem); max-width: 100%; }
   .heroBlob           { max-width: 260px; }
@@ -2570,8 +2570,8 @@ button:focus:not(:focus-visible) {
 .mobileNavBtn {
   display: none;
   position: fixed;
-  top: 20px;
-  left: 20px;
+  top: 40px;
+  right: 24px;
   z-index: 9500;
   width: 44px;
   height: 44px;
