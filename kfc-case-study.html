@@ -86,6 +86,30 @@
     <main class="cs-shell cs-main">
       <div class="cs-layout">
         <div class="cs-body">
+          <div class="cs-myRole cs-reveal" style="margin-bottom: var(--space-xl);">
+            <p class="cs-myRole__heading">Team &amp; my contribution</p>
+            <div class="cs-myRole__grid">
+              <div class="cs-myRole__col">
+                <strong>Team</strong>
+                <ul>
+                  <li>Ishmeet Kaur — UX Designer</li>
+                  <li>Gagan Sahni — Lead Designer</li>
+                </ul>
+              </div>
+              <div class="cs-myRole__col">
+                <strong>What I owned</strong>
+                <ul>
+                  <li>All UX research — heuristic evaluation, review analysis, competitive benchmarking</li>
+                  <li>User journey mapping and friction analysis</li>
+                  <li>All wireframes (low-fi → high-fi) across 4 key flows</li>
+                  <li>High-fidelity UI design and prototype</li>
+                  <li>User validation testing with 10 participants</li>
+                  <li>Stakeholder communication with the KFC team</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
           <section id="problem">
             <div class="cs-section-label"><span>Problem</span></div>
             <div class="cs-problemIntro cs-reveal">
@@ -102,24 +126,6 @@
               <p>“Spent 30 mins to select the items and was still not able to place the order.”</p>
               <cite>User feedback</cite>
             </blockquote>
-
-            <div class="cs-problemGrid cs-stagger">
-              <article class="cs-card">
-                <span class="cs-card__number">01</span>
-                <h3>Decision overload</h3>
-                <p>Too many offers, banners, and competing choices made the homepage noisy and hard to act on.</p>
-              </article>
-              <article class="cs-card">
-                <span class="cs-card__number">02</span>
-                <h3>Broken payment flow</h3>
-                <p>Users reported failed transactions, duplicate charges, and low trust in whether the order had gone through.</p>
-              </article>
-              <article class="cs-card">
-                <span class="cs-card__number">03</span>
-                <h3>No reassurance after checkout</h3>
-                <p>Without order tracking or status clarity, users were left anxious about delivery timing and progress.</p>
-              </article>
-            </div>
           </section>
 
           <section id="context">
@@ -133,9 +139,9 @@
 
               <div class="cs-researchStats cs-stagger" aria-label="Research methodology statistics">
                 <div class="cs-researchStat">
-                  <span class="cs-researchStat__number">12</span>
-                  <span class="cs-researchStat__label">User Interviews</span>
-                  <p>In-depth conversations with restaurant employees, regular customers, and lapsed users to understand pain points in the ordering flow.</p>
+                  <span class="cs-researchStat__number">10</span>
+                  <span class="cs-researchStat__label">Heuristics Audited</span>
+                  <p>A structured evaluation of the existing app against Nielsen's 10 usability heuristics, pinpointing where clutter, weak system status, and inconsistency were breaking the ordering journey.</p>
                 </div>
                 <div class="cs-researchStat">
                   <span class="cs-researchStat__number">500+</span>
@@ -159,48 +165,13 @@
                 </figure>
             </div>
 
-            <div class="cs-teamGoalGrid cs-stagger">
-              <aside class="cs-teamCard">
-                <h3>Team</h3>
-                <ol>
-                  <li>Ishmeet Kaur — UX Designer</li>
-                  <li>Gagan Sahni — Lead Designer</li>
-                </ol>
-              </aside>
-
-              <div class="cs-goals">
-                <h3>Project goals</h3>
-                <ul>
-                  <li>✿ Reduce drop-offs between homepage browsing and order placement.</li>
-                  <li>✿ Make the menu and offer ecosystem easier to scan and choose from.</li>
-                  <li>✿ Rebuild trust through clearer payment, tracking, and order-state feedback.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="cs-myRole cs-reveal">
-              <p class="cs-myRole__heading">My contribution</p>
-              <div class="cs-myRole__grid">
-                <div class="cs-myRole__col">
-                  <strong>What I owned</strong>
-                  <ul>
-                    <li>All UX research — heuristic evaluation, review analysis, competitive benchmarking</li>
-                    <li>User journey mapping and friction analysis</li>
-                    <li>All wireframes (low-fi → high-fi) across 4 key flows</li>
-                    <li>High-fidelity UI design and prototype</li>
-                    <li>User validation testing with 10 participants</li>
-                  </ul>
-                </div>
-                <div class="cs-myRole__col">
-                  <strong>Gagan Sahni (Lead Designer)</strong>
-                  <ul>
-                    <li>Strategic product direction and business context</li>
-                    <li>Design critique and iteration feedback</li>
-                    <li>Final sign-off on design decisions</li>
-                    <li>Stakeholder communication with the KFC team</li>
-                  </ul>
-                </div>
-              </div>
+            <div class="cs-goals cs-reveal">
+              <h3>Project goals</h3>
+              <ul>
+                <li>✿ Reduce drop-offs between homepage browsing and order placement.</li>
+                <li>✿ Make the menu and offer ecosystem easier to scan and choose from.</li>
+                <li>✿ Rebuild trust through clearer payment, tracking, and order-state feedback.</li>
+              </ul>
             </div>
 
             <div class="cs-researchMethods cs-reveal">
@@ -214,8 +185,26 @@
             
                   <div class="cs-methodRow__content">
                     <p>
-                      Audit of the old app experience to identify usability issues, inconsistency, clutter, and friction in the ordering journey.
+                      Audit of the old app experience to identify usability issues, inconsistency, clutter, and friction in the ordering journey. Three core issues surfaced:
                     </p>
+
+                    <div class="cs-problemGrid cs-stagger">
+                      <article class="cs-card">
+                        <span class="cs-card__number">01</span>
+                        <h3>Decision overload</h3>
+                        <p>Too many offers, banners, and competing choices made the homepage noisy and hard to act on.</p>
+                      </article>
+                      <article class="cs-card">
+                        <span class="cs-card__number">02</span>
+                        <h3>Broken payment flow</h3>
+                        <p>Failed transactions, duplicate charges, and no clear confirmation of whether the order had gone through.</p>
+                      </article>
+                      <article class="cs-card">
+                        <span class="cs-card__number">03</span>
+                        <h3>No reassurance after checkout</h3>
+                        <p>Without order tracking or status clarity, users were left anxious about delivery timing and progress.</p>
+                      </article>
+                    </div>
 
                     <div class="cs-methodRow__images">
                       <figure class="cs-img">
@@ -362,7 +351,7 @@
                 <div class="cs-step__content">
                   <span class="cs-step__label">Step 1 · Store Selection</span>
                   <h3>Save preferred store for faster re-ordering</h3>
-                  <p>Research revealed that 40% of users were repeat customers who selected the same store each visit, creating unnecessary friction. By surfacing the most-recently-used store and adding a "save" feature, we reduced the perceived effort to get to the menu by 2 taps on average, addressing a major complaint: "Why do I have to search for the same store every time?"</p>
+                  <p>40% of users were repeat customers re-selecting the same store every visit. Surfacing the most-recent store with a one-tap save cut roughly 2 taps to reach the menu.</p>
                 </div>
               </article>
 
@@ -373,7 +362,7 @@
                 <div class="cs-step__content">
                   <span class="cs-step__label">Step 2 · Menu & Customization</span>
                   <h3>Simplify the browsing-to-cart flow with visual hierarchy</h3>
-                  <p>Heuristic evaluation and competitive benchmarking showed that the old menu had 50+ visible items per screen with inconsistent spacing and typography, causing users to "get lost" among options. We implemented a clear visual hierarchy: product image (primary), name (bold), description (secondary), price (prominent). Customization options moved into a separate modal (not inline) to reduce cognitive load. Result: task completion time dropped from 4m 32s to 1m 45s in validation testing.</p>
+                  <p>The old menu crammed 50+ items per screen. A clear hierarchy — image, bold name, prominent price — with customisation moved into a focused modal cut task time from 4m 32s to 1m 45s.</p>
                 </div>
               </article>
 
@@ -384,7 +373,7 @@
                 <div class="cs-step__content">
                   <span class="cs-step__label">Step 3 · Post-Checkout Confidence</span>
                   <h3>Create trust with transparent order states and real-time updates</h3>
-                  <p>Complaint analysis showed 28% of negative reviews mentioned anxiety about delivery: "I didn't know if my order was confirmed." We introduced four clear order states (Confirmed, Preparing, Out for Delivery, Arriving Soon) with visual progress indicators and estimated arrival time. Each state includes reassurance copy ("Your order is being prepared fresh!"). In user validation, 9 out of 10 users completed the post-order flow on first attempt, compared to 3 out of 10 before redesign.</p>
+                  <p>28% of negative reviews mentioned post-payment anxiety. Four clear order states (Confirmed → Preparing → Out for Delivery → Arriving Soon) with live ETAs took first-attempt completion from 3/10 to 9/10.</p>
                 </div>
               </article>
 
@@ -395,7 +384,7 @@
                 <div class="cs-step__content">
                   <span class="cs-step__label">Step 4 · Feedback Loop</span>
                   <h3>Gather insights at the moment of satisfaction</h3>
-                  <p>Post-order surveys were being ignored (3% response rate) because they arrived via email days later. We moved the feedback prompt to the order completion screen with a quick 2-question micro-survey (rating + open comment). This simpler, in-context approach increased response rate to 34%, providing real-time insights into order quality, driver behavior, and app experience to inform future iterations.</p>
+                  <p>Email surveys sent days later were ignored (3% response). Moving a 2-question prompt to the order-complete screen lifted responses to 34%.</p>
                 </div>
               </article>
 
@@ -403,7 +392,7 @@
 
             <div class="cs-metricsSection cs-stagger">
               <h3>Business Impact</h3>
-              <p style="font-size: var(--text-sm); color: var(--muted); margin-top: -32px; margin-bottom: var(--space-lg); max-width: 60ch;">Usability testing figures are from validation sessions with 10 participants. NPS and support ticket data reflect the first 60 days post-launch on the live product.</p>
+              <p style="color: var(--muted2); margin-top: calc(-1 * var(--space-md)); margin-bottom: var(--space-lg); max-width: 62ch;">Usability testing figures are from validation sessions with 10 participants. NPS and support ticket data reflect the first 60 days post-launch on the live product.</p>
               <div class="cs-metricsGrid">
                 <div class="cs-metric">
                   <span class="cs-metric__label">Task Completion Rate</span>
@@ -437,8 +426,8 @@
             </div>
 
             <div class="cs-finalGrid">
-              <div class="cs-finalTall cs-img cs-img-reveal">
-                <img src="Images/case-studies/kfc/All_screens.png" alt="Composite of redesigned KFC screens showing the end-to-end user journey" />
+              <div class="cs-finalTall cs-img cs-img-reveal" style="text-align: center;">
+                <img src="Images/case-studies/kfc/All_screens.png" alt="Composite of redesigned KFC screens showing the end-to-end user journey" style="max-width: 462px; width: 100%; margin: 0 auto;" />
               </div>
             </div>
           </section>
