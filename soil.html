@@ -39,9 +39,16 @@
 
   <div class="pageWithSideNav">
     <header class="cs-shell cs-hero">
+      <div class="cs-hero__eyebrowRow cs-reveal">
+        <div class="cs-hero__eyebrowLeft">
+          <span class="cs-eyebrow">Case Study</span>
+          <span class="cs-readTime">⏱ 5 min read</span>
+        </div>
+        <img src="Images/logos/absolute-foods.png" alt="Absolute Foods" class="cs-brand-logo" />
+      </div>
+
       <div class="cs-hero__grid">
         <div class="cs-reveal">
-          <span class="cs-eyebrow">Case Study</span>
           <h1>A soil testing machine which helped agri-scientists to get <em>faster test results</em></h1>
           <p class="cs-hero__lead">
             An ag-tech device designed to help farmers and lab technicians test soil faster,
@@ -50,7 +57,6 @@
         </div>
 
         <div class="cs-hero__rightPanel">
-          <img src="Images/logos/absolute-foods.png" alt="Absolute Foods" class="cs-brand-logo" />
           <div class="cs-metaGrid cs-stagger" aria-label="Project meta information">
           <div class="cs-metaGrid__item">
             <span class="cs-metaGrid__label">Company</span>
@@ -75,12 +81,36 @@
       <figure class="cs-heroMedia cs-img-reveal">
         <img src="Images/case-studies/soil/PHOTO-2022-11-15-07-31-03.jpg" alt="Soil testing machine used in agricultural testing workflow" />
       </figure>
-      <span class="cs-readTime">⏱ 5 min read</span>
     </header>
 
     <main class="cs-shell cs-main">
       <div class="cs-layout">
         <div class="cs-body">
+          <div class="cs-myRole cs-reveal" style="margin-bottom: var(--space-xl);">
+            <p class="cs-myRole__heading">My contribution</p>
+            <div class="cs-myRole__grid">
+              <div class="cs-myRole__col">
+                <strong>What I owned</strong>
+                <ul>
+                  <li>Field research at test labs and farms in India</li>
+                  <li>Stakeholder interviews with specialists across the workflow</li>
+                  <li>Full on-device UI design for preparation, testing, and status screens</li>
+                  <li>Physical machine UX — test-tube holder placement and layout</li>
+                  <li>Design documentation for engineering handoff</li>
+                </ul>
+              </div>
+              <div class="cs-myRole__col">
+                <strong>Constraints I worked within</strong>
+                <ul>
+                  <li>Small embedded display — limited screen real estate for complex lab workflows</li>
+                  <li>Field environment: dusty, wet hands, time pressure — tap targets had to be large</li>
+                  <li>Hardware-first product: UI decisions had to respect physical machine constraints</li>
+                  <li>Users range from expert scientists to first-time operators — design had to work for both</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
           <section id="problem">
             <div class="cs-section-label"><span>Problem</span></div>
             <div class="cs-problemIntro cs-reveal">
@@ -146,24 +176,6 @@
               </p>
             </div>
 
-            <div class="cs-researchStats cs-stagger">
-              <div class="cs-researchStat">
-                <span class="cs-researchStat__number">8</span>
-                <span class="cs-researchStat__label">Field Sessions</span>
-                <p>Spent time at test labs and farms in India observing how technicians currently ran tests, what frustrated them, and where errors happened most frequently.</p>
-              </div>
-              <div class="cs-researchStat">
-                <span class="cs-researchStat__number">5</span>
-                <span class="cs-researchStat__label">Stakeholders Interviewed</span>
-                <p>Lab managers, field technicians, agricultural scientists, and equipment maintenance specialists to understand constraints from every angle.</p>
-              </div>
-              <div class="cs-researchStat">
-                <span class="cs-researchStat__number">12</span>
-                <span class="cs-researchStat__label">Test Cycles Documented</span>
-                <p>Captured full preparation-to-testing workflows on video to identify friction points, decision-making moments, and where technicians improvised workarounds.</p>
-              </div>
-            </div>
-
             <div class="cs-fieldResearch cs-reveal">
               <h3>Field research: Direct insights</h3>
               <blockquote class="cs-fieldQuote">
@@ -182,31 +194,6 @@
               <div class="cs-keyInsight">
                 <span class="cs-keyInsight__label">Key insight → design decision</span>
                 <p><strong>80% of setup time was hardware friction, not test complexity.</strong> The ops manager's quote crystallised this: the soil test itself takes 2 minutes, but setup takes 8. We went in expecting to improve the UI step-by-step guidance. We came out realising the biggest win was eliminating the phone dependency entirely — moving all controls on-device. This single decision accounted for most of the setup time reduction. The UI work then focused on making the remaining workflow feel as guided and calm as possible.</p>
-              </div>
-            </div>
-
-            <div class="cs-myRole cs-reveal">
-              <p class="cs-myRole__heading">My contribution</p>
-              <div class="cs-myRole__grid">
-                <div class="cs-myRole__col">
-                  <strong>What I owned</strong>
-                  <ul>
-                    <li>8 field research sessions at test labs and farms in India</li>
-                    <li>Stakeholder interviews with 5 specialists across the workflow</li>
-                    <li>Full on-device UI design for preparation, testing, and status screens</li>
-                    <li>Physical machine UX — test-tube holder placement and layout</li>
-                    <li>Design documentation for engineering handoff</li>
-                  </ul>
-                </div>
-                <div class="cs-myRole__col">
-                  <strong>Constraints I worked within</strong>
-                  <ul>
-                    <li>Small embedded display — limited screen real estate for complex lab workflows</li>
-                    <li>Field environment: dusty, wet hands, time pressure — tap targets had to be large</li>
-                    <li>Hardware-first product: UI decisions had to respect physical machine constraints</li>
-                    <li>Users range from expert scientists to first-time operators — design had to work for both</li>
-                  </ul>
-                </div>
               </div>
             </div>
 
@@ -241,31 +228,33 @@
               </p>
             </div>
 
-            <article class="cs-step">
-              <div class="cs-step__media">
-                <img src="Images/case-studies/soil/screens/lab process.avif" alt="Step-by-step screen guiding technicians through soil preparation phase" />
-              </div>
-              <div class="cs-step__content">
-                <span class="cs-step__label">Step 1</span>
-                <h3>Preparing the soil</h3>
-                <p>
-                  The preparation phase required weighing precise amounts of soil, adding reagent solutions in the correct sequence, and managing filtration — all while physically handling test tubes. We introduced a guided on-device screen that showed only the current action, with the next step previewed below. A dedicated test-tube holder was incorporated into the physical machine design, eliminating the improvised workarounds technicians had been forced into.
-                </p>
-              </div>
-            </article>
+            <div class="cs-cardGrid">
+              <details class="cs-card cs-changeCard">
+                <summary>
+                  <h3>Preparing the soil</h3>
+                  <div class="cs-wireframeFrame">
+                    <img src="Images/case-studies/soil/screens/lab process.avif" alt="Step-by-step screen guiding technicians through soil preparation phase" />
+                  </div>
+                  <span class="cs-changeHint">Click to expand ↓</span>
+                </summary>
+                <div class="cs-changeBody">
+                  <p>The preparation phase required weighing precise amounts of soil, adding reagent solutions in the correct sequence, and managing filtration — all while physically handling test tubes. We introduced a guided on-device screen that showed only the current action, with the next step previewed below. A dedicated test-tube holder was incorporated into the physical machine design, eliminating the improvised workarounds technicians had been forced into.</p>
+                </div>
+              </details>
 
-            <article class="cs-step">
-              <div class="cs-step__media">
-                <img src="Images/case-studies/soil/screens/lab process 02.avif" alt="Status screen showing automated testing phase with real-time progress indicators" />
-              </div>
-              <div class="cs-step__content">
-                <span class="cs-step__label">Step 2</span>
-                <h3>Testing the prepared soil</h3>
-                <p>
-                  Once the soil was prepared, the machine ran automated tests. But technicians needed to stay informed throughout — not just waiting. We designed clear status screens showing which test was running, the expected duration, and what to do in the interim. With the smartphone dependency removed, these screens live directly on the machine's built-in display, visible hands-free at any point in the workflow.
-                </p>
-              </div>
-            </article>
+              <details class="cs-card cs-changeCard">
+                <summary>
+                  <h3>Testing the prepared soil</h3>
+                  <div class="cs-wireframeFrame">
+                    <img src="Images/case-studies/soil/screens/lab process 02.avif" alt="Status screen showing automated testing phase with real-time progress indicators" />
+                  </div>
+                  <span class="cs-changeHint">Click to expand ↓</span>
+                </summary>
+                <div class="cs-changeBody">
+                  <p>Once the soil was prepared, the machine ran automated tests. But technicians needed to stay informed throughout — not just waiting. We designed clear status screens showing which test was running, the expected duration, and what to do in the interim. With the smartphone dependency removed, these screens live directly on the machine's built-in display, visible hands-free at any point in the workflow.</p>
+                </div>
+              </details>
+            </div>
           </section>
            
           
@@ -350,7 +339,7 @@
               <h2>A machine technicians actually wanted to use</h2>
             </div>
 
-            <div class="cs-metricsGrid cs-stagger">
+            <div class="cs-metricsGrid cs-metricsGrid--rows cs-stagger">
               <div class="cs-metric">
                 <span class="cs-metric__label">Setup Time</span>
                 <span class="cs-metric__before">8 min</span>
@@ -378,14 +367,12 @@
           <section id="learnings" class="cs-learnings">
             <div class="cs-section-label"><span>Learnings</span></div>
             <div class="cs-reveal">
-              <h2>What I would push further today</h2>
+              <h2>Translating a technically dense process into an experience that's usable</h2>
               <p>
-                Looking back, this project taught me how important it is to translate a technically dense process into an experience that feels calm, accurate, and usable. A few things I'd approach differently now:
+                Looking back, that was the real lesson of this project — and the thing I'd push further today:
               </p>
               <ul class="cs-learningList">
                 <li><strong>Run structured usability testing, not just stakeholder walkthroughs.</strong> We validated through expert feedback and field observation, which was valuable — but a formal task-based usability test with technicians of varying experience levels would have caught edge cases earlier. We discovered two workflow gaps only after the first production batch went into use.</li>
-                <li><strong>Instrument the UI to measure, not just observe.</strong> We tracked qualitative feedback but had no quantitative data on where technicians paused or retried steps. Even simple event logging would have made the next iteration sharper and easier to justify to stakeholders.</li>
-                <li><strong>Design for error recovery, not just the happy path.</strong> The guided step-by-step flow worked well when tests ran smoothly. But when something failed mid-sequence — contaminated sample, incorrect reagent volume — the recovery path was unclear. Explicit error states and recovery flows should have been a first-class design deliverable.</li>
               </ul>
             </div>
           </section>

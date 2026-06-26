@@ -1595,27 +1595,27 @@ body.case-study-body {
 
 /* ── KEY INSIGHT (hypothesis → finding → decision) ── */
 .cs-keyInsight {
-  margin: 20px 0 8px;
-  padding: 16px 20px;
-  border-left: 3px solid var(--neon-magenta);
-  background: rgba(255, 97, 248, 0.04);
+  margin: 24px 0 8px;
+  padding: 24px 28px;
+  border-left: 4px solid var(--neon-magenta);
+  background: rgba(255, 97, 248, 0.06);
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
 }
 
 .cs-keyInsight__label {
-  font-size: 0.65rem;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--neon-magenta);
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
 }
 
 .cs-keyInsight p {
-  font-size: var(--text-sm);
-  color: var(--muted);
-  line-height: 1.65;
+  font-size: var(--text-md);
+  color: var(--ink2);
+  line-height: 1.7;
   margin: 0;
   max-width: none;
 }
@@ -1741,6 +1741,34 @@ body.case-study-body {
   margin-top: auto;
 }
 
+/* Outcomes as single-column rows — fits long word-values (e.g. "Eliminated") inline and keeps every row aligned */
+.cs-metricsGrid--rows {
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+.cs-metricsGrid--rows .cs-metric {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: var(--space-xl);
+  row-gap: var(--space-xs);
+}
+.cs-metricsGrid--rows .cs-metric__label {
+  flex-basis: 100%;
+}
+.cs-metricsGrid--rows .cs-metric__before,
+.cs-metricsGrid--rows .cs-metric__after {
+  font-size: var(--text-xl);
+}
+.cs-metricsGrid--rows .cs-metric__arrow {
+  margin: 0;
+}
+.cs-metricsGrid--rows .cs-metric__description {
+  flex: 1 1 280px;
+  margin-top: 0;
+  font-size: var(--text-sm);
+}
+
 /* ── FIELD RESEARCH ── */
 .cs-fieldResearch {
   margin: var(--space-2xl) 0;
@@ -1764,8 +1792,8 @@ body.case-study-body {
 }
 
 .cs-fieldQuote p {
-  font-size: var(--text-md);
-  color: var(--ink);
+  font-size: var(--text-base);
+  color: var(--ink2);
   margin: 0 0 var(--space-sm);
 }
 
