@@ -99,6 +99,10 @@
     <main class="cs-shell cs-main">
       <div class="cs-layout">
         <div class="cs-body">
+          <div class="cs-reveal" style="margin-bottom: 40px;">
+            <p class="cs-hero__lead">KFC UAE operates one of the highest-volume QSR digital ordering platforms in the Gulf region, serving millions of orders annually across delivery and self-pickup. By 2024, a declining app store rating and rising customer support volume around payment failures had made the ordering experience a business priority — not just a UX one.</p>
+          </div>
+
           <section id="problem">
             <div class="cs-section-label"><span>Problem</span></div>
             <div class="cs-problemIntro cs-reveal">
@@ -161,6 +165,8 @@
                   <p>Heuristic audit of 8 leading QSR apps (Uber Eats, Zomato, Talabat, Deliveroo) to identify best practices in menu presentation, checkout design, and post-order reassurance.</p>
                 </div>
               </div>
+
+              <p class="cs-reveal" style="margin-top: 24px;">Reviews also revealed a 3% post-order survey response rate — users were being asked for feedback days later via email, long after the experience had faded. This seeded the Step 4 intervention.</p>
 
               <div class="cs-finalStack">
                 <figure class="cs-img cs-img-reveal">
@@ -311,7 +317,7 @@
 
               <details class="cs-card cs-changeCard">
                 <summary>
-                  <h3>Reduced homepage clutter</h3>
+                  <h3>Small win — Homepage declutter and store save</h3>
 
                   <div class="cs-wireframeFrame">
                     <img src="Images/case-studies/kfc//Wireframes/Final homescreen wireframe.jpeg" alt="Homepage wireframe" />
@@ -320,16 +326,14 @@
                   <span class="cs-changeHint">Click to expand ↓</span>
                 </summary>
                 <div class="cs-changeBody">
-                  <p><strong>Before:</strong> 5 promotional banners, 12+ category tiles, and 3 competing carousels competed for attention above the fold. Users reported feeling overwhelmed before they'd even opened a menu item.</p>
-                  <p><strong>After:</strong> A single hero zone with a clear "Order Now" CTA, 6 primary categories only, and 1 contextual offer banner. Non-essential content moved to a discoverable "Offers" tab.</p>
-                  <p><strong>Result:</strong> Average time-to-first-tap dropped from 1m 10s to 22s. Users consistently described the new homepage as "clean" and "easy to know where to start."</p>
+                  <p>Reduced from 5 promotional banners and 12+ category tiles to a single hero zone with one clear CTA and 6 primary categories. Added a saved store feature for repeat customers (40% of users). Average time-to-first-tap dropped from 1m 10s to 22s.</p>
                 </div>
                 </details>
               
 
               <details class="cs-card cs-changeCard">
                 <summary>
-                  <h3>Made the menu easier to navigate</h3>
+                  <h3>Meaningful shift — Menu redesign</h3>
 
                   <div class="cs-wireframeFrame">
                     <img src="Images/case-studies/kfc/Wireframes/Self pickup journey@4x.png" alt="Self-Pickup wireframe" />
@@ -338,16 +342,14 @@
                   <span class="cs-changeHint">Click to expand ↓</span>
                 </summary>
                 <div class="cs-changeBody">
-                  <p><strong>Before:</strong> 50+ items were visible at once with inconsistent thumbnail sizes, no clear visual hierarchy, and customisation options inline — creating a wall of choices with no obvious entry point.</p>
-                  <p><strong>After:</strong> Categories became a sticky top tab. Items show a single image (prominent), name (bold), and price. Customisation moved into a focused modal so the menu stays clean until the user decides.</p>
-                  <p><strong>Result:</strong> Task completion time for adding 3 items to cart dropped from 3m 12s to 58s. Heuristic rating for "ease of finding items" improved from 3.2/10 to 8.6/10 in validation testing.</p>
+                  <p>Implemented sticky category tabs, a single-image item card (image, name, price), and moved customisation into a focused modal. Task completion time for adding 3 items to cart dropped from 4m 32s to 1m 45s.</p>
                 </div>
                 </details>
               
 
               <details class="cs-card cs-changeCard">
                 <summary>
-                  <h3>Added trust cues after payment</h3>
+                  <h3>Big bet — Post-checkout trust system</h3>
 
                   <div class="cs-wireframeFrame">
                     <img src="Images/case-studies/kfc/Wireframes/delivery journey@4x.png" alt="Delivery wireframe" />
@@ -356,9 +358,7 @@
                   <span class="cs-changeHint">Click to expand ↓</span>
                 </summary>
                 <div class="cs-changeBody">
-                  <p><strong>Before:</strong> After payment, users landed on a generic confirmation screen with no order status, no ETA, and no indication of what would happen next. 28% of negative reviews mentioned post-payment anxiety — "I didn't know if my order had gone through."</p>
-                  <p><strong>After:</strong> Four named states (Confirmed → Preparing → Out for Delivery → Arriving Soon) with a visual progress bar, estimated arrival time, and brief reassurance copy at each stage. Users can tap any state for more detail.</p>
-                  <p><strong>Result:</strong> Post-order confidence score rose from 3.1/10 to 8.2/10. Customer support tickets related to "order status uncertainty" fell by 47% in the first 60 days post-launch.</p>
+                  <p>Built a 4-state order tracking flow from scratch (Confirmed → Preparing → Out for Delivery → Arriving Soon) — a feature that didn't exist at all in the original app. This directly addressed the finding that 3 in 5 negative reviews mentioned post-payment anxiety. Support tickets related to order status uncertainty fell 47% in the first 60 days.</p>
                 </div>
               </details>
             
@@ -390,7 +390,7 @@
                 <div class="cs-step__content">
                   <span class="cs-step__label">Step 2 · Menu & Customization</span>
                   <h3>Simplify the browsing-to-cart flow with visual hierarchy</h3>
-                  <p>Heuristic evaluation and competitive benchmarking showed that the old menu had 50+ visible items per screen with inconsistent spacing and typography, causing users to "get lost" among options. We implemented a clear visual hierarchy: product image (primary), name (bold), description (secondary), price (prominent). Customization options moved into a separate modal (not inline) to reduce cognitive load. Result: task completion time dropped from 4m32s to 1m45s in validation testing.</p>
+                  <p>Heuristic evaluation and competitive benchmarking showed that the old menu had 50+ visible items per screen with inconsistent spacing and typography, causing users to "get lost" among options. We implemented a clear visual hierarchy: product image (primary), name (bold), description (secondary), price (prominent). Customization options moved into a separate modal (not inline) to reduce cognitive load. Result: task completion time dropped from 4m 32s to 1m 45s in validation testing.</p>
                 </div>
               </article>
 
@@ -420,6 +420,7 @@
 
             <div class="cs-metricsSection cs-stagger">
               <h3>Business Impact</h3>
+              <p style="font-size: var(--text-sm); color: var(--muted); margin-top: -32px; margin-bottom: var(--space-lg); max-width: 60ch;">Usability testing figures are from validation sessions with 10 participants. NPS and support ticket data reflect the first 60 days post-launch on the live product.</p>
               <div class="cs-metricsGrid">
                 <div class="cs-metric">
                   <span class="cs-metric__label">Task Completion Rate</span>
@@ -430,9 +431,9 @@
                 </div>
                 <div class="cs-metric">
                   <span class="cs-metric__label">Average Checkout Time</span>
-                  <span class="cs-metric__before">4m32s</span>
+                  <span class="cs-metric__before">4m 32s</span>
                   <span class="cs-metric__arrow">→</span>
-                  <span class="cs-metric__after">1m45s</span>
+                  <span class="cs-metric__after">1m 45s</span>
                   <p class="cs-metric__description">Measured from homepage to order confirmation</p>
                 </div>
                 <div class="cs-metric">
@@ -459,6 +460,38 @@
             </div>
           </section>
 
+          <!-- ====== TESTIMONIAL ====== -->
+          <div class="tSplit cs-reveal" style="margin: 40px 0;">
+            <div class="tSplit__grid">
+              <!-- LEFT -->
+              <div class="tSplit__left">
+                <div class="tSplit__companyRow">
+                  <span class="tSplit__line" aria-hidden="true"></span>
+                  <span class="tSplit__company">KFC Dubai</span>
+                </div>
+
+                <blockquote class="tSplit__quote">
+                  “Ishmeet is an excellent communicator with exceptional creativity and worked closely with design, development, and marketing teams to deliver real value.”
+                </blockquote>
+
+                <div class="tSplit__author">
+                  <span class="tSplit__authorLine" aria-hidden="true"></span>
+                  <div>
+                    <div class="tSplit__name">Gagan Sahni</div>
+                    <div class="tSplit__role">Lead Designer</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- RIGHT -->
+              <div class="tSplit__right">
+                <div class="tSplit__card">
+                  <img class="tSplit__img" src="Images/testimonials/Gagan.png" alt="Gagan Sahni" />
+                </div>
+              </div>
+            </div>
+          </div>
+
           <section id="learnings" class="cs-learnings">
             <div class="cs-section-label"><span>Learnings</span></div>
             <div class="cs-reveal">
@@ -467,7 +500,6 @@
                 This project was transformational in how I approach payment-sensitive flows. I learned that anxiety after checkout isn't fixed by reassuring messaging alone—it's fixed by transparent system design. Users need to see their order transition through states. They need to know *why* each delay happens.
               </p>
               <ul class="cs-learningList">
-                <li><strong>Localization matters more than we thought.</strong> The original design used English placeholders, icon systems, and cultural references that alienated Dubai users. Regional customization isn't a nice-to-have—it's foundational to trust-building.</li>
                 <li><strong>Data-driven iteration beats guesswork.</strong> The post-order feedback loop (step 4) informed 6 subsequent iterations: delivery estimate tweaks, payment retry logic, and in-app chat integration. Real user data is more valuable than any heuristic.</li>
                 <li><strong>Accessibility unlocks usability.</strong> Users with visual processing difficulties (especially on 3G) struggled with the old dense menu. Making the interface simpler (better contrast, bigger tap targets, clearer hierarchy) helped everyone, not just accessibility-first users.</li>
               </ul>
