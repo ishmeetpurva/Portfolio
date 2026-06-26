@@ -2295,11 +2295,21 @@
   margin: 0;
 }
 
-/* Meta row — year + stat */
+/* Role · year — quick scannability line under the title */
+.workCardrole {
+  font-size: var(--text-xs, 0.75rem);
+  font-weight: 600;
+  color: var(--muted2, #888);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Meta row — leads with the outcome metric */
 .workCardmeta {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-top: auto;
   padding-top: 16px;
   border-top: 1px solid var(--line, #e8e8e6);
@@ -2314,10 +2324,10 @@
 }
 
 .workCardstat {
-  font-size: var(--text-xs, 0.75rem);
+  font-size: var(--text-base, 1rem);
   font-weight: 700;
   color: var(--ink, #111);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.01em;
 }
 
 /* Company logo — top-right of card image, no background */
