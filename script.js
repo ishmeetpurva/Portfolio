@@ -857,20 +857,3 @@
   document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
 })();
 
-/* =============================================
-   DARK / LIGHT THEME TOGGLE
-   ============================================= */
-(function() {
-  const btn = document.getElementById("themeToggle");
-  if (!btn) return;
-
-  btn.addEventListener("click", () => {
-    const current  = document.documentElement.getAttribute("data-theme");
-    const osDark   = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const isDark   = current === "dark" || (!current && osDark);
-    const next     = isDark ? "light" : "dark";
-
-    document.documentElement.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
-  });
-})();
