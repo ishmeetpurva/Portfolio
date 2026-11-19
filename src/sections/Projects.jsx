@@ -79,6 +79,7 @@ function ProjectCard({ p, i }) {
         </div>
         {p.role && <span className="mono role">{p.role}</span>}
         <p>{p.summary}</p>
+        {p.approach && <p className="approach"><span className="mono">Approach</span>{p.approach}</p>}
         {p.impact && <p className="impact">{p.impact}</p>}
         <div className="tags">{p.tags.map((t) => <span key={t}>{t}</span>)}</div>
       </Tag>

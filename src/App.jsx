@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import Hero from './hero/Hero.jsx';
 import About from './sections/About.jsx';
 import Projects from './sections/Projects.jsx';
@@ -6,7 +6,11 @@ import WhyHire from './sections/WhyHire.jsx';
 import Qualities from './sections/Qualities.jsx';
 import Testimonials from './sections/Testimonials.jsx';
 import Contact from './sections/Contact.jsx';
-import CaseStudy, { CASE_SLUGS } from './sections/CaseStudy.jsx';
+import caseIndex from './caseStudies/index.json';
+
+// Case-study pages (and their HTML) load only when one is opened.
+const CaseStudy = lazy(() => import('./sections/CaseStudy.jsx'));
+const CASE_SLUGS = Object.keys(caseIndex);
 import { nav, site } from './content.js';
 
 /** Hash routing so case studies work on GitHub Pages: #/work/<slug>. Anything else is the home page. */
@@ -67,7 +71,7 @@ export default function App() {
   return (
     <>
       <div className="grain" aria-hidden="true" />
-      {slug && <CaseStudy key={slug} slug={slug} />}
+      {slug && <Suspense fallback={<div className="cs-page" />}><CaseStudy key={slug} slug={slug} /></Suspense>}
       {/* Home stays mounted while a case study is open, so the 3D hero isn't rebuilt on return. */}
       <div hidden={!!slug}>
       {!slug && <Nav />}

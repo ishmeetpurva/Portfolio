@@ -7,7 +7,6 @@ import { work, asset } from '../content.js';
 
 // Case-study bodies were ported from the old site (github.com/ishmeetpurva/Portfolio).
 const HTML = { kfc, getsociable, soil };
-export const CASE_SLUGS = Object.keys(HTML);
 
 export default function CaseStudy({ slug }) {
   const meta = index[slug];

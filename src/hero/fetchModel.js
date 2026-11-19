@@ -1,10 +1,10 @@
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+// No three.js here, so the model download can start while the 3D code is still loading.
 
 // Self-hosted copy of the bust (public/models/bust.glb).
 export const MODEL_URL = `${import.meta.env.BASE_URL}models/bust.glb`;
 
-/** Streams the GLB so progress reflects real bytes, then parses it. */
-export async function loadModel(url, onProgress, signal) {
+/** Streams the GLB so progress reflects real bytes. Resolves to an ArrayBuffer. */
+export async function fetchModel(url, onProgress, signal) {
   const res = await fetch(url, { signal });
   if (!res.ok || !res.body) throw new Error(`HTTP ${res.status}`);
   const total = Number(res.headers.get('content-length')) || 0;
@@ -21,7 +21,5 @@ export async function loadModel(url, onProgress, signal) {
   const buf = new Uint8Array(received);
   let o = 0;
   for (const c of chunks) { buf.set(c, o); o += c.length; }
-  return new Promise((resolve, reject) => {
-    new GLTFLoader().parse(buf.buffer, '', resolve, reject);
-  });
+  return buf.buffer;
 }

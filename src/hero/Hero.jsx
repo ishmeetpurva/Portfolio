@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { site } from '../content.js';
 import { Rich } from '../Rich.jsx';
-import { loadModel, MODEL_URL } from './loadModel.js';
-import { buildDots, TOTAL_DOTS } from './buildDots.js';
-import { createEngine } from './engine.js';
+import { fetchModel, MODEL_URL } from './fetchModel.js';
 
 const RING = Array.from({ length: 96 }, (_, i) => {
   const a = (i / 96) * Math.PI * 2 - Math.PI / 2;
@@ -32,9 +30,14 @@ export default function Hero() {
 
     (async () => {
       try {
-        const gltf = await loadModel(MODEL_URL, setProgress, ctrl.signal);
+        // Download the model and the three.js chunk in parallel.
+        const [buffer, { parseModel, buildDots, createEngine }] = await Promise.all([
+          fetchModel(MODEL_URL, setProgress, ctrl.signal),
+          import('./scene3d.js'),
+        ]);
         if (cancelled) return;
-        const dots = buildDots(gltf);
+        const dots = buildDots(await parseModel(buffer));
+        if (cancelled) return;
         if (import.meta.env.DEV) console.info(`[hero] ${dots.count.toLocaleString()} dots`);
         setProgress(1);
         if (!reduced) await new Promise((r) => setTimeout(r, 380));
@@ -97,4 +100,3 @@ export default function Hero() {
   );
 }
 
-export { TOTAL_DOTS };
