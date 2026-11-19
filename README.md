@@ -12,6 +12,14 @@ All text lives in [`src/content.js`](src/content.js). Anything marked `[PLACEHOL
 - To use a screenshot for a project, put the image in `public/` and add `image: "my-shot.jpg"` to that project.
 - To link your résumé, add `public/resume.pdf` and set `resumeUrl: "resume.pdf"`.
 
+## Case studies
+
+The KFC Dubai, GetSociable and Soil case studies live at `#/work/<slug>` inside this site. Their content was ported from the old site ([ishmeetpurva/Portfolio](https://github.com/ishmeetpurva/Portfolio)) and is stored as HTML in `src/caseStudies/`, with images in `public/cs/`. They're styled by `src/caseStudy.css`.
+
+## Link previews
+
+`public/og-cover.jpg` is the image shown when the site is shared on LinkedIn, Slack and similar. The deploy workflow fills in the absolute site URL for it automatically.
+
 ## Fonts
 
 - **Fraunces** for the serif accent and numbers. It loads from Google Fonts.
@@ -33,7 +41,7 @@ npm run dev
 
 ## How this page was made
 
-- The hero streams an untextured GLB bust and shows the real download progress on a 96-dot ring.
+- The hero streams an untextured GLB bust (self-hosted in `public/models/`) and shows the real download progress on a 96-dot ring.
 - 330,000 points are sampled from the mesh surface and thinned on a voxel grid so the density stays even. That leaves 66,000 dots.
 - A wraparound visor is fitted to the face's height map and drawn from its own dots.
 - Each dot gets a ridge/crease value and a thin-strand value from its neighbours. These drive the shading.

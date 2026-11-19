@@ -1,11 +1,11 @@
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
-export const MODEL_URL =
-  'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261115_071021_742152ba-5554-4270-9dc5-286bcff36a1a.glb';
+// Self-hosted copy of the bust (public/models/bust.glb).
+export const MODEL_URL = `${import.meta.env.BASE_URL}models/bust.glb`;
 
 /** Streams the GLB so progress reflects real bytes, then parses it. */
 export async function loadModel(url, onProgress, signal) {
-  const res = await fetch(url, { signal, mode: 'cors' });
+  const res = await fetch(url, { signal });
   if (!res.ok || !res.body) throw new Error(`HTTP ${res.status}`);
   const total = Number(res.headers.get('content-length')) || 0;
   const reader = res.body.getReader();

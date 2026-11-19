@@ -16,6 +16,13 @@ export default function Hero() {
   const [progress, setProgress] = useState(0);
   const [phase, setPhase] = useState('loading');
   const [error, setError] = useState(false);
+  // Text never waits on the 3D: it shows at assembly, or after 1.2 s, whichever comes first.
+  const [textIn, setTextIn] = useState(false);
+  useEffect(() => {
+    if (phase === 'ready') { setTextIn(true); return; }
+    const id = setTimeout(() => setTextIn(true), window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 1200);
+    return () => clearTimeout(id);
+  }, [phase]);
 
   useEffect(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -56,7 +63,7 @@ export default function Hero() {
   const pct = Math.round(progress * 100);
 
   return (
-    <section className="hero" id="top" ref={hostRef} data-phase={phase}>
+    <section className="hero" id="top" ref={hostRef} data-phase={phase} data-text={textIn ? 'in' : undefined}>
       <div className="rays" aria-hidden="true" />
       <div className="stage" ref={stageRef} aria-hidden="true" />
 
@@ -78,8 +85,12 @@ export default function Hero() {
       </div>
 
       <a className="h-logo" href="./">{site.logo}</a>
-      <h1 className="h-name">{site.name}</h1>
+      <p className="h-status"><span className="dot" aria-hidden="true" />{site.status}</p>
+      <div className="h-name">
+        <h1>{site.name}<span className="h-role">{site.role}</span></h1>
+      </div>
       <p className="h-tag"><Rich text={site.tagline} /></p>
+      <a className="btn h-cta" href="#work">{site.workCta} <span aria-hidden="true">↓</span></a>
       <p className="h-hint">{site.hint}</p>
       <a className="pill" href={site.howMadeUrl} target="_blank" rel="noreferrer">{site.howMadeLabel}</a>
     </section>

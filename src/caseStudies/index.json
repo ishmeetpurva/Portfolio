@@ -1,0 +1,89 @@
+{
+  "kfc": {
+    "title": "70% of users failing to checkout at KFC Dubai iOS App",
+    "sections": [
+      {
+        "id": "problem",
+        "label": "Problem"
+      },
+      {
+        "id": "context",
+        "label": "Context & Goals"
+      },
+      {
+        "id": "changed",
+        "label": "What Changed"
+      },
+      {
+        "id": "solution",
+        "label": "Solution"
+      },
+      {
+        "id": "learnings",
+        "label": "Learnings"
+      }
+    ]
+  },
+  "getsociable": {
+    "title": "Redesigning an overwhelming homepage so users know what to do next",
+    "sections": [
+      {
+        "id": "problem",
+        "label": "Problem"
+      },
+      {
+        "id": "context",
+        "label": "Context & Goals"
+      },
+      {
+        "id": "process",
+        "label": "Process"
+      },
+      {
+        "id": "solution",
+        "label": "Solution"
+      },
+      {
+        "id": "impact",
+        "label": "impact"
+      },
+      {
+        "id": "learnings",
+        "label": "Learnings"
+      }
+    ]
+  },
+  "soil": {
+    "title": "A soil testing machine which helped agri-scientists to get faster test results",
+    "sections": [
+      {
+        "id": "problem",
+        "label": "Problem"
+      },
+      {
+        "id": "context",
+        "label": "Context & Goals"
+      },
+      {
+        "id": "solution",
+        "label": "Solution"
+      },
+      {
+        "id": "changed",
+        "label": "What Changed"
+      },
+      {
+        "id": "final-design",
+        "label": "Final Design"
+      },
+      {
+        "id": "outcomes",
+        "label": "Outcomes"
+      },
+      {
+        "id": "learnings",
+        "label": "Learnings"
+      }
+    ]
+  }
+}

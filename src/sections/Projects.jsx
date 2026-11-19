@@ -57,14 +57,15 @@ function ProjectCard({ p, i }) {
   };
   const onLeave = () => { card.current.style.transform = ''; };
   const Tag = p.url ? 'a' : 'div';
+  const external = /^https?:/.test(p.url || '');
   return (
     <Reveal delay={i * 0.1}>
-      <Tag className="project" href={p.url || undefined} target={p.url ? '_blank' : undefined} rel={p.url ? 'noreferrer' : undefined} onPointerMove={onMove} onPointerLeave={onLeave}>
+      <Tag className="project" href={p.url || undefined} target={external ? '_blank' : undefined} rel={external ? 'noreferrer' : undefined} onPointerMove={onMove} onPointerLeave={onLeave}>
         <div className="tilt" ref={card}>
           <div className="media" ref={media}>
             <span className="fig">Fig. {String(i + 1).padStart(3, '0')}</span>
             {p.image ? <img src={asset(p.image)} alt={`${p.title} cover`} loading="lazy" /> : ART[i % ART.length]}
-            {p.cta && <span className="cta-chip">{p.cta} ↗</span>}
+            {p.cta && <span className="cta-chip">{p.cta} {external ? '↗' : '→'}</span>}
             <div className="sheen" />
           </div>
         </div>

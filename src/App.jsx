@@ -6,7 +6,34 @@ import WhyHire from './sections/WhyHire.jsx';
 import Qualities from './sections/Qualities.jsx';
 import Testimonials from './sections/Testimonials.jsx';
 import Contact from './sections/Contact.jsx';
+import CaseStudy, { CASE_SLUGS } from './sections/CaseStudy.jsx';
 import { nav, site } from './content.js';
+
+/** Hash routing so case studies work on GitHub Pages: #/work/<slug>. Anything else is the home page. */
+function useRoute() {
+  const read = () => {
+    const m = window.location.hash.match(/^#\/work\/([\w-]+)/);
+    return m && CASE_SLUGS.includes(m[1]) ? m[1] : null;
+  };
+  const [slug, setSlug] = useState(read);
+  useEffect(() => {
+    const onHash = () => {
+      const next = read();
+      setSlug(next);
+      if (!next) {
+        // Returning home: jump to the requested section once it's visible again.
+        const id = window.location.hash.slice(1);
+        requestAnimationFrame(() => {
+          const el = id && document.getElementById(id);
+          if (el) el.scrollIntoView(); else if (!id) window.scrollTo(0, 0);
+        });
+      }
+    };
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
+  return slug;
+}
 
 function Nav() {
   const [show, setShow] = useState(false);
@@ -36,10 +63,14 @@ function Nav() {
 }
 
 export default function App() {
+  const slug = useRoute();
   return (
     <>
       <div className="grain" aria-hidden="true" />
-      <Nav />
+      {slug && <CaseStudy key={slug} slug={slug} />}
+      {/* Home stays mounted while a case study is open, so the 3D hero isn't rebuilt on return. */}
+      <div hidden={!!slug}>
+      {!slug && <Nav />}
       <main>
         <Hero />
         <div className="hero-strip">
@@ -54,6 +85,7 @@ export default function App() {
         <Testimonials />
         <Contact />
       </main>
+      </div>
     </>
   );
 }

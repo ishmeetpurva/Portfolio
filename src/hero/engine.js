@@ -196,13 +196,19 @@ export function createEngine({ stage, host, dots, reduced, onReady }) {
     light.position.copy(lightPos);
 
     renderer.render(scene, camera);
+    if (!visible && readyFired && t > 2.6) stop();
   };
 
   const start = () => { if (running) return; running = true; last = performance.now(); raf = requestAnimationFrame(frame); };
   const stop = () => { running = false; cancelAnimationFrame(raf); };
 
   // Pause when the hero is off-screen
-  const io = new IntersectionObserver(([e]) => (e.isIntersecting ? start() : stop()), { threshold: 0 });
+  // Keep running until the entrance has finished, so scrolling away early never leaves it half-built.
+  let visible = true;
+  const io = new IntersectionObserver(([e]) => {
+    visible = e.isIntersecting;
+    if (visible) start(); else if (readyFired && t > 2.6) stop();
+  }, { threshold: 0 });
   io.observe(stage);
   start();
 

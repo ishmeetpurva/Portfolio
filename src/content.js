@@ -6,12 +6,14 @@
 //  Content is taken from github.com/ishmeetpurva/Portfolio.
 // ─────────────────────────────────────────────────────────────
 
-const OLD_SITE = 'https://ishmeetpurva.github.io/Portfolio/';
 
 export const site = {
   name: 'Ishmeet Kaur',
   logo: 'Ishmeet.',
-  tagline: 'Grows quiet things with *AI*',
+  role: 'Product designer',
+  tagline: 'Designing products that make real *impact.*',
+  status: 'Open to opportunities',
+  workCta: 'View work',
   hint: 'Move the light',
   dotsLabel: '66,000 dots',
   howMadeLabel: 'How this page was made ↗',
@@ -61,7 +63,7 @@ export const work = {
       tags: ['UX design', 'Research', 'Mobile'],
       image: 'work/getsociable.jpg',
       logo: 'logos/getsociable.png',
-      url: `${OLD_SITE}getsociable-case-study.html`,
+      url: '#/work/getsociable',
       cta: 'Case study',
     },
     {
@@ -74,7 +76,7 @@ export const work = {
       tags: ['UX design', 'Research', 'iOS'],
       image: 'work/kfc.jpg',
       logo: 'logos/kfc.png',
-      url: `${OLD_SITE}kfc-case-study.html`,
+      url: '#/work/kfc',
       cta: 'Case study',
     },
     {
@@ -87,7 +89,7 @@ export const work = {
       tags: ['UX design', 'Research', 'Hardware UI'],
       image: 'work/soil.jpg',
       logo: 'logos/absolute-foods.png',
-      url: `${OLD_SITE}soil.html`,
+      url: '#/work/soil',
       cta: 'Case study',
     },
     {

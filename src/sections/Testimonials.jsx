@@ -9,7 +9,8 @@ export default function Testimonials() {
   const items = testimonials.items;
   const [i, setI] = useState(0);
   const [fade, setFade] = useState(true);
-  const paused = useRef(false);
+  const paused = useRef(false); // hover / focus pause
+  const [playing, setPlaying] = useState(() => !prefersReduced());
   const touch = useRef(null);
 
   const go = (n) => {
@@ -20,7 +21,7 @@ export default function Testimonials() {
   };
 
   useEffect(() => {
-    if (prefersReduced() || items.length < 2) return;
+    if (!playing || items.length < 2) return;
     const id = setInterval(() => { if (!paused.current) go(i + 1); }, 6500);
     return () => clearInterval(id);
   });
@@ -32,6 +33,8 @@ export default function Testimonials() {
         className="container quotes"
         onPointerEnter={() => (paused.current = true)}
         onPointerLeave={() => (paused.current = false)}
+        onFocus={() => (paused.current = true)}
+        onBlur={() => (paused.current = false)}
         onTouchStart={(e) => (touch.current = e.touches[0].clientX)}
         onTouchEnd={(e) => {
           if (touch.current == null) return;
@@ -41,6 +44,7 @@ export default function Testimonials() {
         }}
       >
         <Eyebrow num="06">{testimonials.eyebrow}</Eyebrow>
+        <h2 className="sr-only">What people I've worked with say</h2>
         <div aria-live="polite" style={{ opacity: fade ? 1 : 0, transform: fade ? 'none' : 'translateY(8px)', transition: 'opacity .28s, transform .28s' }}>
           <blockquote className="quote"><span>“<Rich text={t.quote} />”</span></blockquote>
           <div className="quote-by">
@@ -57,6 +61,9 @@ export default function Testimonials() {
               ))}
             </div>
             <button className="round-btn" onClick={() => go(i + 1)} aria-label="Next quote">→</button>
+            <button className="round-btn" onClick={() => setPlaying((p) => !p)} aria-label={playing ? 'Pause quotes' : 'Play quotes'} aria-pressed={!playing}>
+              {playing ? '❚❚' : '▶'}
+            </button>
           </div>
         )}
       </Reveal>
