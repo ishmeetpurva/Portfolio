@@ -1,0 +1,59 @@
+import { useEffect, useState } from 'react';
+import Hero from './hero/Hero.jsx';
+import About from './sections/About.jsx';
+import Projects from './sections/Projects.jsx';
+import WhyHire from './sections/WhyHire.jsx';
+import Qualities from './sections/Qualities.jsx';
+import Testimonials from './sections/Testimonials.jsx';
+import Contact from './sections/Contact.jsx';
+import { nav, site } from './content.js';
+
+function Nav() {
+  const [show, setShow] = useState(false);
+  const [active, setActive] = useState('');
+  useEffect(() => {
+    const onScroll = () => setShow(window.scrollY > window.innerHeight * 0.85);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
+      { rootMargin: '-45% 0px -50% 0px' },
+    );
+    nav.forEach((n) => { const el = document.getElementById(n.id); if (el) io.observe(el); });
+    return () => { window.removeEventListener('scroll', onScroll); io.disconnect(); };
+  }, []);
+  return (
+    <header className={`nav ${show ? 'show' : ''}`} aria-hidden={!show}>
+      <a className="logo" href="#top" tabIndex={show ? 0 : -1}>{site.logo}</a>
+      <ul>
+        {nav.map((n) => (
+          <li key={n.id}><a href={`#${n.id}`} className={active === n.id ? 'active' : ''} tabIndex={show ? 0 : -1}>{n.label}</a></li>
+        ))}
+      </ul>
+      <a className="btn-outline" href="#contact" tabIndex={show ? 0 : -1}>Get in touch ↗</a>
+    </header>
+  );
+}
+
+export default function App() {
+  return (
+    <>
+      <div className="grain" aria-hidden="true" />
+      <Nav />
+      <main>
+        <Hero />
+        <div className="hero-strip">
+          <span className="mono"><span className="mouse" aria-hidden="true" />Scroll to explore</span>
+          <span className="mono coords">+ Depth 024 m</span>
+          <span className="mono">01 / {String(nav.length + 3).padStart(2, '0')}</span>
+        </div>
+        <About />
+        <Projects />
+        <WhyHire />
+        <Qualities />
+        <Testimonials />
+        <Contact />
+      </main>
+    </>
+  );
+}
