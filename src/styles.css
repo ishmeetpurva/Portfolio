@@ -83,12 +83,13 @@ main:focus { outline: none; }
   padding: 0.04em 0.1em 0.12em 0.12em;
   margin: -0.04em -0.06em -0.12em -0.08em;
 }
-.display .accent { font-variation-settings: 'opsz' 144; }
+.display .accent { font-variation-settings: 'opsz' 144; font-size: 1em; letter-spacing: -0.015em; }
 .display {
-  font-family: var(--font-sans);
-  font-weight: 400;
-  letter-spacing: -0.04em;
-  line-height: 0.98;
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-optical-sizing: auto;
+  letter-spacing: -0.025em;
+  line-height: 1;
   margin: 0;
   font-size: clamp(40px, 6vw, 88px);
 }
