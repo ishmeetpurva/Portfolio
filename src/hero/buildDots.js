@@ -38,14 +38,18 @@ export function buildDots(gltf) {
   // ── Visor (parts 3 + 4) ──────────────────────────────────
   const visor = buildVisor(cP, cN);
 
-  // ── Leaves (part 2) ──────────────────────────────────────
-  // The model is a single continuous mesh with no separable leaf geometry,
-  // so no dots are tagged as leaves; the glint sweeps the visor only.
-  const leafCount = 0;
+  // ── Open hair (replaces the model's bun) ─────────────────
+  // Drop every candidate above the crown, then grow loose strands from a scalp dome.
+  const keep = [];
+  for (let i = 0; i < CANDIDATES; i++) if (cP[i * 3 + 1] <= HAIR.cutY) keep.push(i);
+  const kP = new Float32Array(keep.length * 3);
+  const kN = new Float32Array(keep.length * 3);
+  keep.forEach((c, j) => { kP.set(cP.subarray(c * 3, c * 3 + 3), j * 3); kN.set(cN.subarray(c * 3, c * 3 + 3), j * 3); });
+  const hair = buildHair(HAIR.dots);
 
   // ── Even density bust dots (part 1) ──────────────────────
-  const need = TOTAL_DOTS - visor.count - leafCount;
-  const bustIdx = voxelThin(cP, need);
+  const need = TOTAL_DOTS - visor.count - hair.count;
+  const bustIdx = voxelThin(kP, need);
 
   // ── Assemble final arrays (model units first) ────────────
   const N = TOTAL_DOTS;
@@ -60,12 +64,20 @@ export function buildDots(gltf) {
   }
   for (let j = 0; j < bustIdx.length; j++, k++) {
     const c = bustIdx[j];
-    mPos[k * 3] = cP[c * 3]; mPos[k * 3 + 1] = cP[c * 3 + 1]; mPos[k * 3 + 2] = cP[c * 3 + 2];
-    nor[k * 3] = cN[c * 3]; nor[k * 3 + 1] = cN[c * 3 + 1]; nor[k * 3 + 2] = cN[c * 3 + 2];
+    mPos[k * 3] = kP[c * 3]; mPos[k * 3 + 1] = kP[c * 3 + 1]; mPos[k * 3 + 2] = kP[c * 3 + 2];
+    nor[k * 3] = kN[c * 3]; nor[k * 3 + 1] = kN[c * 3 + 1]; nor[k * 3 + 2] = kN[c * 3 + 2];
+    part[k] = PART.BUST;
+  }
+  const hairStart = k;
+  for (let i = 0; i < hair.count; i++, k++) {
+    mPos.set(hair.pos.subarray(i * 3, i * 3 + 3), k * 3);
+    nor.set(hair.nor.subarray(i * 3, i * 3 + 3), k * 3);
     part[k] = PART.BUST;
   }
 
-  const shade = computeShade(mPos, nor, cP, N);
+  const shade = computeShade(mPos, nor, kP, N);
+  // Strands have no mesh around them: give them a soft, slightly bright shade instead.
+  for (let i = hairStart; i < N; i++) { shade[i * 2] = 0.05 + 0.3 * rand(); shade[i * 2 + 1] = 0.22 + 0.2 * rand(); }
 
   // ── World placement, randoms, glint bounds ───────────────
   const pos = new Float32Array(N * 3);
@@ -74,7 +86,7 @@ export function buildDots(gltf) {
   for (let i = 0; i < N; i++) {
     const x = mPos[i * 3] * 2.8;
     pos[i * 3] = x;
-    pos[i * 3 + 1] = mPos[i * 3 + 1] * 2.8 - 0.68;
+    pos[i * 3 + 1] = mPos[i * 3 + 1] * 2.8 - 0.55; // sits a little higher now the bun is gone
     pos[i * 3 + 2] = mPos[i * 3 + 2] * 2.8;
     aRand[i] = rand();
     if (part[i] > 1.5) { if (x < minX) minX = x; if (x > maxX) maxX = x; }
@@ -82,6 +94,62 @@ export function buildDots(gltf) {
   if (!isFinite(minX)) { minX = -0.6; maxX = 0.6; }
 
   return { count: N, position: pos, normal: nor, aRand, aShade: shade, aPart: part, glintMin: minX, glintMax: maxX };
+}
+
+// ─────────────────────────────────────────────────────────────
+// Scalp dome fitted to the model's head (model units; +z is the face).
+const HAIR = { cutY: 0.62, dots: 17000, c: [0, 0.5, -0.01], r: [0.315, 0.27, 0.41] };
+
+function buildHair(total) {
+  const [cx, cy, cz] = HAIR.c, [rx, ry, rz] = HAIR.r;
+  const pos = new Float32Array(total * 3), nor = new Float32Array(total * 3);
+  const LOCKS = 64, PER = 5;
+  const perStrand = Math.ceil(total / (LOCKS * PER));
+  const smooth = (t) => t * t * (3 - 2 * t);
+  let k = 0;
+
+  for (let l = 0; l < LOCKS && k < total; l++) {
+    // Lock root: spread all round the head; a centre parting sends front locks to the sides.
+    const side = l % 2 ? 1 : -1;
+    const th0 = side * (0.12 + (Math.PI - 0.12) * ((l >> 1) + rand() * 0.8) / (LOCKS / 2));
+    const front = Math.cos(th0);                        // 1 = forehead, -1 = back
+    const thEnd = front > 0.2 ? side * (1.25 + 0.35 * rand() + (1 - front) * 0.4) : th0 + side * 0.15 * rand();
+    const a0 = 0.05 + rand() * 0.35;                     // root distance from the crown
+    const tipY = (front > 0.2 ? -0.18 : -0.42) - rand() * 0.16;
+    const wave = 0.018 + rand() * 0.026, freq = 6 + rand() * 6, ph = rand() * 6.28;
+    const flare = 0.08 + rand() * 0.1;
+
+    for (let s = 0; s < PER && k < total; s++) {
+      const dth = (rand() - 0.5) * 0.12, da = (rand() - 0.5) * 0.08, sp = 1.03 + rand() * 0.04;
+      const sph = ph + rand() * 0.8;
+      const point = (t) => {
+        // t ∈ [0, 0.32]: over the dome, crown → ear level. t ∈ (0.32, 1]: falling loose.
+        if (t <= 0.32) {
+          const u = t / 0.32;
+          const a = a0 + da + (Math.PI / 2 - a0) * u;
+          const th = th0 + dth + (thEnd - th0) * smooth(u);
+          const sx = Math.sin(a) * Math.sin(th), sy = Math.cos(a), sz = Math.sin(a) * Math.cos(th);
+          const g = sp * (1 + 0.1 * smooth(u));
+          return [cx + rx * g * sx, cy + ry * g * sy, cz + rz * g * sz, sx, sy * 0.6, sz];
+        }
+        const u = (t - 0.32) / 0.68;
+        const th = thEnd + dth;
+        const g = sp * 1.1 + flare * smooth(u) + 0.04 * Math.max(0, (0.1 - (cy - (cy - tipY) * u)) * 2);
+        const w = Math.sin(u * freq + sph) * wave * smooth(Math.min(1, u * 3));
+        const bx = Math.sin(th), bz = Math.cos(th);
+        const x = cx + rx * g * bx + bz * w, z = cz + rz * g * bz - bx * w;
+        return [x, cy - (cy - tipY) * u, z, bx, 0.05, bz];
+      };
+      for (let i = 0; i < perStrand && k < total; i++, k++) {
+        const t = Math.pow(rand(), 0.85);
+        const [x, y, z, nx, ny, nz] = point(t);
+        const l2 = Math.hypot(nx, ny, nz) || 1;
+        pos[k * 3] = x + jit(0.004); pos[k * 3 + 1] = y + jit(0.004); pos[k * 3 + 2] = z + jit(0.004);
+        nor[k * 3] = nx / l2; nor[k * 3 + 1] = ny / l2; nor[k * 3 + 2] = nz / l2;
+      }
+    }
+  }
+  return { count: k, pos: pos.subarray(0, k * 3), nor: nor.subarray(0, k * 3) };
 }
 
 // ─────────────────────────────────────────────────────────────

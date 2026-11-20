@@ -43,13 +43,14 @@ export default function CaseStudy({ slug }) {
 
   return (
     <div className="cs-page">
+      <a className="skip" href="#content" onClick={(e) => { e.preventDefault(); document.getElementById('content')?.focus(); }}>Skip to content</a>
       <header className="cs-top">
         <a className="cs-back" href="#work">← All work</a>
         <span className="mono">Case study · {project?.title}</span>
         <a className="btn-outline" href="#contact">Get in touch ↗</a>
       </header>
 
-      <div className="cs-wrap">
+      <main className="cs-wrap" id="content" tabIndex={-1}>
         <nav className="cs-side" aria-label="Case study sections">
           {meta.sections.map((s, i) => (
             <button key={s.id} className={active === s.id ? 'on' : ''} onClick={() => jump(s.id)}>
@@ -58,16 +59,18 @@ export default function CaseStudy({ slug }) {
           ))}
         </nav>
         <article className="cs-article" ref={article} dangerouslySetInnerHTML={{ __html: HTML[slug] }} />
-      </div>
+      </main>
 
       {next && next.url !== `#/work/${slug}` && (
-        <a className="cs-next" href={next.url}>
+        <nav aria-label="Next case study">
+        <a className="cs-next" href={next.url} aria-label={`Next case study: ${next.title}`}>
           <div>
             <span className="eyebrow"><span className="num">Next</span><span className="slash">/</span><span>Case study</span></span>
             <span className="display md">{next.title} <em className="accent">→</em></span>
           </div>
           <img src={asset(next.image)} alt="" loading="lazy" />
         </a>
+        </nav>
       )}
     </div>
   );

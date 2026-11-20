@@ -1,11 +1,11 @@
 /* ── Case-study pages: the old site's markup, restyled in the new system ── */
-.cs-page { min-height: 100vh; background: linear-gradient(180deg, #0a1a2e 0%, var(--abyss) 520px); }
+.cs-page { min-height: 100vh; background: linear-gradient(180deg, #17518a 0%, #0f3560 260px, var(--abyss) 620px); }
 
 .cs-top {
   position: sticky; top: 0; z-index: 40;
   display: flex; justify-content: space-between; align-items: center; gap: 16px;
   padding: 16px var(--gutter);
-  background: rgba(7, 17, 30, 0.78); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  background: rgba(10, 29, 54, 0.8); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
   border-bottom: 0.5px solid var(--line);
 }
 .cs-back { color: var(--silver); text-decoration: none; font-size: 15px; }

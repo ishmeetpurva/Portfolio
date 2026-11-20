@@ -74,6 +74,7 @@ export default function App() {
       {slug && <Suspense fallback={<div className="cs-page" />}><CaseStudy key={slug} slug={slug} /></Suspense>}
       {/* Home stays mounted while a case study is open, so the 3D hero isn't rebuilt on return. */}
       <div hidden={!!slug}>
+      {!slug && <a className="skip" href="#about">Skip to content</a>}
       {!slug && <Nav />}
       <main>
         <Hero />

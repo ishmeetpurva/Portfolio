@@ -7,7 +7,7 @@ import Eyebrow from './Eyebrow.jsx';
 
 function Counter({ value, suffix }) {
   const [ref, seen] = useSeen(0.5);
-  const [n, setN] = useState(0);
+  const [n, setN] = useState(() => (prefersReduced() ? value : 0));
   useEffect(() => {
     if (!seen) return;
     if (prefersReduced()) { setN(value); return; }
@@ -21,7 +21,13 @@ function Counter({ value, suffix }) {
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
   }, [seen, value]);
-  return <span ref={ref} className="v">{n}{suffix}</span>;
+  // Screen readers get the final number; the count-up is visual only.
+  return (
+    <span ref={ref} className="v">
+      <span aria-hidden="true">{n}{suffix}</span>
+      <span className="sr-only">{value}{suffix}</span>
+    </span>
+  );
 }
 
 export default function About() {
