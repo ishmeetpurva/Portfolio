@@ -13,11 +13,10 @@ export const site = {
   role: 'Product designer',
   tagline: 'Designing products that make real *impact.*',
   status: 'Open to opportunities',
+  current: { label: 'Currently at', company: 'Mercor', url: 'https://mercor.com' },
   workCta: 'View work',
   hint: 'Move the light',
   dotsLabel: '66,000 dots',
-  howMadeLabel: 'How this page was made ↗',
-  howMadeUrl: 'https://github.com/ishmeetpurva', // point this at the new repo's README once it's pushed
   email: 'ishmeet.purva@gmail.com',
   resumeUrl: 'https://docs.google.com/document/d/1dpl4oSdBFGOtKocAEQ7pzBCrZzTXIgL4/view?usp=sharing',
   socials: [

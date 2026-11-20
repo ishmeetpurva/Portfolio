@@ -87,15 +87,17 @@ export default function Hero() {
         <span className="label">{error ? 'Refresh to try again' : site.dotsLabel}</span>
       </div>
 
-      <a className="h-logo" href="./">{site.logo}</a>
       <p className="h-status"><span className="dot" aria-hidden="true" />{site.status}</p>
       <div className="h-name">
         <h1>{site.name}<span className="h-role">{site.role}</span></h1>
+        <p className="h-now">
+          <span className="mono">{site.current.label}</span>
+          <a href={site.current.url} target="_blank" rel="noreferrer">{site.current.company} <span aria-hidden="true">↗</span></a>
+        </p>
       </div>
       <p className="h-tag"><Rich text={site.tagline} /></p>
       <a className="btn h-cta" href="#work">{site.workCta} <span aria-hidden="true">↓</span></a>
       <p className="h-hint">{site.hint}</p>
-      <a className="pill" href={site.howMadeUrl} target="_blank" rel="noreferrer">{site.howMadeLabel}</a>
     </section>
   );
 }

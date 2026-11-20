@@ -168,7 +168,7 @@ a { color: inherit; }
   touch-action: pan-y;
 }
 .hero[data-phase='ready'] { cursor: none; }
-/* links and buttons keep a normal pointer, so the logo, CTA and pill stay easy to click */
+/* links and buttons keep a normal pointer so they stay easy to click */
 .hero[data-phase='ready'] a, .hero[data-phase='ready'] button { cursor: pointer; }
 .hero .rays {
   position: absolute; inset: 0; pointer-events: none;
@@ -203,7 +203,7 @@ a { color: inherit; }
   font: 400 11px/1 var(--font-mono); text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.5; white-space: nowrap;
 }
 
-.hero .h-logo, .hero .h-name, .hero .h-tag, .hero .h-hint, .hero .h-status, .hero .h-cta {
+.hero .h-name, .hero .h-tag, .hero .h-hint, .hero .h-status, .hero .h-cta {
   position: absolute; z-index: 3; margin: 0; opacity: 0;
   transition: opacity 0.9s, translate 0.9s var(--ease);
 }
@@ -218,6 +218,17 @@ a { color: inherit; }
   display: block; margin-top: 10px;
   font: 400 11px/1 var(--font-mono); letter-spacing: 0.22em; text-transform: uppercase; color: var(--mist);
 }
+.hero .h-now {
+  display: flex; align-items: center; gap: 12px; margin: 18px 0 0;
+  padding-top: 14px; border-top: 0.5px solid var(--line-strong); width: max-content;
+}
+.hero .h-now .mono { font-size: 10px; letter-spacing: 0.2em; color: var(--slate); }
+.hero .h-now a {
+  font-family: var(--font-sans); font-weight: 500; font-size: clamp(18px, 1.7vw, 26px); letter-spacing: -0.02em;
+  color: var(--silver); text-decoration: none; transition: color 0.3s;
+}
+.hero .h-now a span { font-size: 0.6em; color: var(--mist); vertical-align: 0.35em; }
+.hero .h-now a:hover, .hero .h-now a:focus-visible { color: #fff; text-decoration: underline; text-decoration-thickness: 0.5px; text-underline-offset: 5px; }
 .hero .h-status {
   top: 26px; right: var(--gutter);
   display: inline-flex; align-items: center; gap: 10px;
@@ -226,15 +237,11 @@ a { color: inherit; }
 .hero .h-status .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ray); box-shadow: 0 0 10px var(--ray); animation: pulse 2.4s ease-in-out infinite; }
 @keyframes pulse { 50% { opacity: 0.35; } }
 .hero .h-cta {
-  left: var(--gutter); top: calc(50% + 64px);
+  left: var(--gutter); top: calc(50% + 96px);
   padding: 13px 22px; font-size: 14px; translate: 0 10px; transition-delay: 0.2s;
 }
 .hero .h-tag { right: var(--gutter); color: var(--muted); transition-delay: 0.12s; max-width: min(28vw, 340px); text-align: right; line-height: 1.3; text-wrap: balance; }
 .hero .h-tag .accent { font-size: 1.12em; }
-.hero .h-logo {
-  font-family: var(--font-serif); font-weight: 300; font-size: 26px;
-  color: inherit; text-decoration: none; top: 20px; left: var(--gutter);
-}
 .hero .h-hint {
   font: 400 11px/1 var(--font-mono); text-transform: uppercase; letter-spacing: 0.12em; white-space: nowrap;
   bottom: 22px; left: 50%; translate: -50% 10px; transition-delay: 0.5s;
@@ -242,19 +249,8 @@ a { color: inherit; }
 .hero[data-text='in'] .h-name, .hero[data-text='in'] .h-tag { opacity: 1; translate: 0 -50%; }
 .hero[data-text='in'] .h-status { opacity: 1; }
 .hero[data-text='in'] .h-cta { opacity: 1; translate: 0 0; }
-.hero[data-text='in'] .h-logo { opacity: 0.9; }
-.hero[data-phase='ready'] .h-logo:hover, .hero[data-phase='ready'] .h-logo:focus-visible { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
 .hero[data-phase='ready'] .h-hint { opacity: 0.45; translate: -50% 0; }
 
-.pill {
-  position: absolute; bottom: 20px; left: 20px; z-index: 7;
-  background: var(--silver-grad); color: var(--navy-ink);
-  font: 400 12px/1 var(--font-mono); letter-spacing: 0.04em;
-  padding: 9px 13px; border-radius: 999px; text-decoration: none;
-  box-shadow: 0 0 0 1px rgba(11, 36, 64, 0.1), 0 10px 24px -12px rgba(0, 0, 0, 0.6);
-  animation: pill-in 0.6s var(--ease) 4s both;
-}
-@keyframes pill-in { 0% { opacity: 0; transform: translateY(8px); } }
 
 .hero-strip {
   position: relative; z-index: 2;
@@ -392,6 +388,8 @@ a { color: inherit; }
   .hero[data-text='in'] .h-name, .hero[data-text='in'] .h-tag { translate: 0 0; }
   .hero .h-tag { max-width: 46%; text-align: right; }
   .hero .h-role { margin-top: 8px; font-size: 10px; }
+  .hero .h-now { margin-top: 12px; padding-top: 10px; gap: 8px; }
+  .hero .h-now a { font-size: 17px; }
   .hero .h-status { top: 24px; font-size: 10px; letter-spacing: 0.14em; }
   .hero .h-cta { top: auto; bottom: 96px; left: 50%; translate: -50% 10px; }
   .hero[data-text='in'] .h-cta { translate: -50% 0; }
@@ -404,14 +402,10 @@ a { color: inherit; }
   .circle-btn { width: 84px; height: 84px; font-size: 26px; }
   .hero-strip .coords { display: none; }
 }
-@media (max-width: 600px) {
-  .pill { padding: 7px 10px; font-size: 11px; bottom: 12px; left: auto; right: 12px; }
-}
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .loader, .hero .h-logo, .hero .h-name, .hero .h-tag, .hero .h-hint, .hero .h-status, .hero .h-cta { transition: none; }
+  .loader, .hero .h-name, .hero .h-tag, .hero .h-hint, .hero .h-status, .hero .h-cta { transition: none; }
   .hero .h-status .dot { animation: none; }
-  .pill { animation: none; }
   .hero .rays, .hero-strip .mouse::after { animation: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
 }
