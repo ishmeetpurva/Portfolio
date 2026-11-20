@@ -23,7 +23,7 @@ The KFC Dubai, GetSociable and Soil case studies live at `#/work/<slug>` inside 
 ## Fonts
 
 - **Fraunces** for the serif accent and numbers. It loads from Google Fonts.
-- **Gordita** for the sans text. Gordita is a licensed font, so add your `.woff2` files to `public/fonts/` and uncomment the `@font-face` block at the top of `src/styles.css`. Until then the site uses **Outfit**, a similar free font.
+- **Gordita** for the sans text, self-hosted from `public/fonts/` (Light, Regular, Medium, Bold; Latin subset as `.woff2`). **Outfit** is the fallback while it loads.
 - **Geist Mono** for the small uppercase labels.
 
 ## Run locally
