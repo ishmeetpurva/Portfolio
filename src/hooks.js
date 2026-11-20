@@ -31,3 +31,31 @@ export function useSeen(threshold = 0.4) {
   }, [threshold]);
   return [ref, seen];
 }
+
+/**
+ * Site-wide "Pause motion" switch (WCAG 2.2.2). Stored on <html data-motion> so CSS loops can
+ * pause too, and remembered for the next visit. Starts off when the OS asks for reduced motion.
+ */
+const MOTION_KEY = 'motion';
+const readMotion = () => {
+  if (typeof window === 'undefined') return true;
+  try { const v = localStorage.getItem(MOTION_KEY); if (v) return v === 'on'; } catch {}
+  return !prefersReduced();
+};
+if (typeof document !== 'undefined') document.documentElement.dataset.motion = readMotion() ? 'on' : 'off';
+
+export function useMotion() {
+  const [on, setOn] = useState(readMotion);
+  useEffect(() => {
+    const sync = () => setOn(document.documentElement.dataset.motion !== 'off');
+    window.addEventListener('motionchange', sync);
+    return () => window.removeEventListener('motionchange', sync);
+  }, []);
+  const toggle = () => {
+    const next = document.documentElement.dataset.motion === 'off';
+    document.documentElement.dataset.motion = next ? 'on' : 'off';
+    try { localStorage.setItem(MOTION_KEY, next ? 'on' : 'off'); } catch {}
+    window.dispatchEvent(new Event('motionchange'));
+  };
+  return [on, toggle];
+}

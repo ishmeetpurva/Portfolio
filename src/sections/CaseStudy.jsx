@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import index from '../caseStudies/index.json';
-import kfc from '../caseStudies/kfc.html?raw';
-import getsociable from '../caseStudies/getsociable.html?raw';
-import soil from '../caseStudies/soil.html?raw';
 import { work, asset } from '../content.js';
 
 // Case-study bodies were ported from the old site (github.com/ishmeetpurva/Portfolio).
-const HTML = { kfc, getsociable, soil };
+// Any src/caseStudies/<slug>.html listed in index.json is picked up automatically.
+const HTML = Object.fromEntries(
+  Object.entries(import.meta.glob('../caseStudies/*.html', { query: '?raw', import: 'default', eager: true }))
+    .map(([path, html]) => [path.match(/([\w-]+)\.html$/)[1], html]),
+);
 
 export default function CaseStudy({ slug }) {
   const meta = index[slug];
@@ -21,6 +22,12 @@ export default function CaseStudy({ slug }) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    // Move focus to the case study's title so keyboard and screen-reader users start there.
+    const h1 = article.current.querySelector('h1');
+    if (h1) { h1.tabIndex = -1; h1.focus({ preventScroll: true }); }
+    // First image is above the fold: load it straight away.
+    const first = article.current.querySelector('img');
+    if (first) { first.loading = 'eager'; first.fetchPriority = 'high'; }
     const prev = document.title;
     document.title = `${project?.title ?? meta.title} — Ishmeet Kaur`;
     const els = meta.sections.map((s) => article.current.querySelector(`#${CSS.escape(s.id)}`)).filter(Boolean);

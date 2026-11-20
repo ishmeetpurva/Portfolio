@@ -29,12 +29,14 @@ const ease = (dt, rate) => 1 - Math.exp(-dt * rate);
  * Creates the hero renderer. `dots` comes from buildDots().
  * Calls onReady() once uAssemble passes 0.55.
  */
-export function createEngine({ stage, host, dots, reduced, onReady }) {
+export function createEngine({ stage, host, dots, reduced, paused: startPaused = false, onReady, onLost }) {
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
   const renderer = new WebGLRenderer({ antialias: false, powerPreference: 'high-performance', alpha: true });
   renderer.setPixelRatio(dpr);
   renderer.setClearColor(0x000000, 0);
   stage.appendChild(renderer.domElement);
+  const onContextLost = (e) => { e.preventDefault(); stop(); onLost?.(); };
+  renderer.domElement.addEventListener('webglcontextlost', onContextLost);
 
   const scene = new Scene();
   const camera = new PerspectiveCamera(30, 1, 0.1, 100);
@@ -104,7 +106,8 @@ export function createEngine({ stage, host, dots, reduced, onReady }) {
     bustU.uRingRadius.value = 92 * px;
     bustU.uRingCenter.value.copy(TARGET);
   };
-  const ro = new ResizeObserver(resize);
+  // A resize clears the canvas, so redraw the still frame when the loop is paused.
+  const ro = new ResizeObserver(() => { resize(); if (!running) renderer.render(scene, camera); });
   ro.observe(stage);
   resize();
 
@@ -140,6 +143,8 @@ export function createEngine({ stage, host, dots, reduced, onReady }) {
   let raf = 0;
   let running = false;
   let readyFired = false;
+  let visible = true;
+  let paused = startPaused;
   const lightPos = bustU.uLight.value;
 
   const frame = (now) => {
@@ -195,25 +200,33 @@ export function createEngine({ stage, host, dots, reduced, onReady }) {
     bustU.uHead.value.set(head.x, -head.y);
     light.position.copy(lightPos);
 
+    if (paused) bustU.uGlint.value = -9; // never freeze mid-glint
     renderer.render(scene, camera);
-    if (!visible && readyFired && t > 2.6) stop();
+    if ((!visible || paused) && readyFired && t > 2.6) stop();
   };
 
-  const start = () => { if (running) return; running = true; last = performance.now(); raf = requestAnimationFrame(frame); };
+  const start = () => { if (running || paused) return; running = true; last = performance.now(); raf = requestAnimationFrame(frame); };
   const stop = () => { running = false; cancelAnimationFrame(raf); };
 
   // Pause when the hero is off-screen
   // Keep running until the entrance has finished, so scrolling away early never leaves it half-built.
-  let visible = true;
   const io = new IntersectionObserver(([e]) => {
     visible = e.isIntersecting;
     if (visible) start(); else if (readyFired && t > 2.6) stop();
   }, { threshold: 0 });
   io.observe(stage);
-  start();
+  // Paused before the entrance: show the finished bust as a still frame (after the shine, before any glint).
+  if (paused) { t = 4.55; paused = false; start(); paused = true; } else start();
 
   return {
+    /** "Pause motion": freezes on the current frame (finishing the entrance first). */
+    setPaused(p) {
+      paused = p;
+      if (p && t < 4.55) t = 4.55; // skip to after the shine, before the first glint
+      else if (visible) start();
+    },
     dispose() {
+      renderer.domElement.removeEventListener('webglcontextlost', onContextLost);
       stop();
       io.disconnect();
       ro.disconnect();

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { testimonials, asset } from '../content.js';
 import { Rich } from '../Rich.jsx';
-import { prefersReduced } from '../hooks.js';
+import { prefersReduced, useMotion } from '../hooks.js';
 import Reveal from './Reveal.jsx';
 import Eyebrow from './Eyebrow.jsx';
 
@@ -10,14 +10,19 @@ export default function Testimonials() {
   const [i, setI] = useState(0);
   const [fade, setFade] = useState(true);
   const paused = useRef(false); // hover / focus pause
-  const [playing, setPlaying] = useState(() => !prefersReduced());
+  const [motion] = useMotion();
+  const [userPlaying, setPlaying] = useState(true);
+  const playing = userPlaying && motion; // the site-wide "Pause motion" also stops the rotation
   const touch = useRef(null);
+  const fadeTimer = useRef(0);
+  useEffect(() => () => clearTimeout(fadeTimer.current), []);
 
   const go = (n) => {
     const next = (n + items.length) % items.length;
+    clearTimeout(fadeTimer.current);
     if (prefersReduced()) { setI(next); return; }
     setFade(false);
-    setTimeout(() => { setI(next); setFade(true); }, 280);
+    fadeTimer.current = setTimeout(() => { setI(next); setFade(true); }, 280);
   };
 
   useEffect(() => {
@@ -45,7 +50,8 @@ export default function Testimonials() {
       >
         <Eyebrow num="06">{testimonials.eyebrow}</Eyebrow>
         <h2 className="sr-only">What people I've worked with say</h2>
-        <div aria-live="polite" style={{ opacity: fade ? 1 : 0, transform: fade ? 'none' : 'translateY(8px)', transition: 'opacity .28s, transform .28s' }}>
+        {/* Announce quote changes only when the visitor changes them, not every 6.5 s while rotating. */}
+        <div aria-live={playing ? 'off' : 'polite'} style={{ opacity: fade ? 1 : 0, transform: fade ? 'none' : 'translateY(8px)', transition: 'opacity .28s, transform .28s' }}>
           <blockquote className="quote"><span>“<Rich text={t.quote} />”</span></blockquote>
           <div className="quote-by">
             {t.image && <img className="avatar" src={asset(t.image)} alt="" />}
@@ -61,7 +67,7 @@ export default function Testimonials() {
               ))}
             </div>
             <button className="round-btn" onClick={() => go(i + 1)} aria-label="Next quote">→</button>
-            <button className="round-btn" onClick={() => setPlaying((p) => !p)} aria-label={playing ? 'Pause quotes' : 'Play quotes'} aria-pressed={!playing}>
+            <button className="round-btn" onClick={() => setPlaying((p) => !p)} aria-label="Pause quotes" aria-pressed={!playing} disabled={!motion}>
               {playing ? '❚❚' : '▶'}
             </button>
           </div>

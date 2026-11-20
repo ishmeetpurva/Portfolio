@@ -23,8 +23,8 @@ The KFC Dubai, GetSociable and Soil case studies live at `#/work/<slug>` inside 
 ## Fonts
 
 - **Fraunces** for the serif accent and numbers. It loads from Google Fonts.
-- **Gordita** for the sans text, self-hosted from `public/fonts/` (Light, Regular, Medium, Bold; Latin subset as `.woff2`). **Outfit** is the fallback while it loads.
-- **Geist Mono** for the small uppercase labels.
+- **Gordita** for the sans text, self-hosted from `public/fonts/` (Light, Regular, Medium, Bold; Latin subset as `.woff2`).
+- **Geist Mono** for the small uppercase labels, self-hosted as `public/fonts/GeistMono.woff2`.
 
 ## Run locally
 
@@ -41,8 +41,8 @@ npm run dev
 
 ## How this page was made
 
-- The hero streams an untextured GLB bust (self-hosted in `public/models/`) and shows the real download progress on a 96-dot ring.
-- 330,000 points are sampled from the mesh surface and thinned on a voxel grid so the density stays even. That leaves 66,000 dots.
+- The hero streams an untextured, meshopt-compressed GLB bust (about 0.6 MB, self-hosted in `public/models/`) and shows the real download progress on a 96-dot ring.
+- A Web Worker samples 330,000 points from the mesh surface and thinned on a voxel grid so the density stays even. That leaves 66,000 dots.
 - A wraparound visor is fitted to the face's height map and drawn from its own dots.
 - Each dot gets a ridge/crease value and a thin-strand value from its neighbours. These drive the shading.
 - A custom shader handles the entrance from the ring, breathing, head turn, cursor light, a single shine sweep and a repeating glint.

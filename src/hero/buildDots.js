@@ -1,4 +1,4 @@
-import { Mesh, Vector3 } from 'three';
+import { BufferAttribute, Mesh, Vector3 } from 'three';
 import { MeshSurfaceSampler } from 'three/examples/jsm/math/MeshSurfaceSampler.js';
 
 export const TOTAL_DOTS = 66000;
@@ -19,6 +19,15 @@ export function buildDots(gltf) {
   if (!mesh) throw new Error('No mesh in model');
 
   const geom = mesh.geometry.clone();
+  // The model is quantized (16-bit, meshopt): unpack to floats before moving it into world space.
+  for (const k of ['position', 'normal']) {
+    const a = geom.getAttribute(k);
+    if (!a || a.array instanceof Float32Array) continue;
+    const f = new Float32Array(a.count * a.itemSize);
+    for (let i = 0; i < a.count; i++) for (let j = 0; j < a.itemSize; j++) f[i * a.itemSize + j] = a.getComponent(i, j);
+    geom.setAttribute(k, new BufferAttribute(f, a.itemSize));
+  }
+  geom.deleteAttribute('uv');
   geom.applyMatrix4(mesh.matrixWorld);
   if (!geom.attributes.normal) geom.computeVertexNormals();
   const sampler = new MeshSurfaceSampler(new Mesh(geom)).build();

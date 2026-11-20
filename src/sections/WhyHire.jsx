@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { why } from '../content.js';
 import { Rich } from '../Rich.jsx';
-import { prefersReduced } from '../hooks.js';
+import { prefersReduced, useMotion } from '../hooks.js';
 import Reveal from './Reveal.jsx';
 import Eyebrow from './Eyebrow.jsx';
 
@@ -26,7 +26,8 @@ function SkillSphere({ skills, playing }) {
     let visible = false;
 
     const draw = () => {
-      const R = Math.min(box.current.clientWidth, box.current.clientHeight) * 0.42;
+      // Wider than tall, so labels on the sides don't collide.
+      const Rx = box.current.clientWidth * 0.36, Ry = box.current.clientHeight * 0.42, R = Math.min(Rx, Ry);
       const cx = Math.cos(s.rx), sx = Math.sin(s.rx), cy = Math.cos(s.ry), sy = Math.sin(s.ry);
       pts.forEach(([x, y, z], i) => {
         const x1 = x * cy + z * sy, z1 = -x * sy + z * cy;
@@ -34,8 +35,9 @@ function SkillSphere({ skills, playing }) {
         const depth = (z2 + 1) / 2;
         const el = tags.current[i];
         if (!el) return;
-        el.style.transform = `translate(-50%, -50%) translate3d(${x1 * R}px, ${y2 * R}px, ${z2 * R}px) scale(${0.7 + depth * 0.45})`;
-        el.style.opacity = String(0.22 + depth * 0.78);
+        el.style.transform = `translate(-50%, -50%) translate3d(${x1 * Rx}px, ${y2 * Ry}px, ${z2 * R}px) scale(${0.62 + depth * 0.5})`;
+        el.style.opacity = String(0.12 + depth * 0.88);
+        el.style.zIndex = String(Math.round(depth * 100));
         el.style.color = depth > 0.8 ? '#f2f5f9' : depth > 0.45 ? '#c9d6e4' : '#8fb8d8';
       });
     };
@@ -82,7 +84,9 @@ function SkillSphere({ skills, playing }) {
 }
 
 export default function WhyHire() {
-  const [playing, setPlaying] = useState(true);
+  const [motion] = useMotion();
+  const [userPlaying, setPlaying] = useState(true);
+  const playing = userPlaying && motion;
   return (
     <section className="section" id="why">
       <div className="container split">
@@ -109,7 +113,7 @@ export default function WhyHire() {
               <span className="mono">Toolkit · drag to rotate</span>
               <h3>What I work with</h3>
             </div>
-            <button className="round-btn" onClick={() => setPlaying((p) => !p)} aria-label={playing ? 'Pause rotation' : 'Play rotation'}>
+            <button className="round-btn" onClick={() => setPlaying((p) => !p)} aria-label="Pause rotation" aria-pressed={!playing} disabled={!motion}>
               {playing ? '❚❚' : '▶'}
             </button>
           </div>

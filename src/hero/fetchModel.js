@@ -16,7 +16,7 @@ export async function fetchModel(url, onProgress, signal) {
     if (done) break;
     chunks.push(value);
     received += value.length;
-    onProgress(total ? Math.min(1, received / total) : Math.min(0.95, received / 1.5e6));
+    onProgress(total ? Math.min(1, received / total) : Math.min(0.95, received / 6e5));
   }
   const buf = new Uint8Array(received);
   let o = 0;
