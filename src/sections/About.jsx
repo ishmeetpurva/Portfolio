@@ -3,14 +3,13 @@ import { about } from '../content.js';
 import { Rich } from '../Rich.jsx';
 import { useSeen, prefersReduced } from '../hooks.js';
 import Reveal from './Reveal.jsx';
-import Eyebrow from './Eyebrow.jsx';
 
 function Counter({ value, suffix }) {
   const [ref, seen] = useSeen(0.5);
   const [n, setN] = useState(() => (prefersReduced() ? value : 0));
   useEffect(() => {
     if (!seen) return;
-    if (prefersReduced()) { setN(value); return; }
+    if (prefersReduced() || document.documentElement.dataset.motion === 'off') { setN(value); return; }
     let raf;
     const t0 = performance.now();
     const tick = (now) => {
@@ -23,7 +22,7 @@ function Counter({ value, suffix }) {
   }, [seen, value]);
   // Screen readers get the final number; the count-up is visual only.
   return (
-    <span ref={ref} className="v">
+    <span ref={ref} className="t-num">
       <span aria-hidden="true">{n}{suffix}</span>
       <span className="sr-only">{value}{suffix}</span>
     </span>
@@ -32,26 +31,21 @@ function Counter({ value, suffix }) {
 
 export default function About() {
   return (
-    <section className="section" id="about">
-      <div className="container split">
+    <section className="t-sec" id="about">
+      <Reveal className="t-head t-about">
         <div>
-          <Reveal><Eyebrow num="02">{about.eyebrow}</Eyebrow></Reveal>
-          <Reveal as="h2" className="display md" delay={0.05}><Rich text={about.heading} /></Reveal>
-          {about.body.map((p, i) => (
-            <Reveal as="p" className="lede" key={i} delay={0.1 + i * 0.05}>{p}</Reveal>
-          ))}
-          <Reveal as="ul" className="chips" delay={0.2}>
-            {about.chips.map((c) => <li key={c}>{c}</li>)}
+          <span className="mono">{about.eyebrow}</span>
+          <h2 className="t-h2"><Rich text={about.heading} /></h2>
+        </div>
+        <p>{about.body}</p>
+      </Reveal>
+      <div className="t-grid">
+        {about.stats.map((s, i) => (
+          <Reveal className="t-tile t-stat" key={s.label} delay={0.08 * i}>
+            <Counter value={s.value} suffix={s.suffix} />
+            <span className="mono">{s.label}</span>
           </Reveal>
-        </div>
-        <div className="stats">
-          {about.stats.map((s, i) => (
-            <Reveal className="stat" key={s.label} delay={0.1 * i}>
-              <Counter value={s.value} suffix={s.suffix} />
-              <div className="l">{s.label}</div>
-            </Reveal>
-          ))}
-        </div>
+        ))}
       </div>
     </section>
   );

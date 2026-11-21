@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { site } from '../content.js';
+import { site, asset } from '../content.js';
 import { Rich } from '../Rich.jsx';
 import { useMotion } from '../hooks.js';
 import { fetchModel, MODEL_URL } from './fetchModel.js';
@@ -30,15 +30,6 @@ export default function Hero({ active = true }) {
   motionRef.current = motion;
   const [started, setStarted] = useState(active);
   useEffect(() => { if (active) setStarted(true); }, [active]);
-
-  // Text never waits on the 3D: it shows at assembly, or after 1.2 s, whichever comes first.
-  const [textIn, setTextIn] = useState(false);
-  useEffect(() => {
-    if (!started) return;
-    if (phase === 'ready' || error) { setTextIn(true); return; }
-    const id = setTimeout(() => setTextIn(true), window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 1200);
-    return () => clearTimeout(id);
-  }, [phase, error, started]);
 
   useEffect(() => { engineRef.current?.setPaused(!motion); }, [motion]);
 
@@ -91,37 +82,42 @@ export default function Hero({ active = true }) {
   const loading = started && phase !== 'ready' && !error;
 
   return (
-    <section className="hero" id="top" ref={hostRef} data-phase={phase} data-error={error ? '' : undefined} data-text={textIn ? 'in' : undefined}>
-      <div className="rays" aria-hidden="true" />
-      <div className="stage" ref={stageRef} aria-hidden="true" />
+    <section className="hero" id="top" data-phase={phase} data-error={error ? '' : undefined}>
+      <h1 className="t-tile t-silver t-headline">
+        <span className="mono">{site.name} · {site.role}</span>
+        <span><Rich text={site.tagline} /></span>
+      </h1>
 
-      {/* The ring fades out visually, and leaves the accessibility tree, once loading ends. */}
-      {started && !error && (
-        <div className="loader" {...(loading ? { role: 'progressbar', 'aria-label': 'Loading the dots', 'aria-valuemin': 0, 'aria-valuemax': 100, 'aria-valuenow': pct } : { 'aria-hidden': true })}>
-          <svg viewBox="-110 -110 220 220" aria-hidden="true">
-            {RING.map((c, i) => (
-              <circle key={i} cx={c.cx} cy={c.cy} r={i / 96 < progress ? 2.2 : 1.6} data-on={i / 96 < progress ? '' : undefined} />
-            ))}
-          </svg>
-          <span className="counter" aria-hidden="true">{String(pct).padStart(3, '0')}</span>
-          <span className="label" aria-hidden="true">{site.dotsLabel}</span>
-        </div>
-      )}
-
-      <p className="h-status"><span className="dot" aria-hidden="true" />{site.status}</p>
-      <div className="h-name">
-        <h1>{site.name}<span className="h-role">{site.role}</span></h1>
-        <p className="h-now">
-          <span className="mono">{site.current.label}</span>
-          <a href={site.current.url} target="_blank" rel="noreferrer">{site.current.company} <span aria-hidden="true">↗</span><span className="sr-only"> (opens in a new tab)</span></a>
-        </p>
+      <div className="t-tile t-bust" ref={hostRef}>
+        <div className="rays" aria-hidden="true" />
+        <div className="stage" ref={stageRef} aria-hidden="true" />
+        {/* If 3D can't run, a still of the same portrait takes its place. */}
+        {error && <img className="t-still" src={asset('hero/portrait.webp')} alt="Portrait of Ishmeet made of thousands of points of light" />}
+        {/* The ring fades out visually, and leaves the accessibility tree, once loading ends. */}
+        {started && !error && (
+          <div className="loader" {...(loading ? { role: 'progressbar', 'aria-label': 'Loading the dots', 'aria-valuemin': 0, 'aria-valuemax': 100, 'aria-valuenow': pct } : { 'aria-hidden': true })}>
+            <svg viewBox="-110 -110 220 220" aria-hidden="true">
+              {RING.map((c, i) => (
+                <circle key={i} cx={c.cx} cy={c.cy} r={i / 96 < progress ? 2.2 : 1.6} data-on={i / 96 < progress ? '' : undefined} />
+              ))}
+            </svg>
+            <span className="counter" aria-hidden="true">{String(pct).padStart(3, '0')}</span>
+            <span className="label" aria-hidden="true">{site.dotsLabel}</span>
+          </div>
+        )}
+        <button className="motion-btn" type="button" aria-pressed={!motion} onClick={toggleMotion}>
+          <span aria-hidden="true">{motion ? '❚❚' : '▶'}</span> Pause motion
+        </button>
       </div>
-      <p className="h-tag"><Rich text={site.tagline} /></p>
-      <a className="btn h-cta" href="#work">{site.workCta} <span aria-hidden="true">↓</span></a>
-      {phase === 'ready' && motion && <p className="h-hint" aria-hidden="true">{site.hint}</p>}
-      <button className="motion-btn" type="button" aria-pressed={!motion} onClick={toggleMotion}>
-        <span aria-hidden="true">{motion ? '❚❚' : '▶'}</span> Pause motion
-      </button>
+
+      <div className="t-tile t-open">
+        <span className="mono">{site.status}</span>
+        <a className="t-btn" href="#work">{site.workCta} <span aria-hidden="true">&nbsp;↓</span></a>
+      </div>
+      <div className="t-tile t-now">
+        <span className="mono">{site.current.label}</span>
+        <a href={site.current.url} target="_blank" rel="noreferrer">{site.current.company}<span className="sr-only"> (opens in a new tab)</span></a>
+      </div>
     </section>
   );
 }

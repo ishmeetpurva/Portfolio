@@ -3,7 +3,6 @@ import Hero from './hero/Hero.jsx';
 import About from './sections/About.jsx';
 import Projects from './sections/Projects.jsx';
 import WhyHire from './sections/WhyHire.jsx';
-import Qualities from './sections/Qualities.jsx';
 import Testimonials from './sections/Testimonials.jsx';
 import Contact from './sections/Contact.jsx';
 import caseIndex from './caseStudies/index.json';
@@ -48,38 +47,30 @@ function useRoute() {
 }
 
 function Nav() {
-  const [show, setShow] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('');
   useEffect(() => {
-    const onScroll = () => { const s = window.scrollY > 80; setShow(s); if (!s) setOpen(false); };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
     const io = new IntersectionObserver(
       (entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
       { rootMargin: '-45% 0px -50% 0px' },
     );
-    nav.forEach((n) => { const el = document.getElementById(n.id); if (el) io.observe(el); });
-    return () => { window.removeEventListener('scroll', onScroll); io.disconnect(); };
+    [...nav.map((n) => n.id), 'contact'].forEach((id) => { const el = document.getElementById(id); if (el) io.observe(el); });
+    return () => io.disconnect();
   }, []);
+  const links = [...nav, { id: 'contact', label: 'Get in touch ↗' }];
   return (
-    <header className={`nav ${show ? 'show' : ''} ${open ? 'open' : ''}`} aria-hidden={!show}>
-      <a className="logo" href="#top" tabIndex={show ? 0 : -1}>{site.logo}</a>
+    <header className={`nav ${open ? 'open' : ''}`}>
+      <a className="logo" href="#top">{site.logo}</a>
       <nav aria-label="Main">
         <ul id="nav-menu">
-          {nav.map((n) => (
-            <li key={n.id}><a href={`#${n.id}`} className={active === n.id ? 'active' : ''} aria-current={active === n.id ? 'true' : undefined} tabIndex={show ? 0 : -1} onClick={() => setOpen(false)}>{n.label}</a></li>
+          {links.map((n) => (
+            <li key={n.id}><a href={`#${n.id}`} className={active === n.id ? 'active' : ''} aria-current={active === n.id ? 'true' : undefined} onClick={() => setOpen(false)}>{n.label}</a></li>
           ))}
-          {/* On phones the "Get in touch" button folds into the menu */}
-          <li className="nav-m-only"><a href="#contact" tabIndex={show ? 0 : -1} onClick={() => setOpen(false)}>Contact</a></li>
         </ul>
       </nav>
-      <div className="nav-right">
-        <a className="btn-outline" href="#contact" tabIndex={show ? 0 : -1}>Get in touch ↗</a>
-        <button className="nav-toggle" type="button" aria-expanded={open} aria-controls="nav-menu" aria-label="Menu" tabIndex={show ? 0 : -1} onClick={() => setOpen((o) => !o)}>
-          <span aria-hidden="true">{open ? '✕' : '☰'}</span>
-        </button>
-      </div>
+      <button className="nav-toggle" type="button" aria-expanded={open} aria-controls="nav-menu" aria-label="Menu" onClick={() => setOpen((o) => !o)}>
+        <span aria-hidden="true">{open ? '✕' : '☰'}</span>
+      </button>
     </header>
   );
 }
@@ -92,22 +83,20 @@ export default function App() {
       {slug && <Suspense fallback={<div className="cs-page" />}><CaseStudy key={slug} slug={slug} /></Suspense>}
       {/* Home stays mounted while a case study is open, so the 3D hero isn't rebuilt on return. */}
       <div hidden={!!slug}>
-      {!slug && <a className="skip" href="#about">Skip to content</a>}
-      {!slug && <Nav />}
-      <main>
-        <Hero active={!slug} />
-        <div className="hero-strip">
-          <span className="mono"><span className="mouse" aria-hidden="true" />Scroll to explore</span>
-          <span className="mono coords">+ Depth 024 m</span>
-          <span className="mono">01 / 06</span>
+        <div className="t-page">
+          {!slug && <a className="skip" href="#about">Skip to content</a>}
+          {!slug && <Nav />}
+          <main className="t-main">
+            <Hero active={!slug} />
+            <About />
+            <Projects />
+            <WhyHire />
+            <div className="t-tail">
+              <Testimonials />
+              <Contact />
+            </div>
+          </main>
         </div>
-        <About />
-        <Projects />
-        <WhyHire />
-        <Qualities />
-        <Testimonials />
-        <Contact />
-      </main>
       </div>
     </>
   );
