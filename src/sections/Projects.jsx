@@ -8,6 +8,10 @@ function ProjectCard({ p, i }) {
     <Reveal className="t-tile project" delay={(i % 3) * 0.08}>
       <img src={asset(p.image)} alt="" loading="lazy" />
       <div className="t-cap">
+        <div className="t-cap-meta mono">
+          <span>{p.role}</span>
+          <span>{p.platform} · {p.year}</span>
+        </div>
         <div className="t-cap-title">
           <img className="logo-mark" src={asset(p.logo)} alt="" />
           <h3>
@@ -18,8 +22,11 @@ function ProjectCard({ p, i }) {
         </div>
         <p>{p.summary}</p>
         <div className="t-cap-foot">
-          <span>{p.impact}</span>
-          <span aria-hidden="true">{p.cta} {external ? '↗' : '→'}</span>
+          <div className="t-result">
+            <strong>{p.metric}</strong>
+            <span className="mono">{p.metricLabel}</span>
+          </div>
+          <span className="t-cta" aria-hidden="true">{p.cta} {external ? '↗' : '→'}</span>
         </div>
       </div>
     </Reveal>

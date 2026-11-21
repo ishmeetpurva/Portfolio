@@ -160,14 +160,14 @@ main:focus { outline: none; }
 .nav-toggle { display: none; }
 
 /* Hero */
-.hero { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: minmax(0, 1fr) 132px 132px; gap: var(--gap); height: clamp(680px, calc(100svh - 104px), 820px); scroll-margin-top: 96px; }
+.hero { --hero-h: clamp(680px, calc(100svh - 104px), 820px); display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: minmax(0, 1fr) 132px 132px; gap: var(--gap); height: var(--hero-h); scroll-margin-top: 96px; }
 .t-open, .t-now { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; grid-column: 1 / span 4; }
 .t-open { grid-row: 3; background: #17518a; }
 .t-open .mono { color: var(--silver); }
 .t-now { grid-row: 2; }
 .t-now a { font-size: 32px; letter-spacing: -0.03em; text-decoration: none; }
 .t-now a:hover { color: var(--ray-ink); }
-.t-headline { grid-column: 1 / span 4; grid-row: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 32px; margin: 0; font: 400 clamp(46px, 5vw, 72px)/1.05 var(--font-sans); letter-spacing: -0.05em; }
+.t-headline { grid-column: 1 / span 4; grid-row: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; margin: 0; font: 400 clamp(40px, min(4.5vw, calc((var(--hero-h) - 400px) / 4.5)), 66px)/1.08 var(--font-sans); letter-spacing: -0.045em; }
 .t-headline .mono { font-size: 11px; line-height: 1.4; }
 .t-bust { position: relative; grid-column: 5 / span 8; grid-row: 1 / span 3; padding: 0; cursor: crosshair; touch-action: pan-y; background: radial-gradient(90% 75% at 72% 0%, #2f86c9 0%, #164f84 44%, #0c2c52 100%); }
 .hero[data-phase='ready'] .stage { cursor: none; }
@@ -204,17 +204,22 @@ html[data-motion='off'] .t-bust .rays { animation-play-state: paused; }
 .project:nth-child(-n+2) { grid-column: span 6; }
 .project:hover { background: #143d6b; }
 .project > img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
-.t-cap { flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 20px var(--pad) 24px; }
-.t-cap-title { display: flex; align-items: center; gap: 12px; }
-.logo-mark { width: 34px; height: 34px; border-radius: 8px; object-fit: contain; background: #f2f5f9; padding: 4px; flex: none; filter: grayscale(1) contrast(1.1); }
-.project h3 { margin: 0; font-weight: 400; font-size: 23px; line-height: 1.1; letter-spacing: -0.03em; }
+.t-cap { flex: 1; display: flex; flex-direction: column; padding: 24px var(--pad) var(--pad); }
+.t-cap-meta { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+.t-cap-title { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.logo-mark { width: 40px; height: 40px; border-radius: 10px; object-fit: contain; background: #f2f5f9; padding: 5px; flex: none; filter: grayscale(1) contrast(1.1); }
+.project h3 { margin: 0; font-weight: 400; font-size: clamp(25px, 2.1vw, 30px); line-height: 1.1; letter-spacing: -0.03em; }
 .project h3 a { color: inherit; text-decoration: none; }
 /* The title link stretches over the whole card, so the card reads as one link named by its title. */
 .project h3 a::after { content: ''; position: absolute; inset: 0; z-index: 3; border-radius: 18px; }
 .project h3 a:focus-visible { outline: none; }
 .project:has(h3 a:focus-visible) { outline: 2px solid var(--mist); outline-offset: 3px; }
-.t-cap p { margin: 0; font-size: 14px; line-height: 1.45; font-weight: 300; color: #dbe5ef; }
-.t-cap-foot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 14px; color: var(--ray-ink); }
+.t-cap > p { margin: 0 0 24px; max-width: 46ch; font-size: 15px; line-height: 1.5; font-weight: 400; color: #dbe5ef; text-wrap: pretty; }
+/* margin-top:auto lines the results up across every card in a row */
+.t-cap-foot { margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(200, 215, 230, 0.2); display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; }
+.t-result { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.t-result strong { font: 400 clamp(30px, 2.6vw, 38px)/1 var(--font-serif); letter-spacing: -0.02em; color: var(--silver); white-space: nowrap; }
+.t-cta { flex: none; font-size: 14px; font-weight: 500; color: var(--ray-ink); }
 
 /* Why me */
 .t-reason { grid-column: span 3; }
@@ -256,6 +261,7 @@ html[data-motion='off'] .t-bust .rays { animation-play-state: paused; }
 @media (max-width: 980px) {
   .hero { height: auto; grid-template-rows: none; }
   .t-headline, .t-bust { grid-column: 1 / -1; grid-row: auto; }
+  .t-headline { font-size: clamp(42px, 8vw, 66px); }
   .t-bust { min-height: 680px; }
   .t-open, .t-now { grid-row: auto; grid-column: span 6; min-height: 112px; }
   .project, .project:nth-child(-n+2) { grid-column: span 6; }
