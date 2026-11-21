@@ -1,6 +1,7 @@
 import { why, asset } from '../content.js';
 import { Rich } from '../Rich.jsx';
 import Reveal from './Reveal.jsx';
+import DotIcon from './DotIcon.jsx';
 
 export default function WhyHire() {
   return (
@@ -14,7 +15,7 @@ export default function WhyHire() {
       <div className="t-grid">
         {why.reasons.map((r, i) => (
           <Reveal className="t-tile t-reason" key={r.title} delay={0.08 * i}>
-            <img src={asset(r.icon)} alt="" width="112" height="112" loading="lazy" />
+            <DotIcon src={asset(r.icon)} delay={i * 140} />
             <h3>{r.title}</h3>
             <p>{r.text}</p>
           </Reveal>
