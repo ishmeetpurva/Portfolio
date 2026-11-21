@@ -167,8 +167,7 @@ main:focus { outline: none; }
 .t-now { grid-row: 2; }
 .t-now a { display: inline-flex; align-items: center; min-height: 44px; transition: opacity 0.2s; }
 .t-now a:hover { opacity: 0.75; }
-/* Shown in silver, like the other logos on the page are neutralised to fit the palette. */
-.t-now img { display: block; width: 46px; height: 40px; filter: brightness(0) invert(0.93); }
+.t-now img { display: block; width: auto; height: 30px; }
 .t-headline { grid-column: 1 / span 4; grid-row: 1; display: flex; flex-direction: column; justify-content: center; margin: 0; font: 400 clamp(40px, min(4.5vw, calc((var(--hero-h) - 400px) / 4.5)), 66px)/1.08 var(--font-sans); letter-spacing: -0.045em; }
 .t-id { position: absolute; z-index: 3; top: 16px; right: 16px; margin: 0; display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; border-radius: 999px; background: rgba(10, 29, 54, 0.72); border: 0.5px solid var(--line-strong); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
 .t-page .t-id { color: var(--silver); }
@@ -272,6 +271,10 @@ html[data-motion='off'] .t-bust .rays { animation-play-state: paused; }
 .reveal.in { opacity: 1; transform: none; }
 
 /* ── Responsive ────────────────────────────────────────── */
+/* Small laptops: the left column is narrow, so the logo steps down to stay beside its label. */
+@media (min-width: 981px) and (max-width: 1180px) {
+  .t-now img { height: 24px; }
+}
 @media (max-width: 980px) {
   .hero { height: auto; grid-template-rows: none; }
   .t-headline, .t-bust { grid-column: 1 / -1; grid-row: auto; }
@@ -306,6 +309,7 @@ html[data-motion='off'] .t-bust .rays { animation-play-state: paused; }
 }
 @media (max-width: 380px) {
   .t-num { font-size: 32px; }
+  .t-now img { height: 24px; }
   .t-stat { padding: 12px; }
 }
 @media (prefers-reduced-motion: reduce) {

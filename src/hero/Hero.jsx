@@ -114,7 +114,7 @@ export default function Hero({ active = true }) {
 
       <div className="t-tile t-now">
         <span className="mono">{site.current.label}</span>
-        <a href={site.current.url} target="_blank" rel="noreferrer"><img src={asset(site.current.logo)} alt={site.current.company} width="46" height="40" /><span className="sr-only"> (opens in a new tab)</span></a>
+        <a href={site.current.url} target="_blank" rel="noreferrer"><img src={asset(site.current.logo)} alt={site.current.company} width="458" height="88" /><span className="sr-only"> (opens in a new tab)</span></a>
       </div>
       <div className="t-tile t-open">
         <span className="mono">{site.status}</span>
