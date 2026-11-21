@@ -4,9 +4,15 @@ import Reveal from './Reveal.jsx';
 
 function ProjectCard({ p, i }) {
   const external = /^https?:/.test(p.url || '');
+  const action = `View ${p.cta.toLowerCase()}`;
   return (
     <Reveal className="t-tile project" delay={(i % 3) * 0.08}>
-      <img src={asset(p.image)} alt="" loading="lazy" />
+      <div className="t-cover">
+        <img src={asset(p.image)} alt="" loading="lazy" />
+        <div className="t-overlay" aria-hidden="true">
+          <span className="t-btn">{action} {external ? '↗' : '→'}</span>
+        </div>
+      </div>
       <div className="t-cap">
         <div className="t-cap-meta mono">
           <span>{p.role}</span>
@@ -16,7 +22,7 @@ function ProjectCard({ p, i }) {
           <img className="logo-mark" src={asset(p.logo)} alt="" />
           <h3>
             <a href={p.url} target={external ? '_blank' : undefined} rel={external ? 'noreferrer' : undefined}>
-              {p.title}<span className="sr-only">{`: ${p.cta}${external ? ' (opens in a new tab)' : ''}`}</span>
+              {p.title}<span className="sr-only">{`: ${action}${external ? ' (opens in a new tab)' : ''}`}</span>
             </a>
           </h3>
         </div>
@@ -26,7 +32,6 @@ function ProjectCard({ p, i }) {
             <strong>{p.metric}</strong>
             <span className="mono">{p.metricLabel}</span>
           </div>
-          <span className="t-cta" aria-hidden="true">{p.cta} {external ? '↗' : '→'}</span>
         </div>
       </div>
     </Reveal>

@@ -165,10 +165,13 @@ main:focus { outline: none; }
 .t-open { grid-row: 3; background: #17518a; }
 .t-open .mono { color: var(--silver); }
 .t-now { grid-row: 2; }
-.t-now a { font-size: 32px; letter-spacing: -0.03em; text-decoration: none; }
-.t-now a:hover { color: var(--ray-ink); }
-.t-headline { grid-column: 1 / span 4; grid-row: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; margin: 0; font: 400 clamp(40px, min(4.5vw, calc((var(--hero-h) - 400px) / 4.5)), 66px)/1.08 var(--font-sans); letter-spacing: -0.045em; }
-.t-headline .mono { font-size: 11px; line-height: 1.4; }
+.t-now a { display: inline-flex; align-items: center; min-height: 44px; transition: opacity 0.2s; }
+.t-now a:hover { opacity: 0.75; }
+/* Shown in silver, like the other logos on the page are neutralised to fit the palette. */
+.t-now img { display: block; width: 46px; height: 40px; filter: brightness(0) invert(0.93); }
+.t-headline { grid-column: 1 / span 4; grid-row: 1; display: flex; flex-direction: column; justify-content: center; margin: 0; font: 400 clamp(40px, min(4.5vw, calc((var(--hero-h) - 400px) / 4.5)), 66px)/1.08 var(--font-sans); letter-spacing: -0.045em; }
+.t-id { position: absolute; z-index: 3; top: 16px; right: 16px; margin: 0; display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; border-radius: 999px; background: rgba(10, 29, 54, 0.72); border: 0.5px solid var(--line-strong); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.t-page .t-id { color: var(--silver); }
 .t-bust { position: relative; grid-column: 5 / span 8; grid-row: 1 / span 3; padding: 0; cursor: crosshair; touch-action: pan-y; background: radial-gradient(90% 75% at 72% 0%, #2f86c9 0%, #164f84 44%, #0c2c52 100%); }
 .hero[data-phase='ready'] .stage { cursor: none; }
 .t-bust .rays { position: absolute; inset: 0; pointer-events: none; background:
@@ -192,6 +195,7 @@ html[data-motion='off'] .t-bust .rays { animation-play-state: paused; }
 
 /* About */
 .t-about { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: var(--pad); align-items: end; }
+.t-about .mono { display: block; margin: 0 0 16px; }
 .t-about p { margin: 0; max-width: 560px; font-size: 16px; line-height: 1.6; font-weight: 300; color: #dbe5ef; }
 .t-stat { grid-column: span 4; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
 .t-stat:nth-child(2) { background: #35536f; }
@@ -203,7 +207,18 @@ html[data-motion='off'] .t-bust .rays { animation-play-state: paused; }
 .project { position: relative; grid-column: span 4; display: flex; flex-direction: column; padding: 0; transition: background 0.25s; }
 .project:nth-child(-n+2) { grid-column: span 6; }
 .project:hover { background: #143d6b; }
-.project > img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.t-cover { position: relative; aspect-ratio: 16 / 10; overflow: hidden; }
+.t-cover img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
+.t-overlay { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(10, 29, 54, 0.66); opacity: 0; transition: opacity 0.25s; }
+.t-overlay .t-btn { transform: translateY(8px); transition: transform 0.3s var(--ease); }
+.project:hover .t-overlay, .project:focus-within .t-overlay { opacity: 1; }
+.project:hover .t-overlay .t-btn, .project:focus-within .t-overlay .t-btn { transform: none; }
+.project:hover .t-cover img { transform: scale(1.03); }
+/* Touch screens have no hover, so the button stays visible on the cover without the dark overlay. */
+@media (hover: none) {
+  .t-overlay { opacity: 1; background: none; place-items: end; padding: 12px; }
+  .t-overlay .t-btn { transform: none; }
+}
 .t-cap { flex: 1; display: flex; flex-direction: column; padding: 24px var(--pad) var(--pad); }
 .t-cap-meta { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
 .t-cap-title { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
@@ -219,7 +234,6 @@ html[data-motion='off'] .t-bust .rays { animation-play-state: paused; }
 .t-cap-foot { margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(200, 215, 230, 0.2); display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; }
 .t-result { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
 .t-result strong { font: 400 clamp(30px, 2.6vw, 38px)/1 var(--font-serif); letter-spacing: -0.02em; color: var(--silver); white-space: nowrap; }
-.t-cta { flex: none; font-size: 14px; font-weight: 500; color: var(--ray-ink); }
 
 /* Why me */
 .t-reason { grid-column: span 3; }
@@ -298,5 +312,7 @@ html[data-motion='off'] .t-bust .rays { animation-play-state: paused; }
   html { scroll-behavior: auto; }
   .loader { transition: none; }
   .t-bust .rays { animation: none; }
+  .t-cover img, .t-overlay, .t-overlay .t-btn { transition: none; }
+  .project:hover .t-cover img { transform: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
 }

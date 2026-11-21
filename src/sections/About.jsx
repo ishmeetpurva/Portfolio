@@ -32,7 +32,7 @@ function Counter({ value, suffix }) {
 export default function About() {
   return (
     <section className="t-sec" id="about">
-      <Reveal className="t-head t-about">
+      <Reveal className="t-tile t-about">
         <div>
           <span className="mono">{about.eyebrow}</span>
           <h2 className="t-h2"><Rich text={about.heading} /></h2>

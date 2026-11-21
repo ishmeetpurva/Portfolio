@@ -86,7 +86,6 @@ export default function Hero({ active = true }) {
   return (
     <section className="hero" id="top" data-phase={phase} data-error={error ? '' : undefined}>
       <h1 className="t-tile t-silver t-headline">
-        <span className="mono">{site.name} · {site.role}</span>
         <span><Rich text={site.tagline} /></span>
       </h1>
 
@@ -107,6 +106,7 @@ export default function Hero({ active = true }) {
             <span className="label" aria-hidden="true">{site.dotsLabel}</span>
           </div>
         )}
+        <p className="t-id mono">{site.name} · {site.role}</p>
         <button className="motion-btn" type="button" aria-pressed={!motion} onClick={toggleMotion}>
           <span aria-hidden="true">{motion ? '❚❚' : '▶'}</span> Pause motion
         </button>
@@ -114,7 +114,7 @@ export default function Hero({ active = true }) {
 
       <div className="t-tile t-now">
         <span className="mono">{site.current.label}</span>
-        <a href={site.current.url} target="_blank" rel="noreferrer">{site.current.company}<span className="sr-only"> (opens in a new tab)</span></a>
+        <a href={site.current.url} target="_blank" rel="noreferrer"><img src={asset(site.current.logo)} alt={site.current.company} width="46" height="40" /><span className="sr-only"> (opens in a new tab)</span></a>
       </div>
       <div className="t-tile t-open">
         <span className="mono">{site.status}</span>

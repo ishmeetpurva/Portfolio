@@ -13,7 +13,7 @@ export const site = {
   role: 'Product designer',
   tagline: 'Designing products that make real *impact.*',
   status: 'Open to opportunities',
-  current: { label: 'Currently at', company: 'Mercor', url: 'https://mercor.com' },
+  current: { label: 'Currently at', company: 'Mercor', url: 'https://mercor.com', logo: 'logos/mercor.svg' },
   workCta: 'View work',
   dotsLabel: '66,000 dots',
   email: 'ishmeet.purva@gmail.com',
