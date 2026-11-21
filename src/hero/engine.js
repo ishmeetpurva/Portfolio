@@ -105,6 +105,8 @@ export function createEngine({ stage, host, dots, reduced, paused: startPaused =
     const px = (2 * dist * TAN15) / h;
     bustU.uRingRadius.value = 92 * px;
     bustU.uRingCenter.value.copy(TARGET);
+    // The canvas is taller than its tile; start the dots from the tile's centre, where the loader sits.
+    bustU.uRingCenter.value.y += ((h - (stage.parentElement?.clientHeight || h)) / 2) * px;
   };
   // A resize clears the canvas, so redraw the still frame when the loop is paused.
   const ro = new ResizeObserver(() => { resize(); if (!running) renderer.render(scene, camera); });

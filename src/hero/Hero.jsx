@@ -63,6 +63,8 @@ export default function Hero({ active = true }) {
           onReady: () => setPhase('ready'),
           onLost: () => setError(true),
         });
+        // The loader fades as soon as the dots start moving, so the two never overlap.
+        setPhase((p) => (p === 'ready' ? p : 'assembling'));
       } catch (e) {
         if (cancelled || e.name === 'AbortError') return;
         console.error(e);
@@ -79,7 +81,7 @@ export default function Hero({ active = true }) {
   }, [started]);
 
   const pct = Math.round(progress * 100);
-  const loading = started && phase !== 'ready' && !error;
+  const loading = started && phase === 'loading' && !error;
 
   return (
     <section className="hero" id="top" data-phase={phase} data-error={error ? '' : undefined}>
@@ -110,13 +112,13 @@ export default function Hero({ active = true }) {
         </button>
       </div>
 
-      <div className="t-tile t-open">
-        <span className="mono">{site.status}</span>
-        <a className="t-btn" href="#work">{site.workCta} <span aria-hidden="true">&nbsp;↓</span></a>
-      </div>
       <div className="t-tile t-now">
         <span className="mono">{site.current.label}</span>
         <a href={site.current.url} target="_blank" rel="noreferrer">{site.current.company}<span className="sr-only"> (opens in a new tab)</span></a>
+      </div>
+      <div className="t-tile t-open">
+        <span className="mono">{site.status}</span>
+        <a className="t-btn" href="#work">{site.workCta} <span aria-hidden="true">&nbsp;↓</span></a>
       </div>
     </section>
   );

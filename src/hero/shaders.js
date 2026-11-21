@@ -84,7 +84,8 @@ void main() {
   b += shine * 1.3;
 
   // 10–11. Alpha + size
-  vA = mix(0.75, 1.0, e);
+  // Dots stay invisible on the start ring, so the loader's dotted circle is the only circle on screen.
+  vA = mix(0.75, 1.0, e) * smoothstep(0.02, 0.2, e);
   vec4 mv = viewMatrix * wp;
   gl_PointSize = uSize * (0.45 + r2 * r2 * 1.3) * (1.0 + shine * 0.6) / -mv.z;
   gl_Position = projectionMatrix * mv;
