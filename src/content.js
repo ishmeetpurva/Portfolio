@@ -131,14 +131,17 @@ export const testimonials = {
   heading: 'Kind *words.*',
   items: [
     {
+      pull: 'Strong professionalism',
       quote: 'Ishmeet understood and elicited requirements before delivering a design and prototype that met all of the user stories. She displayed strong professionalism and quickly built rapport with the team.',
       name: 'Peter McCleery', role: 'Director', company: 'GetSociable', image: 'people/peter.webp',
     },
     {
+      pull: 'Exceptional creativity',
       quote: 'Ishmeet is an excellent communicator with exceptional creativity and worked closely with design, development, and marketing teams to deliver real value.',
       name: 'Gagan Sahni', role: 'Design Lead', company: 'Absolute Foods', image: 'people/gagan.jpg',
     },
     {
+      pull: 'Speak for users',
       quote: 'Ishmeet is an amazing personality and an excellent team member. It was a pleasure working with her, guiding her and learning from her as well. I truly recommend her design skills and her ability to speak for users and prioritise them while solving a problem.',
       name: 'Syed Nouman', role: 'Design Consultant', company: 'NCLE', image: 'people/syed.jpg',
     },
