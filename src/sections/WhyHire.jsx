@@ -12,15 +12,16 @@ export default function WhyHire() {
           <h2 className="t-h2"><Rich text={why.heading} /></h2>
         </div>
       </Reveal>
-      <div className="t-grid">
+      <ol className="t-why">
         {why.reasons.map((r, i) => (
-          <Reveal className="t-tile t-reason" key={r.title} delay={0.08 * i}>
+          <Reveal as="li" className="t-tile t-reason" key={r.title} delay={0.06 * i}>
+            <span className="t-reason-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
             <DotIcon src={asset(r.icon)} delay={i * 140} />
             <h3>{r.title}</h3>
             <p>{r.text}</p>
           </Reveal>
         ))}
-      </div>
+      </ol>
     </section>
   );
 }

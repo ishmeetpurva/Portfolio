@@ -235,16 +235,18 @@ html[data-motion='off'] .t-bust .rays { animation-play-state: paused; }
 .t-result strong { font: 400 clamp(30px, 2.6vw, 38px)/1 var(--font-serif); letter-spacing: -0.02em; color: var(--silver); white-space: nowrap; }
 
 /* Why me */
-.t-reason { grid-column: span 3; }
-.t-icon { position: relative; display: block; width: 112px; height: 112px; margin: 0 0 20px -6px; }
-.t-icon img, .t-icon canvas { position: absolute; inset: 0; display: block; width: 112px; height: 112px; }
+.t-why { display: flex; flex-direction: column; gap: var(--gap); margin: 0; padding: 0; list-style: none; }
+.t-reason { display: grid; grid-template-columns: 20px 112px minmax(0, 5fr) minmax(0, 6fr); align-items: center; gap: var(--pad); padding: 16px var(--pad); }
+.t-reason-num { font: 400 11px/1 var(--font-mono); letter-spacing: 0.14em; color: #a9cbe6; }
+.t-icon { position: relative; display: block; width: 112px; height: 112px; }
+.t-icon img, .t-icon canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
 .t-icon img { opacity: 0; transition: opacity 0.35s; }
 .t-icon canvas { transition: opacity 0.35s; }
 .t-icon[data-state='done'] img { opacity: 1; }
 .t-icon[data-state='done'] canvas { opacity: 0; }
 .t-reason h3, .t-reason p { margin: 0; }
-.t-reason h3 { font-weight: 400; font-size: 21px; line-height: 1.2; }
-.t-reason p { margin-top: 12px; font-size: 15px; line-height: 1.5; font-weight: 300; color: #dbe5ef; }
+.t-reason h3 { font-weight: 400; font-size: clamp(24px, 2.2vw, 32px); line-height: 1.1; letter-spacing: -0.03em; }
+.t-reason p { font-size: 16px; line-height: 1.55; color: #dbe5ef; text-wrap: pretty; }
 
 /* Footer gradient: one continuous wash from Kind words to the end of the page */
 .t-tail { display: flex; flex-direction: column; gap: var(--gap); margin: 56px calc(var(--gap) * -1) calc(var(--gap) * -1); padding: 56px var(--gap) var(--gap); background: radial-gradient(85% 52% at 85% 100%, #1f6fae 0%, rgba(31, 111, 174, 0) 100%), linear-gradient(180deg, #0a1d36 0%, #10335a 34%, #164f84 100%); }
@@ -283,7 +285,11 @@ html[data-motion='off'] .t-bust .rays { animation-play-state: paused; }
   .t-open, .t-now { grid-row: auto; grid-column: span 6; min-height: 112px; }
   .project, .project:nth-child(-n+2) { grid-column: span 6; }
   .project:last-child { grid-column: 1 / -1; }
-  .t-reason, .t-quote { grid-column: span 6; }
+  .t-quote { grid-column: span 6; }
+  .t-reason { grid-template-columns: auto minmax(0, 1fr); gap: 12px 16px; padding: 20px var(--pad); }
+  .t-reason-num { display: none; }
+  .t-icon { width: 80px; height: 80px; }
+  .t-reason p { grid-column: 1 / -1; }
   .t-quote:last-child { grid-column: 1 / -1; }
   .t-contact { min-height: 520px; }
 }
@@ -297,7 +303,7 @@ html[data-motion='off'] .t-bust .rays { animation-play-state: paused; }
 }
 @media (max-width: 620px) {
   .t-page { --gap: 12px; --pad: 20px; }
-  .t-open, .t-now, .project, .project:nth-child(-n+2), .t-reason, .t-quote { grid-column: 1 / -1; min-height: 0; }
+  .t-open, .t-now, .project, .project:nth-child(-n+2), .t-quote { grid-column: 1 / -1; min-height: 0; }
   .t-bust { min-height: 500px; }
   .stage { height: 112%; }
   .t-still { top: 10px; height: auto; width: 124%; }
