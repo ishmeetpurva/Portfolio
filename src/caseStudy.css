@@ -1,5 +1,9 @@
 /* ── Case-study pages: the old site's markup, restyled in the new system ── */
-.cs-page { min-height: 100vh; background: linear-gradient(180deg, #17518a 0%, #0f3560 260px, var(--abyss) 620px); }
+/* Same spacing scale as the home page: gutter and box gap, box padding, and the gap between sections. */
+.cs-page { --gap: 16px; --pad: 28px; --gutter: var(--gap); --section-gap: calc(56px + var(--gap)); min-height: 100vh; background: linear-gradient(180deg, #17518a 0%, #0f3560 260px, var(--abyss) 620px); }
+@media (max-width: 620px) {
+  .cs-page { --gap: 12px; --pad: 20px; --section-gap: calc(40px + var(--gap)); }
+}
 
 .cs-top {
   position: sticky; top: 0; z-index: 40;
@@ -27,7 +31,8 @@
 
 /* Article typography */
 .cs-article { color: var(--silver-2); font-weight: 400; line-height: 1.7; font-size: 17px; min-width: 0; }
-.cs-article section { padding-top: clamp(56px, 7vw, 96px); scroll-margin-top: 80px; }
+.cs-article section { display: flow-root; padding-top: var(--section-gap); scroll-margin-top: 80px; }
+.cs-article section > :last-child { margin-bottom: 0; }
 .cs-article h1 { font-family: var(--font-serif); font-weight: 400; letter-spacing: -0.025em; line-height: 1.04; font-size: clamp(38px, 5vw, 68px); color: var(--silver); margin: 18px 0 24px; text-wrap: balance; }
 .cs-article h1:focus { outline: none; }
 .cs-article h1 em {
@@ -74,17 +79,17 @@
 .cs-cardGrid, .cs-problemGrid, .cs-researchStats, .cs-metricsGrid, .cs-painPointsGrid, .cs-keyInsights,
 .cs-solutionGrid, .cs-myRole__grid, .cs-methodRow__images, .cs-inlineImageGrid, .cs-finalGrid, .cs-finalMosaic,
 .cs-baGrid, .cs-wfGrid, .cs-stepCompare, .cs-flowCompare {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 24px 0;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: var(--gap); margin: 24px 0;
 }
 .cs-metricsGrid--rows { grid-template-columns: 1fr; }
 .cs-keyInsights { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .cs-flowCompare { align-items: start; }
-.cs-finalStack { display: grid; gap: 14px; }
+.cs-finalStack { display: grid; gap: var(--gap); }
 
 /* Cards */
 .cs-card, .cs-researchStat, .cs-metric, .cs-painPoint, .cs-keyInsight, .cs-changeCard, .cs-myRole, .cs-goals,
 .cs-companyNote, .cs-step, .cs-baPanel, .cs-wfPanel, .cs-handNote, .cs-ledTo, .cs-solves, .cs-shift, .cs-flowResult {
-  border: 0.5px solid var(--line); border-radius: 14px; padding: 22px; background: var(--card);
+  border: 0.5px solid var(--line); border-radius: 14px; padding: var(--pad); background: var(--card);
 }
 .cs-myRole, .cs-goals, .cs-companyNote, .cs-step, .cs-changeCard { margin: 24px 0; }
 .cs-card p, .cs-researchStat p, .cs-metric p, .cs-keyInsight p, .cs-painPoint p { font-size: 15px; margin-bottom: 0; }
@@ -113,11 +118,11 @@
 
 /* Accordions (research methods, expanders) */
 .cs-article details { border: 0.5px solid var(--line); border-radius: 14px; background: var(--card); margin: 12px 0; overflow: hidden; }
-.cs-article summary { list-style: none; cursor: pointer; padding: 18px 22px; display: flex; justify-content: space-between; align-items: center; gap: 16px; color: var(--silver); }
+.cs-article summary { list-style: none; cursor: pointer; padding: 18px var(--pad); display: flex; justify-content: space-between; align-items: center; gap: 16px; color: var(--silver); }
 .cs-article summary::-webkit-details-marker { display: none; }
 .cs-article summary::after { content: '+'; font-size: 20px; color: var(--mist); transition: transform 0.3s var(--ease); }
 .cs-article details[open] > summary::after { transform: rotate(45deg); }
-.cs-article details > :not(summary) { padding: 0 22px 22px; }
+.cs-article details > :not(summary) { padding: 0 var(--pad) var(--pad); }
 .cs-methodPill { font: 400 13px/1.3 var(--font-mono); letter-spacing: 0.08em; color: var(--silver); }
 
 /* Flow diagrams */
